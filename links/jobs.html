@@ -1,0 +1,125 @@
+<script src="/index.js"></script>
+<main class="w3-show">
+  <div>
+    <p>Requirement:</p>
+    <div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Job</th>
+          <th>Salary</th>
+          <th>Requirement</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  </div>
+</main>
+<script>
+  let skills = [{
+    name: 'HTML',
+    href: ''
+  }, {
+    name: 'CSS',
+    href: ''
+  }, {
+    name: 'JavaScript',
+    href: ''
+  }, {
+    name: 'JSON',
+    href: 'JavaScript/Reference/Global_Objects/JSON'
+  }, {
+    name: 'Ajax',
+    href: 'Guide'
+  }, {
+    name: 'DOM',
+    href: 'API/Document_Object_Model'
+  }, {
+    name: 'jQuery',
+    href: 'https://jquery.com/'
+  }, {
+    name: 'Bootstrap',
+    href: 'https://getbootstrap.com/'
+  }, {
+    name: 'Angular',
+    href: 'https://angular.io/'
+  }, {
+    name: 'React',
+    href: 'https://reactjs.org/'
+  }, {
+    name: 'Vue',
+    href: 'https://vuejs.org/'
+  }, {
+    name: 'Sass',
+    href: 'https://sass-lang.com/'
+  }, {
+    name: 'Less',
+    href: 'http://lesscss.org/'
+  }, {
+    name: 'Webpack',
+    href: 'https://webpack.js.org/'
+  }, {
+    name: 'Gulp',
+    href: 'https://gulpjs.com/'
+  }, {
+    name: 'Babel',
+    href: 'https://babeljs.io/'
+  }, {
+    name: 'MongoDB',
+    href: 'https://www.mongodb.com'
+  }, {
+    name: 'ES6',
+    href: ''
+  }, {
+    name: '',
+    href: ''
+  }, {
+    name: '',
+    href: ''
+  }, {
+    name: '',
+    href: ''
+  }, {
+    name: '',
+    href: ''
+  }, {
+    name: '',
+    href: ''
+  }, {
+    name: '',
+    href: ''
+  }, {
+    name: '',
+    href: ''
+  }]
+  
+  let learnedSkills = ['HTML', 'CSS', 'JavaScript', 'JSON', 'DOM', 'jQuery', 'ES6'];
+  waitFunc(['jquery', 'color'], () => {
+
+    let table = $('table');
+    skills.forEach((skill) => {
+      addScripts('test', () => {
+        let para = $('<p>').appendTo($('main div').eq(1));
+        let html = $('<a>', {
+          href: skill.href,
+          html: skill.name
+        }).appendTo(para).parent().html()
+
+        para.html('');
+        let input = createChoiceInput(para, 'checkbox', html);
+        if (learnedSkills.includes(skill.name)) {
+          input.click();
+        }
+      })
+    });
+    
+    $('main p a').each(function () {
+      //table.html(table.html().replace(RegExp($(this).text(), 'gi'), `<a href='${this.href}'>${$(this).text()}</a>`))
+    })
+  })
+</script>

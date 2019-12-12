@@ -1,0 +1,96 @@
+<script src="/index.js"></script>
+<main></main>
+<script>
+  waitFunc(['jquery', 'color'], () => {
+    addScripts('template', () => {
+
+      // #region my info
+      let skills;
+      let education;
+      let experience;
+
+      // education
+      let undergraduate = new Education(
+        'Shanghai University',
+        '11121369',
+        'Bachelor Degree of Engineering',
+        'Computer Science and Techonology',
+        new Period(new Date('2011-09'), new Date('2015-07')),
+        '<ul><li>When I was a freshman, I joined the Blue Bond Volunteer Society to help elementary school students to study mathematics.</li><li>In the third year, I teamed up with students from the Department of Mathematics and Communication Engineering to participate in the International Mathematical Modeling Competition, responsible for building models using MATLAB.</li><li>Before I graduated, collaborated with fellow students to complete the deep network character recognition algorithm and then improved the algorithm for the actual scene as a personal graduation design project.</li></ul>'
+      )
+      let graduate = new Education(
+        'Standford University',
+        '11121369',
+        'Master',
+        'Artificial Intelligence',
+        new Period(new Date('2011-09'), new Date('2015-06')),
+        'Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.'
+      )
+      education = [undergraduate];
+
+      skills = [
+        'JavaScript',
+        'PowerShell',
+        'Office 365',
+        'English',
+      ]
+
+      experience = []
+
+      person = new Person(
+        new Name('Zhang', 'Yao'),
+        new Date('1992-09-29'),
+        'Male',
+        'San Francisco, US',
+        'decisact@163.com',
+        '18176088328',
+        education,
+        experience,
+        skills
+      );
+      // #endregion my info
+
+      showCVTemplate();
+      if (!experience.length) {
+        $('#experience').next().remove();
+        $('#experience').remove();
+      }
+      // #region cert
+
+      function showImage() {
+        let text = $(this).text();
+        let modal = $('<div>', { class: 'w3-modal' }).appendTo(main).show();
+        let img = text.toLowerCase().replace(/transcript/, 'transcript-en')
+        $('<img>', {
+          src: `${git}/temp/master/archive/img/${img}.jpg`
+        }).appendTo(modal);
+        $('<span>', {
+          class: 'w3-text-white my-click',
+          html: 'X'
+        }).css({
+          fontSize: '2em'
+        }).click(() => removeModal(modal)).prependTo(modal);
+      }
+
+      education = person.education[0];
+      let para = $('<p>').appendTo($('#education').children().eq(1));
+      let admin = {
+        add: 'No.99 Shangda Road, Shanghai PRC 200444',
+        tel: '021-66133408',
+        handler: 'Ji Huimei',
+        administrator: 'Zhang Yanrong'
+      };
+
+      ['Degree', 'Diploma', 'Transcript'].forEach(cert => {
+        $('<button>', {
+          html: cert
+        }).appendTo(para).click(showImage);
+      })
+
+      // #endregion cert
+
+    })
+
+    $('main').removeClass('w3-container');
+  })
+</script>

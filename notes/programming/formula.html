@@ -1,0 +1,181 @@
+<script src="/index.js"></script>
+<main>
+  <section>
+    <h1><a href="https://support.office.com/en-us/article">Formula</a></h1>
+    <section>
+      <h2><a href="ecfdc708-9162-49e8-b993-c311f47ca173">Overview of formulas in Excel</a></h2>
+      <section>
+        <h3>Formulas in-depth</h3>
+        <section>
+          <h4>The parts of an Excel formula</h4>
+          <div>
+            <p>A formula can also contain any or all of the following: <b>functions</b>, <b>references</b>, <b>operators</b>, and <b>constants</b>.</p>
+            <img src="https://support.content.office.net/en-us/media/0c0657d7-2951-431d-9e3f-d3dcc074e09b.gif">
+            <p>Parts of a formula</p>
+            <ol>
+              <li><b>Functions</b>: The <a href="pi-function-264199d0-a3ba-46b8-975a-c4a04608989b">PI() function</a> returns the value of pi: 3.142...</li>
+              <li><b>References</b>: A2 returns the value in cell A2.</li>
+              <li><b>Constants</b>: Numbers or text values entered directly into a formula, such as 2.</li>
+              <li><b>Operators</b>: The ^ (caret) operator raises a number to a power, and the * (asterisk) operator multiplies numbers.</li>
+            </ol>
+          </div>
+        </section>
+        <section>
+          <h4>Using references in Excel formulas</h4>
+          <div>
+            <p>A reference identifies a cell or a range of cells on a worksheet, and tells Excel where to look for the values or data you want to use in a formula. You can use references to use data contained in different parts of a worksheet in one formula or use the value from one cell in several formulas. You can also refer to cells on other sheets in the same workbook, and to other workbooks. References to cells in other workbooks are called links or external references.</p>
+            <ul>
+              <li>
+                <p><b>The A1 reference style</b></p>
+                <p>By default, Excel uses the A1 reference style, which refers to columns with letters (A through XFD, for a total of 24 * 26 ^ 2 + 6 * 26 + 4 = 16,384 columns) and refers to rows with numbers (1 through 1,048,576). These letters and numbers are called <b>row and column headings</b>. To refer to a cell, enter the column letter followed by the row number.</p>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>To refer to</th>
+                      <th>Use</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>The cell in column A and row 10</td>
+                      <td>A10</td>
+                    </tr>
+                    <tr>
+                      <td>The range of cells in column A and rows 10 through 20</td>
+                      <td>A10:A20</td>
+                    </tr>
+                    <tr>
+                      <td>The range of cells in row 15 and columns B through E</td>
+                      <td>B15:E15</td>
+                    </tr>
+                    <tr>
+                      <td>All cells in row 5</td>
+                      <td>5:5</td>
+                    </tr>
+                    <tr>
+                      <td>All cells in rows 5 through 10</td>
+                      <td>5:10</td>
+                    </tr>
+                    <tr>
+                      <td>All cells in column H</td>
+                      <td>H:H</td>
+                    </tr>
+                    <tr>
+                      <td>All cells in columns H through J</td>
+                      <td>H:J</td>
+                    </tr>
+                    <tr>
+                      <td>The range of cells in columns A through E and rows 10 through 20</td>
+                      <td>A10:E20</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </li>
+              <li>
+                <p><b>The difference between absolute, relative and mixed references</b></p>
+                <ol>
+                  <li>
+                    <p><b>Relative references</b>: A relative cell reference in a formula, such as A1, is based on the relative position of the cell that contains the formula and the cell the reference refers to. If the position of the cell that contains the formula changes, the reference is changed. If you copy or fill the formula across rows or down columns, the reference automatically adjusts. By default, new formulas use relative references. For example, if you copy or fill a relative reference in cell B2 to cell B3, it automatically adjusts from =A1 to =A2.</p>
+                    <p><b>Copied formula with relative reference</b></p>
+                    <img src="https://support.content.office.net/en-us/media/7ef1999d-b76f-424b-a84f-2d6ece396ddc.gif">
+                  </li>
+                  <li>
+                    <p><b>Absolute references</b>: An absolute cell reference in a formula, such as $A$1, always refer to a cell in a specific location. If the position of the cell that contains the formula changes, the absolute reference remains the same. If you copy or fill the formula across rows or down columns, the absolute reference does not adjust. By default, new formulas use relative references, so you may need to switch them to absolute references. For example, if you copy or fill an absolute reference in cell B2 to cell B3, it stays the same in both cells: =$A$1.</p>
+                    <p><b>Copied formula with absolute reference</b></p>
+                    <img src="https://support.content.office.net/en-us/media/56fb9df9-3953-4d15-b7e5-b07b72e2aa1f.gif">
+                  </li>
+                  <li>
+                    <p><b>Mixed references</b>: A mixed reference has either an absolute column and relative row, or absolute row and relative column. An absolute column reference takes the form $A1, $B1, and so on. An absolute row reference takes the form A$1, B$1, and so on. If the position of the cell that contains the formula changes, the relative reference is changed, and the absolute reference does not change. If you copy or fill the formula across rows or down columns, the relative reference automatically adjusts, and the absolute reference does not adjust. For example, if you copy or fill a mixed reference from cell A2 to B3, it adjusts from =A$1 to =B$1.</p>
+                    <p><b>Copied formula with mixed reference</b></p>
+                    <img src="https://support.content.office.net/en-us/media/a5ae19e1-910a-42ad-9063-b425a77d34a3.gif">
+                  </li>
+                </ol>
+              </li>
+              <li>
+                <p><b>The 3-D reference style</b></p>
+                <p><b>Conveniently referencing multiple worksheets</b> If you want to analyze data in the same cell or range of cells on multiple worksheets within a workbook, use a 3-D reference. A 3-D reference includes the cell or range reference, preceded by a range of worksheet names. Excel uses any worksheets stored between the starting and ending names of the reference. For example, =SUM(Sheet2:Sheet13!B5) adds all the values contained in cell B5 on all the worksheets between and including Sheet 2 and Sheet 13.</p>
+                <ul>
+                  <li>You can use 3-D references to refer to cells on other sheets, to define names, and to create formulas by using the following functions: SUM, AVERAGE, AVERAGEA, COUNT, COUNTA, MAX, MAXA, MIN, MINA, PRODUCT, STDEV.P, STDEV.S, STDEVA, STDEVPA, VAR.P, VAR.S, VARA, and VARPA.</li>
+                  <li>3-D references cannot be used in array formulas.</li>
+                  <li>3-D references cannot be used with the intersection operator (a single space) or in formulas that use implicit intersection.</li>
+                </ul>
+                <p><b>What occurs when you move, copy, insert, or delete worksheets</b> The following examples explain what happens when you move, copy, insert, or delete worksheets that are included in a 3-D reference. The examples use the formula =SUM(Sheet2:Sheet6!A2:A5) to add cells A2 through A5 on worksheets 2 through 6.</p>
+                <ul>
+                  <li><b>Insert or copy</b> If you insert or copy sheets between Sheet2 and Sheet6 (the endpoints in this example), Excel includes all values in cells A2 through A5 from the added sheets in the calculations.</li>
+                  <li><b>Delete</b> If you delete sheets between Sheet2 and Sheet6, Excel removes their values from the calculation.</li>
+                  <li><b>Move</b> If you move sheets from between Sheet2 and Sheet6 to a location outside the referenced sheet range, Excel removes their values from the calculation.</li>
+                  <li><b>Move an endpoint</b> If you move Sheet2 or Sheet6 to another location in the same workbook, Excel adjusts the calculation to accommodate the new range of sheets between them.</li>
+                  <li><b>Delete an endpoint</b> If you delete Sheet2 or Sheet6, Excel adjusts the calculation to accommodate the range of sheets between them.</li>
+                </ul>
+              </li>
+              <li>
+                <p><b>The R1C1 reference style</b></p>
+                <p>You can also use a reference style where both the rows and the columns on the worksheet are numbered. The R1C1 reference style is useful for computing row and column positions in macros. In the R1C1 style, Excel indicates the location of a cell with an "R" followed by a row number and a "C" followed by a column number.</p>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Reference</th>
+                      <th>Meaning</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>R[-2]C</td>
+                      <td>A relative reference to the cell two rows up and in the same column</td>
+                    </tr>
+                    <tr>
+                      <td>R[2]C[2]</td>
+                      <td>A relative reference to the cell two rows down and two columns to the right</td>
+                    </tr>
+                    <tr>
+                      <td>R2C2</td>
+                      <td>An absolute reference to the cell in the second row and in the second column</td>
+                    </tr>
+                    <tr>
+                      <td>R[-1]</td>
+                      <td>A relative reference to the entire row above the active cell</td>
+                    </tr>
+                    <tr>
+                      <td>R</td>
+                      <td>An absolute reference to the current row</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p>When you record a macro, Excel records some commands by using the R1C1 reference style. For example, if you record a command, such as clicking the <b>AutoSum</b> button to insert a formula that adds a range of cells, Excel records the formula by using R1C1 style, not A1 style, references.</p>
+                <p>You can turn the R1C1 reference style on or off by setting or clearing the <b>R1C1 reference style</b> check box under the <b>Working with formulas</b> section in the <b>Formulas</b> category of the <b>Options</b> dialog box. To display this dialog box, click the <b>File</b> tab.</p>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </section>
+    </section>
+  </section>
+</main>
+<script>
+  waitFunc(['jquery', 'color'], () => {
+
+    $('a').each(function () {
+      if (this.href.match($('h1>a')[0].href)) return;
+
+      let text = '';
+      if ($(this).parent().is('h2')) {
+        text = `${$(this).text().replace(/ /g, '-')}-`;
+      }
+      this.href = `${$('h1>a')[0].href}/${text}${$(this).attr('href')}`
+    });
+
+    $('iframe').attr({
+      frameborder: 0
+    }).each(function () {
+      $(this).width($(this).parent().width())
+      $(this).height(300)
+    })
+
+    /*
+    
+    <iframe src="https://docs.google.com/spreadsheets/d/1ouNP3A5seww43ns9Ze79QNJGe5mE_nZq4CKTf9qrwdc/edit?usp=sharing"></iframe>
+    */
+
+    
+  })
+</script>

@@ -1,0 +1,109 @@
+<script src="/index.js"></script>
+<main>
+  <section id="w3s">
+    <h1>W3Schools</h1>
+    <section>
+      <h2>HTML</h2>
+      <section>
+        <h3>HTML Responsive</h3>
+      </section>
+    </section>
+    <section>
+      <h2>Colors</h2>
+      <section>
+        <h3>Colors Monochromatic</h3>
+      </section>
+    </section>
+    <section>
+      <h2>W3CSS</h2>
+      <section>
+        <h3>W3CSS Templates</h3>
+        <div id="templates">
+        </div>
+      </section>
+    </section>
+  </section>
+</main>
+<script>
+  function showTemplate() {
+    let template = $(this).text()
+    main.removeClass().html('');
+    if (template.match(/CV/)) {
+      showCVTemplate();
+    }
+  }
+
+  document.querySelector(`script[src*='execution']`).onload = () => {
+    addScripts('template', () => {
+      let w3s = 'https://www.w3schools.com';
+      let templates = ['CV']
+
+      // #region my info
+      let skills;
+      let education;
+      let experience;
+
+      // education
+      let undergraduate = new Education(
+        'Shanghai University',
+        'Bachelor',
+        'Computer Science',
+        new Period(new Date('2011-09'), new Date('2015-06')),
+        'Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.'
+      )
+      let graduate = new Education(
+        'Standford University',
+        'Master',
+        'Artificial Intelligence',
+        new Period(new Date('2011-09'), new Date('2015-06')),
+        'Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.'
+      )
+      education = [undergraduate, graduate];
+
+      skills = [
+        'JavaScript',
+        'PowerShell',
+        'Office 365',
+        'English',
+      ]
+
+      experience = [
+        new Experience(
+          'Front End Developer',
+          'W3School.com',
+          new Period(new Date('2018-01'), new Date('2019-12')),
+          'Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.'
+        ),
+        new Experience(
+          'Web Developer',
+          'Something.com',
+          new Period(new Date('2015-12'), new Date('2017-12')),
+          'Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.'
+        )
+      ]
+
+      person = new Person(
+        new Name('Arthur', 'Irving'),
+        Date('1992-09-29'),
+        'Male',
+        'San Francisco, US',
+        'example@mail.com',
+        '1800800800',
+        education,
+        experience,
+        skills
+      );
+      // #endregion my info
+
+      templates.forEach(template => {
+        let div = $('<div>').appendTo($('#templates'));
+        $('<a>', {
+          html: template,
+          href: `${w3s}/w3css/tryw3css_templates_${template}.htm`
+        }).appendTo($('<p>').appendTo(div)).addClass('my-margin');
+        $('<button>', { html: `${template} Example` }).appendTo(div).click(showTemplate);
+      })
+
+    })
+  }
+</script>

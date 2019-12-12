@@ -1,0 +1,387 @@
+<script src="/index.js"></script>
+<main>
+  <section>
+    <h1>JavaScript</h1>
+    <section id="mdn">
+      <h2><a class="mdn-link" href="Learn">JavaScript</a></h2>
+      <section>
+        <h3>First steps</h3>
+        <section>
+          <h4>What is JavaScript?</h4>
+          <section>
+            <h5>So what can it really do?</h5>
+            <p>APIs (<b>Application Programming Interfaces</b>) are ready-made sets of code building blocks that allow a developer to implement programs that would otherwise be hard or impossible to implement.</p>
+            <p><b>Browser APIs</b> are built into your web browser, and are able to expose data from the surrounding computer environment, or do useful complex things. For example:</p>
+            <ul>
+              <li>The <a class="mdn-api" href="Document_Object_Model"><code>DOM (Document Object Model) API</code></a> allows you to manipulate HTML and CSS, creating, removing and changing HTML, dynamically applying new styles to your page, etc. Every time you see a popup window appear on a page, or some new content displayed (as we saw above in our simple demo) for example, that's the DOM in action.</li>
+              <li>The <a class="mdn-api" href="Geolocation"><code>Geolocation API</code></a> retrieves geographical information. This is how <a href="https://www.google.com/maps">Google Maps</a> is able to find your location and plot it on a map.</li>
+              <li>The <a class="mdn-api" href="Canvas_API"><code>Canvas</code></a> and <a class="mdn-api" href="WebGL_API"><code>WebGL</code></a> APIs allow you to create animated 2D and 3D graphics. People are doing some amazing things using these web technologies.</li>
+              <li><b>Audio and Video APIs</b> like <a class="mdn-api" href="HTMLMediaElement"><code>HTMLMediaElement</code></a> and <a class="mdn-api" href="WebRTC_API"><code>WebRTC</code></a> allow you to do really interesting things with multimedia, such as play audio and video right in a web page, or grab video from your web camera and display it on someone else's computer</li>
+            </ul>
+            <p><b>Third party APIs</b> are not built into the browser by default, and you generally have to grab their code and information from somewhere on the Web. For example:</p>
+            <ul>
+              <li>The <a href="https://dev.twitter.com/overview/documentation">Twitter API</a> allows you to do things like displaying your latest tweets on your website.</li>
+              <li>The <a href="https://developers.google.com/maps/">Google Maps API</a> and <a href="https://wiki.openstreetmap.org/wiki/API">OpenStreetMap API</a> allows you to embed custom maps into your website, and other such functionality.</li>
+            </ul>
+          </section>
+          <section>
+            <h5>What is JavaScript doing on your page?</h5>
+            <p>When you load a web page in your browser, you are running your code (the HTML, CSS, and JavaScript) inside an execution environment (the browser tab). The JavaScript is executed by the browser's JavaScript engine, after the HTML and CSS have been assembled and put together into a web page. This ensures that the structure and style of the page are already in place by the time the JavaScript starts to run.</p>
+            <section>
+              <h6>Interpreted versus compiled code</h6>
+              <p>In interpreted languages, the code is run from top to bottom and the result of running the code is immediately returned. You don't have to transform the code into a different form before the browser runs it.</p>
+              <p>Compiled languages on the other hand are transformed (compiled) into another form before they are run by the computer. For example, C/C++ are compiled into assembly language that is then run by the computer. The program is executed from a binary format which was generated from the original program source code.</p>
+              <p>JavaScript is a lightweight interpreted programming language. The web browser receives the JavaScript code in its original text form and runs the script from that. From a technical standpoint, most modern JavaScript interpreters actually use a technique called <b>just-in-time compiling</b> to improve performance; the JavaScript source code gets compiled into a faster, binary, format while the script is being used, so that it can be run as quickly as possible. However, JavaScript is still considered an intepreteted language, since the compilation is being handled at run time, rather than ahead of time.</p>
+            </section>
+            <section>
+              <h6>Server-side versus client-side code</h6>
+              <p><b>Client-side</b> code is code that is run on the user's computer - when a web page is viewed, the page's client-side code is downloaded, then run and displayed by the browser. In this module we are explicitly talking about <b>client-side JavaScript</b>.</p>
+              <p><b>Server-side</b> code on the other hand is run on the server, then its results are downloaded and displayed in the browser. Examples of popular server-side web languages include PHP, Python, Ruby, ASP.NET and... JavaScript! JavaScript can also be used as a server-side language, for example in the popular Node.js environment.</p>
+            </section>
+            <section>
+              <h6>Dynamic versus static code</h6>
+              <p>The word <b>dynamic</b> is used to describe both client-side JavaScript, and server-side languages - it refers to the ability to update the display of a web page/app to show different things in different circumstances, generating new content as required. Server-side code dynamically generates new content on the server, e.g. pulling data from a database, whereas client-side JavaScript dynamically generates new content inside the browser on the client, e.g. creating a new HTML table, filling it with data requested from the server, then displaying the table in a web page shown to the user. The meaning is slightly different in the two contexts, but related, and both approaches (server-side and client-side) usually work together.</p>
+              <p>A web page with no dynamically updating content is referred to as <b>static</b> - it just shows the same content all the time.</p>
+            </section>
+          </section>
+        </section>
+      </section>
+      <section>
+        <h3>Building blocks</h3>
+        <section>
+          <h4>Events</h4>
+          <section>
+            <h5>A series of fortunate events</h5>
+            <p>As mentioned above, <b>events</b> are actions or occurrences that happen in the system you are programming - the system produces (or "fires") a signal of some kind when an event occurs, and also provides a mechanism by which some kind of action can be automatically taken (that is, some code running) when the event occurs.</p>
+            <p>Each available event has an <b>event handler</b>, which is a block of code (usually a JavaScript function that you as a programmer create) that will be run when the event fires. When such a block of code is defined to be run in response to an event firing, we say we are <b>registering an event handler</b>. Note that event handlers are sometimes called <b>event listeners</b> - they are pretty much interchangeable for our purposes, although strictly speaking, they work together. The listener listens out for the event happening, and the handler is the code that is run in response to it happening.</p>
+          </section>
+          <section>
+            <h5>Ways of using web events</h5>
+            <section>
+              <h6>Event handler properties</h6>
+              <p>The <code><a class="mdn-api" href="GlobalEventHandlers/onclick">onclick</a></code> property is the event handler property being used in this situation. It is essentially a property like any other available on the button, but it is a special type - when you set it to be equal to some code, that code is run when the event fires on the button. You could also set the handler property to be equal to a named function name. The following would work just the same:</p>
+              <pre><code class="my-js">
+                var btn = document.querySelector('button');
+                function bgChange() {
+                  var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+                  document.body.style.backgroundColor = rndCol;
+                }
+                btn.onclick = bgChange;
+              </code></pre>
+              <section>
+                <h6>addEventListener() and removeEventListener()</h6>
+                <p<code><a class="mdn-api" href="EventTarget/addEventListener">addEventListener()</a></code>. This functions in a similar way to the event handler properties, but the syntax is obviously different. We could rewrite our random color example to look like this:</p>
+                  <pre><code class="my-js">
+                  var btn = document.querySelector('button');
+                  function bgChange() {
+                    var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+                    document.body.style.backgroundColor = rndCol;
+                  }
+                  btn.addEventListener('click', bgChange);
+                </code></pre>
+                  <p>Inside the <code>addEventListener()</code> function, we specify two parameters - the name of the event we want to register this handler for, and the code that comprises the handler function we want to run in response to it. Note that it is perfectly appropriate to put all the code inside the <code>addEventListener()</code> function, in an anonymous function, like this:</p>
+                  <pre><code class="my-js">
+                  btn.addEventListener('click', function() {
+                    var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+                    document.body.style.backgroundColor = rndCol;
+                  });
+                </code></pre>
+                  <p>This mechanism has some advantages over the older mechanisms discussed earlier. For a start, there is a counterpart function, <code><a class="mdn-api" href="EventTarget/removeEventListener">removeEventListener()</a></code>, which removes a previously added listener. For example, this would remove the listener set in the first code block in this section:</p>
+                  <pre><code class="my-js">
+                  btn.removeEventListener('click', bgChange);
+                </code></pre>
+                  <p>This isn't significant for simple, small programs, but for larger, more complex programs it can improve efficiency to clean up old unused event handlers. Plus, for example, this allows you to have the same button performing different actions in different circumstances - all you have to do is add or remove event handlers as appropriate.</p>
+                  <p>Second, you can also register multiple handlers for the same listener. The following two handlers would not be applied:</p>
+                  <pre><code class="my-js">
+                  myElement.onclick = functionA;
+                  myElement.onclick = functionB;
+                </code></pre>
+                  <p>The second line overwrites the value of <code>onclick</code> set by the first line. Both functions would now run when the element is clicked when you used addEventListener)().</p>
+                  <pre><code class="my-js">
+                  myElement.addEventListener('click', functionA);
+                  myElement.addEventListener('click', functionB);
+                </code></pre>
+              </section>
+            </section>
+          </section>
+          <section>
+            <h5>Other event concepts</h5>
+            <section>
+              <h6>Event objects</h6>
+              <p>Sometimes inside an event handler function, you might see a parameter specified with a name such as <code>event</code>, <code>evt</code>, or simply <code>e</code>. This is called the <b>event object</b>, and it is automatically passed to event handlers to provide extra features and information. For example, let's rewrite our random color example again slightly:</p>
+              <pre><code class="my-js">
+                function bgChange(e) {
+                  var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+                  e.target.style.backgroundColor = rndCol;
+                  console.log(e);
+                }
+                btn.addEventListener('click', bgChange);
+              </code></pre>
+              <p>The <code>target</code> property of the event object is always a reference to the element that the event has just occurred upon. <code>e.target</code> is incredibly useful when you want to set the same event handler on multiple elements and do something to all of them when an event occurs on them.</p>
+            </section>
+            <section>
+              <h6>Event bubbling and capture</h6>
+              <p>When an event is fired on an element that has parent elements, modern browsers run two different phases - the <b>capturing</b> phase and the <b>bubbling</b> phase.</p>
+              <p>In the <b>capturing</b> phase:</p>
+              <ul>
+                <li>The browser checks to see if the element's outer-most ancestor (<a class="mdn-element"><code>&lt;html&gt;</code></a>) has an <code>onclick</code> event handler registered on it in the capturing phase, and runs it if so.</li>
+                <li>Then it moves on to the next element inside <code>&lt;html&gt;</code> and does the same thing, then the next one, and so on until it reaches the element that was actually clicked on.</li>
+              </ul>
+              <p>In the <b>bubbling</b> phase, the exact opposite occurs:</p>
+              <ul>
+                <li>The browser checks to see if the element that was actually clicked on has an <code>onclick</code> event handler registered on it in the bubbling phase, and runs it if so.</li>
+                <li>Then it moves on to the next immediate ancestor element and does the same thing, then the next one, and so on until it reaches the <code>&lt;html&gt;</code> element.</li>
+              </ul>
+              <p><img class="mdn-img" src="14075/bubbling-capturing.png"></p>
+              <p>This is annoying behavior, but there is a way to fix it! The standard event object has a function available on it called <code><a class="mdn-api" href="Event/stopPropagation">stopPropagation()</a></code>, which, when invoked on a handler's event object, makes it so that handler is run, but the event doesn't bubble any further up the chain, so no more handlers will be run. We can, therefore, fix our current problem by changing the second handler function in the previous code block to this:</p>
+              <pre><code class="my-js">
+                video.onclick = function(e) {
+                  e.stopPropagation();
+                  video.play();
+                };
+              </code></pre>
+            </section>
+          </section>
+        </section>
+      </section>
+      <section>
+        <h3>Objects</h3>
+        <section>
+          <h4>Basics</h4>
+          <section>
+            <h5>Object Basics</h5>
+            <p>The value of an object member can be pretty much anything - in our person object we've got a string, a number, two arrays, and two functions. The data items are referred to as the object's <b>properties</b>. The functions that allow the object to do something with that data are referred to as the object's <b>methods</b>.</p>
+            <p>An object like this is referred to as an <b>object literal</b> - we've literally written out the object contents as we've come to create it. This is in contrast to objects instantiated from classes.</p>
+            <p>It is very common to create an object using an object literal when you want to transfer a series of structured, related data items in some manner, for example sending a request to the server to be put into a database. Sending a single object is much more efficient than sending several items individually, and it is easier to work with than an array, when you want to identify individual items by name.</p>
+          </section>
+          <section>
+            <h5>Dot notation</h5>
+            <p>You usually accessed the object's properties and methods using <b>dot notation</b>. The object name acts as the <b>namespace</b> - it must be entered first to access anything <b>encapsulated</b> inside the object. Next you write a dot, then the item you want to access - this can be the name of a simple property, an item of an array property, or a call to one of the object's methods</p>
+          </section>
+          <section>
+            <h5>Bracket notation</h5>
+            <p>Bracket notation looks very similar to how you access the items in an array, and it is basically the same thing - instead of using an index number to select an item, you are using the name associated with each member's value. It is no wonder that objects are sometimes called <b>associative arrays</b> - they map strings to values in the same way that arrays map numbers to values.</p>
+            <p>One useful aspect of bracket notation is that it can be used to set not only member values dynamically, but member names too. Adding a property to an object using the method above isn't possible with dot notation, which can only accept a literal member name, not a variable value pointing to a name.</p>
+            <pre><code class="my-js">
+              let myDataName = 'height';
+              let myDataValue = '1.75m';
+              person[myDataName] = myDataValue;
+              person.height
+            </code></pre>
+          </section>
+        </section>
+        <section>
+          <h4>Object-oriented JS</h4>
+          <section>
+            <h5>Object-oriented programming - the basics</h5>
+            <p>The basic idea of OOP is that we use objects to model real world things that we want to represent inside our programs, and/or provide a simple way to access functionality that would otherwise be hard or impossible to make use of.</p>
+            <p>Object data (and often, functions too) can be stored neatly (the official word is <b>encapsulated</b>) inside an object package (which can be given a specific name to refer to, which is sometimes called a <b>namespace</b>), making it easy to structure and access; objects are also commonly used as data stores that can be easily sent across the network.</p>
+            <section>
+              <h6>Defining an object template</h6>
+              <p>This is known as <b>abstraction</b> - creating a simple model of a more complex thing, which represents its most important aspects in a way that is easy to work with for our program's purposes.</p>
+              <p><img class="mdn-img" src="13889/person-diagram.png"></p>
+            </section>
+            <section>
+              <h6>Creating actual objects</h6>
+              <p>From our class, we can create <b>object instances</b> - objects that contain the data and functionality defined in the class.</p>
+              <p><img class="mdn-img" src="15163/MDN-Graphics-instantiation-2-fixed.png"></p>
+              <p>When an object instance is created from a class, the class's <b>constructor function</b> is run to create it. This process of creating an object instance from a class is called <b>instantiation</b> - the object instance is <b>instantiated</b> from the class.</p>
+            </section>
+            <section>
+              <h6>Specialist classes</h6>
+              <p>In OOP, we can create new classes based on other classes - these new <b>child classes</b> can be made to <b>inherit</b> the data and code features of their <b>parent class</b>, so you can reuse functionality common to all the object types rather than having to duplicate it. Where functionality differs between classes, you can define specialized features directly on them as needed.</p>
+              <p><img class="mdn-img" src="13881/MDN-Graphics-inherited-3.png"></p>
+              <p>You can now create object instances from your child classes. For example:</p>
+              <p><img class="mdn-img" src="13885/MDN-Graphics-instantiation-teacher-3.png"></p>
+            </section>
+          </section>
+        </section>
+        <section>
+          <h4>Object protoytpes</h4>
+          <section>
+            <h5>A prototype-based language?</h5>
+            <p>JavaScript is often described as a <b>prototype-based language</b> - to provide inheritance, objects can have a <b>prototype object</b>, which acts as a <b>template</b> object that it inherits methods and properties from. An object's prototype object may also have a prototype object, which it inherits methods and properties from, and so on. This is often referred to as a <b>prototype chain</b>, and explains why different objects have properties and methods defined on other objects available to them.</p>
+            <p>Well, to be exact, the properties and methods are defined on the <code>prototype</code> property on the Objects' constructor functions, not the object instances themselves.</p>
+            <p>In JavaScript, a link is made between the object instance and its prototype (via <code>Object.<a class="mdn-objects" href="Object">getPrototypeOf</a>(obj)</code>), and the properties and methods are found by walking up the chain of prototypes.</p>
+            <pre><code class="my-js">
+              class Person {}
+              let person1 = new Person();
+              Person.prototype; // Constructor protyotype property
+              Object.getPrototypeOf(person1); // object instance prototype
+              Person.prototype === Object.getPrototypeOf(person1) // true
+            </code></pre>
+          </section>
+          <section>
+            <h5>The prototype property: Where inherited members are defined</h5>
+            <p>As mentioned above, the inherited ones are the ones defined on the <code>prototype</code> property of constructor function - that is, the ones that begin with <code>Object.prototype.</code>, and not the ones that begin with just <code>Object.</code> The <code>prototype</code> property's value is an object, which is basically a bucket for storing <b>properties</b> and <b>methods</b> that we want to be <b>inherited</b> by objects further down the prototype chain.</p>
+          </section>
+          <section>
+            <h5>The constructor property</h5>
+            <p>Every constructor function has a prototype property whose value is an object containing a <code><a class="mdn-objects" href="Object">constructor</a></code> property. This constructor property points to the original constructor function. Properties defined on a constructor function's prototype property, which is an object, become available to all the instance objects created using the constructor.</p>
+            <pre><code class="my-js">
+              class Person {}
+              let person1 = new Person();
+              person1.constructor == Person.prototype.constructor; // true
+            </code></pre>
+            <p>A clever trick is that you can put parentheses onto the end of the <code>constructor</code> property (containing any required parameters) to create another object instance from that constructor. The constructor is a function after all, so can be invoked using parentheses; you just need to include the <code>new</code> keyword to specify that you want to use the function as a constructor.</p>
+            <pre><code class="my-js">
+              class Person {}
+              let person1 = new Person();
+              const person3 = new person1.constructor();
+            </code></pre>
+            <p>This works well. You won't need to use it often, but it can be really useful when you want to create a new instance and don't have a reference to the original constructor easily available for some reason.</p>
+            <p>The <code><a class="mdn-objects" href="Object">constructor</a></code> property has other uses. Since it is a Function and all <code><a class="mdn-objects">Function</a></code> object has a <code><a href="Function">name</a></code> property. For example, if you have an object instance and you want to return the name of the constructor it is an instance of, you can use the following:</p>
+            <pre><code class="my-js">
+              class Person {}
+              let person1 = new Person();
+              person1.constructor.name // Person
+            </code></pre>
+            <p>The value of <code>constructor.name</code> can change (due to prototypical inheritance, binding, preprocessors, transpilers, etc.), so for more complex examples you'll want to use the <code><a class="mdn-link" href="Web/JavaScript/Reference/Operators">instanceof</a></code> operator instead.</p>
+          </section>
+          <section>
+            <h5>Modifying prototypes</h5>
+            <p>Methods added to the prototype are then available on all object instances created from the constructor.</p>
+            <pre><code class="my-js">
+              class Person {};
+              let person1 = new Person();
+              Person.prototype.farewell = function() {
+                alert(this.name.first + ' has left the building. Bye for now!');
+              };
+              person1.farewell();
+            </code></pre>
+            <p>This is really useful, the whole inheritance chain has updated dynamically, automatically making this new method available on all object instances derived from the constructor.</p>
+            <p>You will rarely see properties defined on the <code>prototype</code> property, because they are not very flexible when defined like this.</p>
+            <pre><code class="my-js">
+              class Person {}
+              Person.prototype.fullName = this.name.first + ' ' + this.name.last;
+            </code></pre>
+            <p>This however doesn't work, as <code>this</code> will be referencing the global scope in this case, not the function scope. Calling this property would return <code>undefined undefined</code>. This worked fine on the method we defined earlier in the prototype because it is sitting inside a function scope, which will be transferred successfully to the object instance scope. So you might define constant properties on the prototype (i.e. ones that never need to change), but generally it works better to define properties inside the constructor.</p>
+            <p>In fact, a fairly common pattern for more object definitions is to define the properties inside the constructor, and the methods on the prototype. This makes the code easier to read, as the constructor only contains the property definitions, and the methods are split off into separate blocks. For example:</p>
+            <pre><code class="my-js">
+              // Constructor with property definitions
+              function Test(a, b, c, d) {
+                // property definitions
+              }
+              // First method definition
+              Test.prototype.x = function() { ... };
+              // Second method definition
+              Test.prototype.y = function() { ... };
+              // etc.
+            </code></pre>
+          </section>
+        </section>
+        <section>
+          <h4>Inheritance</h4>
+          <section>
+            <h5>Defining a Teacher() constructor function</h5>
+            <pre><code class="my-js">
+              function Teacher(first, last, age, gender, interests, subject) {
+                // We want the Teacher() constructor to take the same parameters
+                // as the Person() constructor it is inheriting from,
+                // so we specify them all as parameters in the call() invocation
+                Person.call(this, first, last, age, gender, interests);
+                // property that teachers have, which generic peole don'have
+                this.subject = subject;
+              }
+            </code></pre>
+            <p>The <code><a class="mdn-objects" href="Function/call">call</a></code> function basically allows you to call a function defined somewhere else, but in the current context. The first parameter specifies the value of <code>this</code> that you want to use when running the function, and the other parameters are those that should be passed to the function when it is invoked.</p>
+            <p>Note that if the constructor you are inheriting from doesn't take its property values from parameters, you don't need to specify them as additional arguments in <code>call()</code>.</p>
+          </section>
+        </section>
+      </section>
+    </section>
+    <section id="mdn">
+      <h2><a class="mdn-link" href="Web/JavaScript">Guide</a></h2>
+      <section>
+        <h3>Grammar and types</h3>
+        <section>
+          <h4>Basics</h4>
+          <p>The source text of JavaScript script gets scanned from left to right, and is converted into a sequence of input elements which are <i>tokens</i>, <i>control characters</i>, <i>line terminators</i>, <i>comments</i>, or <a class="mdn-glossary">whitespace</a>. (Spaces, tabs, and newline characters are considered whitespace.)</p>
+        </section>
+        <section>
+          <h4>Declarations</h4>
+          <section>
+            <h5>Variable scope</h5>
+            <p>When you declare a variable outside of any function, it is called a <i>global</i> variable, because it is available to any other code in the current document. When you declare a variable within a function, it is called a <i>local</i> variable, because it is available only within that function.</p>
+            <p>JavaScript before ECMAScript 2015 does not have <b>block statement</b> scope. Rather, a variable declared within a block is local to the <i>function (or global scope)</i> that the block resides within.</p>
+            <p>For example, the following code will log <code>5</code>, because the scope of <code>x</code> is the global context (or the function context if the code is part of a function). The scope of <code>x</code> is not limited to the immediate <code>if</code> statement block.</p>
+            <pre><code class="my-js">
+              if (true) {
+                var x = 5;
+              }
+              console.log(x);  // x is 5
+            </code></pre>
+            <p>This behavior changes when using the <code>let</code> declaration (introduced in ECMAScript 2015).</p>
+            <pre><code class="my-js">
+              if (true) {
+                let x = 5;
+              }
+              console.log(x);  // ReferenceError: x is not defined
+            </code></pre>
+          </section>
+          <section>
+            <h5>Global variables</h5>
+            <p>Global variables are in fact properties of the <i>global object</i>. In web pages, the global object is <a class="mdn-api" href="Window"><code>window</code></a>, so you can set and access global variables using the <code>window.<i>variable</i></code> or <code>window['<i>variable</i>']</code> syntax.</p>
+          </section>
+        </section>
+      </section>
+      <section>
+        <h3>Working with objects</h3>
+        <section>
+          <h4></h4>
+        </section>
+      </section>
+    </section>
+    <section id="mdn">
+      <h2><a class="mdn-link" href="Web/JavaScript">Reference</a></h2>
+      <section>
+        <h3>Global Objects</h3>
+        <section>
+          <h4>Array</h4>
+        </section>
+      </section>
+      <section>
+        <h3>Operators</h3>
+        <section>
+          <h4>Async Function</h4>
+        </section>
+        <section>
+          <h4>Await</h4>
+        </section>
+        <section>
+          <h4>Class</h4>
+        </section>
+      </section>
+      <section>
+        <h3>Statements</h3>
+      </section>
+    </section>
+    <section>
+      <h2>My JavaScript</h2>
+      <section>
+        <h3>Tips</h3>
+        <ul>
+          <li>If you want to use <code>this</code>, use anonymous function <code>function () {}</code> instead of arrow function <code>() => {}</code>.</li>
+          <li>
+            <pre><code class="my-js">
+              [...new Set(arr)]; // remove duplicate
+            </code></pre>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>Abbreviation</h3>
+        <ul>
+          <li>abbr - abbreviation</li>
+          <li>arr - array</li>
+          <li>attr - attribute</li>
+          <li>func - function</li>
+          <li>num - number</li>
+          <li>obj - object</li>
+          <li>prop - property</li>
+          <li>str - string</li>
+        </ul>
+      </section>
+    </section>
+  </section>
+</main>

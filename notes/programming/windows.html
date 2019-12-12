@@ -1,0 +1,165 @@
+<script src="/index.js"></script>
+<main>
+  <section>
+    <h1><a href="https://www.microsoft.com/en-us/windows">Windows</a></h1>
+    <section>
+      <h2>Setup</h2>
+      <section>
+        <h3>Pre-Installation</h3>
+        <section>
+          <h4>Backup Files</h4>
+          <ol>
+            <li>Copy files in <b>Downloads</b> and <b>Documents</b> to external hard drive</li>
+            <li>Download ISO from torrent sites <a href="https://torrentz2.eu/search?f=windows+1903+business">torrentz2</a></li>
+            <li>Create bootable USB drives by <a href="https://rufus.ie/">Rufus</a> portable.</li>
+          </ol>
+        </section>
+      </section>
+      <section>
+        <h3>Installation</h3>
+        <section>
+          <h4>Install Windows</h4>
+          <section>
+            <h5>BIOS</h5>
+            <ol>
+              <li>Press <kbd>F2</kbd> when logo screen appear to enter BIOS</li>
+              <li>Use &larr; &rarr; to select menu and choose <b>Boot</b></li>
+              <li>Use &uarr; &darr; to select a device then use <kbd>F6</kbd> to move it up or <kbd>F5</kbd> to move it down</li>
+              <li>Prease <kbd>F10</kbd> to save and exit</li>
+            </ol>
+          </section>
+          <section>
+            <h5>Windows Setup</h5>
+            <ol>
+              <li>Enter your language and other preferences and click <b>Next</b> (<kbd>Alt+N</kbd>) to continue</li>
+              <li>Click Install now (<kbd>Alt+I</kbd>) </li>
+              <li>Select the operating system you want to install. Use &uarr; &darr; to select a device</li>
+              <li>Choose Windows 10 <b>Enterprise</b> and click <b>Next</b> (<kbd>Alt+N</kbd>)</li>
+              <li>Accept the license terms (<kbd>Alt+A</kbd>) and click <b>Next</b> (<kbd>Alt+N</kbd>)</li>
+              <li>Custom Install Windows only (<kbd>Alt+C</kbd>)</li>
+              <li>Delete Partition Drive (<kbd>Alt+C</kbd>)</li>
+              <li>If you want to restore system later, you can keep dirves which type is <b>MSR(Reserved)</b>, <b>System</b>, <b>Recovery</b> and only install windows in <b>Primary</b> drive</li>
+              <li>Skip Password in VM</li>
+              <li>Go to <a href="ms-settings:appsfeatures">Apps & features</a> to uninstall unneeded apps --to do-- </li>
+            </ol>
+          </section>
+        </section>
+        <section>
+          <h4>Run code in PowerShell Admin</h4>
+          <p>Copy the code and run it in PowerShell Admin</p>
+          <pre><code class="my-ps">
+            Set-ExecutionPolicy Bypass -Scope Process -Force
+            if (Test-Path "D:\Initialize-Windows.ps1") {
+              $content = Get-Content "D:\Initialize-Windows.ps1" -Raw
+            }
+            else {
+              $WebClient = New-Object System.Net.WebClient
+              $Uri = 'https://raw.githubusercontent.com/decisacter/temp/master/archive/ps1/Initialize-Windows.ps1'
+              $content = $WebClient.DownloadString($Uri)
+            }
+            Invoke-Expression $content
+          </code></pre>
+        </section>
+        <section>
+          <h4>Download installer</h4>
+          <p>Download installer for the packages with slow download speed when installed by chocolatey.</p>
+          <ul>
+            <li><a href="https://code.visualstudio.com/docs/?dv=win64">VSCode</a> (System installer)</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Windows Settings</h4>
+          <section>
+            <h5>Reference</h5>
+            <p><a class="msdoc-link" href="windows/uwp/launch-resume/launch-settings-app">Launch the Windows Settings app</a>, Click to open <a href="ms-settings:">Settings</a>.</p>
+          </section>
+          <section>
+            <h5><a href="ms-settings:regionlanguage">Time & Langauage &gt; Language</a></h5>
+            See Reference for <a class="msdoc-link" href="powershell/module/international/set-winsystemlocale">System Locale</a>, <a class="msdoc-link" href="powershell/module/international/set-winuilanguageoverride">UI Language</a>, <a class="msdoc-link" href="powershell/module/international/set-winhomelocation">Home Location</a>,
+            <a class="msdoc-link" href="windows/win32/intl/table-of-geographical-locations">Table o Locations</a>
+            <pre><code class="my-ps">
+              Set-WinSystemLocale en-US
+              Set-WinUILanguageOverride en-US
+              Set-WinHomeLocation 244 # United States
+            </code></pre>
+          </section>
+          <section>
+            <h5><a href="ms-settings:display">System &gt; Display</a></h5>
+            <p>Max Resolution</p>
+          </section>
+          <section>
+            <h5><a href="ms-settings:powersleep">System &gt; Power & Sleep</a></h5>
+            <p>Screen: 10 20; Sleep: 30 1</p>
+          </section>
+          <section>
+            <h5><a href="ms-settings:batterysaver">System &gt; Battery</a></h5>
+            <p>Battery saver: Turn batery saver on if my batter falls below: 100%</p>
+          </section>
+          <section>
+            <h5><a href="ms-settings:storagesense">System &gt; Storage</a></h5>
+            <p>Storage Sense</p>
+          </section>
+          <section>
+            <h5><a href="ms-settings:clipboard">System &gt; Clipboard</a></h5>
+            <p>Clipboard History</p>
+          </section>
+          <section>
+            <h5><a href="ms-settings:mousetouchpad">Device &gt; Mouse</a></h5>
+            <p>Scroll 15 lines</p>
+          </section>
+          <section>
+            <h5><a href="ms-settins:typing">Device &gt; Typing</a></h5>
+            <p>Hardware Keyboard</p>
+            <pre><code class="my-ps">
+              New-Itemproperty 'HKCU:\Software\Microsoft\Input\Settings' 'EnableHwkbTextPrediction' -Value '1' -PropertyType DWORD
+              New-Itemproperty 'HKCU:\Software\Microsoft\Input\Settings' 'EnableHwkbAutocorrection' -Value '1' -PropertyType DWORD
+            </code></pre>
+          </section>
+          <section>
+            <h5>File Extensions and Hidden Items</h5>
+            <pre><code class="my-ps">
+              $key = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
+              Set-ItemProperty $key Hidden 1
+              Set-ItemProperty $key HideFileExt 0
+              Set-ItemProperty $key ShowSuperHidden 1
+              Stop-Process explorer
+            </code></pre>
+          </section>
+        </section>
+      </section>
+      <section>
+        <h3>Post-Installation</h3>
+        <section>
+          <h4>Activation</h4>
+          <p>Find other activation</p>
+          <p>Activate Windows by <a href="http://www.kmsauto.info/">KMSAuto</a></p>
+          <p>Allow Exe in Windows Guard</p>
+        </section>
+        <section>
+          <h4>Update Drivers</h4>
+          <p>Install VMware Tools if in VMware</p>
+        </section>
+        <section>
+          <h4>Chrome</h4>
+          <p>Go to <a href="chrome://settings">Settings</a> and Search (<kbd>Ctrl+F</kbd>) for <b>Continue where you left off</b> then select if</p>
+          <p>Download VPN CRX <a href="https://www.crx4chrome.com/crx/650/">Browsec</a> and drag and drop to <a href="chrome://extensions/">Extensions</a> with <b>Developer Mode</b> on.</p>
+          <p>Install <a href="chrome">AdBlock</a>, <a href="chrome">Popup Blocker</a>.</p>
+        </section>
+        <section>
+          <h4>Store Apps</h4>
+          <pre><code class="my-ps">
+            ( Get-AppxPackage -AllUsers ).Name # get pacakge name
+            Get-AppxPackage [packagename] | Remove-AppxPackage # remove package
+            Get-AppXPackage -AllUsers | # install build-in apps
+            ForEach-Object {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml "}
+            Get-AppxPackage -AllUsers Microsoft.WindowsStore | # install store
+            ForEach-Object {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml "}
+          </code></pre>
+        </section>
+      </section>
+    </section>
+    <section>
+      <h2><a href="https://support.microsoft.com/en-us/help/12445/windows-keyboard-shortcuts">Keyboard Shortcuts</a></h2>
+    </section>
+  </section>
+</main>

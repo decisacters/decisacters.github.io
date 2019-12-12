@@ -1,0 +1,154 @@
+<script src="/index.js"></script>
+<main>
+  <section>
+    <h1><a class="mdn-link" href="Learn/Getting_started_with_the_web">Getting Started</a></h1>
+    <section>
+      <h2><a class="mdn-link">Installing basic software</a></h2>
+      <section>
+        <h3>Computer</h3>
+        <section>
+          <h4><a class="my-note" href="products/devices">Desktop</a></h4>
+          <p>CPU: Intel i3 or higher</p>
+          <p>GPU: </p>
+        </section>
+        <section>
+          <h4><a class="my-note" href="products/devices">Laptop</a></h4>
+          <p>CPU with Intel i5 or higher</p>
+        </section>
+      </section>
+      <section>
+        <h3>Editor</h3>
+        <p><a href="https://code.visualstudio.com/">Visual Studio Code</a>: See also my notes about <a>VSCode</a></p>
+      </section>
+      <section>
+        <h3>Browser</h3>
+        <p><a href="https://www.google.com/chrome/browser/">Chrome</a>: See also my notes about <a>Chrome</a></p>
+      </section>
+      <section>
+        <h3>VCS</h3>
+        <p><a href="https://git-scm.com/">Git</a>: See also my notes about <a>Git</a></p>
+        <p><a href="https://github.com/">Github</a>: See also my notes about <a>GitHub</a></p>
+      </section>
+      <section>
+        <h3>Automation</h3>
+        <p></p>
+      </section>
+      <section>
+        <h3>Libraries</h3>
+        <p><a href="https://jquery.com/">jQuery</a></p>
+      </section>
+      <section>
+        <h3>Frameworks</h3>
+        <p><a href="https://www.w3schools.com/w3css/">W3.CSS</a></p>
+      </section>
+    </section>
+    <section>
+      <h2><a class="mdn-link">What will your website look like?</a></h2>
+      <section>
+        <h3>Theme color</h3>
+        <p>To choose a color, go to <a class="mdn-css" href="CSS_Colors/">Color Picker Tool</a> and find a color you like. Use <b>Saturation</b>, <b>Lightness</b>, <b>Alpha</b> to create gradient color.</p>
+      </section>
+    </section>
+    <section>
+      <h2><a class="mdn-link">Dealing with files</a></h2>
+      <section>
+        <h3>An aside on casing and spacing</h3>
+        <p>Name folders and files completely in <b>lowercase</b> with no spaces and with words separated by <b>dashes</b>. This is because:</p>
+        <ol>
+          <li>Many computers, particularly web servers, are case-sensitive.</li>
+          <li>Browsers, web servers, and programming languages do not handle spaces consistently. For example, if you use spaces in your filename, some systems may treat the filename as two filenames. Some servers will replace the areas in your filenames with "%20" (the character code for spaces in URIs), resulting in all your links being broken. It's better to separate words with dashes, rather than underscores. The Google search engine treats a hyphen as a word separator but does not regard an underscore that way</li>
+        </ol>
+      </section>
+    </section>
+    <section>
+      <h2><a class="mdn-link">HTML basics</a></h2>
+      <section>
+        <h3>So what is HTML?</h3>
+        <p>HTML (<b>H</b> yper <b>t</b> ext <b>M</b> arkup <b>L</b> anguage) is the code that is used to structure a web page and its content. HTML is not a programming language; it is a <b><i>markup language</i></b> that defines the structure of your content. HTML consists of a series of <a class="mdn-glossary">element</a>, which you use to enclose, or wrap, different parts of the content to make it appear a certain way, or act a certain way. The enclosing <a class="mdn-glossary">tag</a> can make a word or image hyperlink to somewhere else, can italicize words, can make the font bigger or smaller, and so on.</p>
+      </section>
+      <section>
+        <h3>Anatomy of an HTML element</h3>
+        <pre><code class="my-html">
+          <span class="my-tooltip">&lt;p<span class="my-tooltip"> id="value"<span class="my-tooltip my-tooltip-text">Attritbute</span></span>&gt;<span class="my-tooltip-text">Opening tag</span></span><span class="my-tooltip">My cat is very grumpy<span class="my-tooltip-text">Content</span></span><span class="my-tooltip">&lt;/p&gt;<span class="my-tooltip-text">Closing tag</span></span>
+        </code></pre>
+        <p>The main parts of our element are as follows:</p>
+        <dl>
+          <dt>The opening tag</dt>
+          <dd>This consists of the name of the element (in this case, p), wrapped in opening and closing <b>angle brackets</b>. This states where the element begins or starts to take effect - in this case where the paragraph begins.</dd>
+          <dt>The closing tag</dt>
+          <dd>This is the same as the opening tag, except that it includes a <i>forward slash</i> before the element name. This states where the element ends - in this case where the paragraph ends. Failing to add a closing tag is one of the standard beginner errors and can lead to strange results.</dd>
+          <dt>The content</dt>
+          <dd>This is the content of the element, which in this case, is just text.</dd>
+          <dt>The element</dt>
+          <dd>The opening tag, the closing tag and the content together comprise the element.</dd>
+          <dt>Attributes</dt>
+          <dd>
+            <p>contain extra information about the element. Here, <code>class</code> is the attribute <i>name</i> and <code>note</code> is the attribute <i>value</i>. The <code>class</code> attribute allows you to give the element an identifier that can be used later to target the element with style information and other things.</p>
+            <ol>
+              <li>A space between it and the element name (or the previous attribute, if the element already has one or more attributes).</li>
+              <li>The attribute name followed by an equal <code>=</code> sign.</li>
+              <li>The attribute value wrapped by opening and closing quotation marks.</li>
+            </ol>
+          </dd>
+        </dl>
+      </section>
+      <section>
+        <h3>Anatomy of an HTML document</h3>
+        <ul>
+          <li><code>&lt;!DOCTYPE html&gt;</code> - the doctype. It is required preamble. However these days, they don't do much, and are basically just needed to make sure your document behaves correctly. That's all you need to know for now.</li>
+          <li><code>&lt;html&gt;&lt;/html&gt;</code> - the <a class="mdn-element">&lt;html&gt;</a> element. This element wraps all the content on the entire page and is sometimes known as the root element.</li>
+          <li><code>&lt;head&gt;&lt;/head&gt;</code> - the <a class="mdn-element">&lt;head&gt;</a> element. This element acts as a container for all the stuff you want to include on the HTML page that <i>isn't</i> the content you are showing to your page's viewers. This includes things like <a class="mdn-glossary">keyword</a> and a page description that you want to appear in search results, CSS to style our content, character set declarations and more.</li>
+          <li><code>&lt;meta charset="utf-8"&gt;</code> - This element sets the character set your document should use to UTF-8 which includes most characters from the vast majority of written languages.</li>
+          <li><code>&lt;title&gt;&lt;/title&gt;</code> - the <a class="mdn-element">&lt;title&gt;</a> element. This sets the title of your page, which is the title that appears in the browser tab the page is loaded in. It is also used to describe the page when you bookmark/favourite it.</li>
+          <li><code>&lt;body&gt;&lt;/body&gt;</code> - the <a class="mdn-element">&lt;body&gt;</a> element. This contains <i>all</i> the content that you want to show to web users when they visit your page, whether that's text, images, videos, games, playable audio tracks or whatever else.</li>
+        </ul>
+      </section>
+    </section>
+    <section>
+      <h2><a class="mdn-link">CSS basics</a></h2>
+      <section>
+        <h3>So what is CSS, really?</h3>
+        <p>CSS (<b>C</b> ascading <b>S</b> tyle <b>S</b> heets) is the code you use to style your webpage. Like HTML, CSS is not really a programming language. It is not a <i>markup language</i> either - it is a <b><i>style sheet language</i></b>. This means that it lets you apply styles selectively to elements in HTML documents. For example, to select <b>all</b> the paragraph elements on an HTML page and turn the text within them red, you'd write this CSS:</p>
+        <pre><code class='my-css'>
+          <span class="my-tooltip"><span class="my-tooltip">p<span class="my-tooltip-text">Selector</span></span> {
+            <span class="my-tooltip"><span class="my-tooltip">color<span class="my-tooltip-text">Property</span></span>: <span class="my-tooltip">red<span class="my-tooltip-text">Property Value</span></span>;<span class="my-tooltip-text">Declarations</span></span>
+          }</span><span class="my-tooltip-text">Rule set</span>
+        </code></pre>
+      </section>
+      <section>
+        <h3>Anatomy of a CSS ruleset</h3>
+        <p>The whole structure is called a <b>rule set</b>(but often "rule" for short). Note also the names of the individual parts:</p>
+        <dl>
+          <dt>Selector</dt>
+          <dd>The HTML element name at the start of the rule set. It selects the element(s) to be styled (in this case, <a class="mdn-element">&lt;p&gt;</a> elements). To style a different element, just change the selector.</dd>
+          <dt>Declaration</dt>
+          <dd>A single rule like <code>color: red;</code> specifying which of the element's <b>properties</b> you want to style.</dd>
+          <dt>Properties</dt>
+          <dd>Ways in which you can style a given HTML element. (In this case, <code>color</code> is a property of the <a class="mdn-element">&lt;p&gt;</a> elements.) In CSS, you choose which properties you want to affect in your rule.</dd>
+          <dt>Property value</dt>
+          <dd>To the right of the property after the colon, we have the <b>property value</b>, which chooses one out of many possible appearances for a given property (there are many <code>color</code> values besides <code>red</code>).</dd>
+        </dl>
+        <p>Note the other important parts of the syntax:</p>
+        <ul>
+          <li>Each rule set (apart from the selector) must be wrapped in curly braces (<code>{}</code>).</li>
+          <li>Within each declaration, you must use a colon (<code>:</code>) to separate the property from its values.</li>
+          <li>Within each rule set, you must use a semicolon (<code>;</code>) to separate each declaration from the next one.</li>
+        </ul>
+      </section>
+    </section>
+    <section>
+      <h2><a class="mdn-link">JavaScript basics</a></h2>
+      <section>
+        <h3>So what is JavaScirpt, really?</h3>
+        <p>JavaScript is a programming language that adds interactivity to your website (for example games, responses when buttons are pressed or data is entered in forms, dynamic styling, and animation).</p>
+        <p><a class="mdn-glossary">JavaScript</a> ("JS" for short) is a full-fledged <a class="mdn-glossary">dynamic programming language</a> that, when applied to an HTML document, can provide dynamic interactivity on websites.</p>
+        <p>JavaScript itself is fairly compact yet very flexible. Developers have written a large variety of tools on top of the core JavaScript language, unlocking a vast amount of extra functionality with minimum effort. These include:</p>
+        <ul>
+          <li>Browser Application Programming Interfaces (<a class="mdn-glossary">API</a>) - APIs built into web browsers, providing functionality like dynamically creating HTML and setting CSS styles, collecting and manipulating a video stream from the user's webcam, or generating 3D graphics and audio samples.</li>
+          <li>Third-party APIs - Allow developers to incorporate functionality in their sites from other content providers, such as Twitter or Facebook.</li>
+          <li>Third-party frameworks and libraries - You can apply these to your HTML to allow you to rapidly build up sites and applications.</li>
+        </ul>
+      </section>
+    </section>
+  </section>
+</main>

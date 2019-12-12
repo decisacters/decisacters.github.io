@@ -1,0 +1,136 @@
+<script src="/index.js"></script>
+<main>
+  <pre><code class="my-ps">
+      #region # Array
+      # Create Array of Object
+      $array = @() # Create Empty Array
+      $property = ""
+      $element = New-Object PSObject
+      $element | Add-Member Property $property
+      $element | Add-Member @{Property1 = $property1; Property2 = $property2}
+      $array += $element
+      # https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/add-member?view=powershell-6
+      # Array Operation
+      $animals = "cat", "dog", "bat" # Create animal Array with 3 Elements
+      $animals += "bird" # Add one Element
+      $animals[0..1] # Get Continous Elements
+      $animals[-1] # Get the last element
+      $animals -ne 'cat' # Get Elements
+      $animals -like '*a*' # Find Elements
+      [array]::Reverse($animals)
+      # Assigning Values to Multiple Variables in an Array #
+      $items = "Doug", "Finke", "NY", "NY", 10017
+      $FirstName, $LastName, $Rest = $items # $FirstName = Doug; $LastName = Finke; $Rest = NY NY 10017 (Array)
+      #endregion
+      #region # String
+      # Use Single Quotes to Quoting Double Quotes
+      $s = "PowerShell"
+      "A string with a variable: $s" # A string with a variable: PowerShell
+      "A string with a variable: $($s.ToLower())" # Use $() in Variable Property Dereference in Double Quotes
+      "A string with 'Quotes'" # A string with 'Quotes'
+      "A string with `"Escaped Quotes`"" # A string with "Escaped Quotes"
+      'Variables are not replaced inside single quotes: $s' # Variables are not replaced inside single quotes: $s
+      # Regular Expression
+      # Regular Expression Language - Quick Reference https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-my-quick-reference
+      $parseString = {
+        foreach ($match in $PSItem.Matches) {
+          # Match https://docs.microsoft.com/en-us/dotnet/api/system.text.regularexpressions.match
+          New-Object PSObject -Property @{
+            Name = $match.Groups["name"].Value
+            Value = $match.Groups["value"].Value
+            Type = $match.Groups["type"].Value
+          }
+        }
+      }
+      Select-String $regex $cspath.ForEach$parseString
+      # Search and repalce words
+      foreach ($match in ($text | Select-String $regex -AllMatches -CaseSensitive).Matches) {
+        $text = $text -replace $oldText, $newText
+        New-Object PSObject -Property @{ Word = $match.Groups["word"].Value; Parent = $match.Groups["parent"].Value}
+      }
+      $string = $string -replace "\u2192", "#8594;" # Replace Unicode Character
+      $string = $string -replace "([A-F])(\w)", " `$1 `$2"
+      # https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comparison_operators?view=powershell-6#substitutions-in-regular-expressions
+      #endregion
+      #region # CIM
+      # https://docs.microsoft.com/en-us/powershell/scripting/whats-new/breaking-changes-ps6?view=powershell-6#wmi-v1-cmdlets
+      Start-Service winrm # Run as administrator
+      Get-CimInstance # CIM aka WMI v2
+      Get-CimInstance Win32_BIOS
+      Get-CimInstance Win32_ComputerSystem
+      Get-CimInstance Win32_Processor
+      Get-CimInstance Win32_OperatingSystem #
+      Get-CimInstance Win32_LocalTime
+      Get-CimClass *Network*
+      Get-CimInstance Win32_NetworkAdapterConfiguration
+      # https://docs.microsoft.com/en-us/windows/desktop/CIMWin32Prov/win32-provider
+      #endregion
+      #region # Cmdlet
+      Get-Command -Noun Process
+      Get-Command -Noun Service
+      Get-Command -Noun Location
+      Get-Command -Noun Item
+      # Item Command
+      Rename-Item $path $newName # this cmdlet can not change the item's directory
+      Move-Item $path $destination # this cmdlet can change the item's directory and it's name
+      Copy-Item $path $destination -Recurse # this cmdlet can change item's name
+      Remove-Item $path -Recurse
+      # Registry
+      $keys = Get-ItemProperty "HKLM:\SOFTWARE\$name"
+      $keys.Property = $value
+      # PnpDeice
+      ( Get-PnpDevice ).Where{ $_.FirendlyName -match $regex} | Disable-PnpDevice -Confirm:$false | Enable-PnpDevice -Confirm:$false
+      Set-ExecutionPolicy Undefined # to run powershell script
+      # Dynamically Call different Function
+      Invoke-Expression "Get-$name `$argument"
+      # https://docs.microsoft.com/en-us/powershell/developer/cmdlet/approved-verbs-for-windows-powershell-commands
+      Get-Verb
+      #endregion
+      #region # Misc.
+      # Variable use camelCase (first letter is lowercase)
+      $camel
+      $camelCase
+      # Dynamically Reference Property
+      $items."$( $slot.Replace(" ", "_") )".Split(",")
+      # Script Block {} can be Assign to a Variable and Use the Variable to Replace Script Block for Parameter
+      $name = { $PSItem.Name }
+      ( Get-Process ).ForEach $name
+      # Hash Table can be used to replace Parameter List
+      $parameters = @{Filter = "D*"; Depth = 1; Recurse = $true}
+      Get-ChildItem @parameters
+      # Pipeline Operator can be an indicator of line breaker
+      Get-ChildItem -Path $env:windir\*.log |
+        Select-String -List error |
+        Format-Table Path, LineNumber -AutoSize
+      # First Letter Uppercase
+      ( Get-Culture ).TextInfo.ToTitleCase($category)
+      # Get MD5 Checksum
+      $fileHash = Get-FileHash $iso -Algorithm MD5
+      $fileHash.Hash
+      [regex]::Unescape("\u2013")
+      #endregion
+      #region # .Net Object
+      # FolderBrowserDialog https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.folderbrowserdialog
+      #using namespace System.Windows.Forms
+      Add-Type -AssemblyName System.Windows.Forms
+      $folderBrowserDialog = New-Object System.Windows.Forms.FolderBrowserDialog # Create
+      $folderBrowserDialog.SelectedPath = $initialDirectory # Set Folder
+      #$folderBrowserDialog.ShowDialog() | Out-Null # Show Folder
+      $folderBrowserDialog.SelectedPath # Get Selected Folder Path in String
+      # Create new .net object and use method
+      $xml = [xml] [System.Net.WebClient]::new().DownloadString('http://www.microsoft.com/')
+      # create form with initial value
+      $form = [Form] `
+      @{
+        Text = 'My First Form'
+      }
+      $button = [Button] `
+      @{
+        Text = 'Push Me!'
+        Dock = 'Fill'
+      }
+      $button.add_Click{$form.Close()}
+      $form.Controls.Add($button)
+      #endregion
+    </code></pre>
+</main>

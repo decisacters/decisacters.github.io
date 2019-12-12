@@ -1,0 +1,28 @@
+<script src="/index.js"></script>
+<main>
+  <section>
+    <h1>GitHub</h1>
+    <section>
+      <h2><a href="https://pages.github.com">GitHub Page</a></h2>
+      <section>
+        <h3>Setup</h3>
+        <ol>
+          <li>First of all, <a href="https://github.com/join">sign up for GitHub</a> and verify your email address.</li>
+          <li>Next, you need to <a href="https://github.com/new">create a repository</a> for your files to go in. In the <i>Repository name</i> box, enter <b><i>username</i></b>.github.io, where <b><i>username</i></b> is your username. So for example, <code>decisacter.github.io</code>. Also check <b><i>Initialize this repository with a README</i></b>, <b><i>Add license</i></b> and then click <b><i>Create repository</i></b>.</li>
+          <li>After that, commit your file using terminal. Make sure you have an <code>index.html</code> file in the root. This is your homepage. It may take a few minutes for your website to go live.</li>
+          <pre><code class="my-git">
+            $user = "decisact"
+            git config --global user.email "$user-@example.com"
+            git config --global user.name $user
+            git init
+            git remote add origin "https://github.com/$($user)/$($user).github.io.git"
+            git add .
+            git commit -m "first commit"
+            git push -u origin master
+          </code></pre>
+          <li>Now navigate your browser to <b><i>username</i></b>.github.io to see your website online. For example, for the username <b><i>decisact</i></b>, go to <a href="http://decisact.github.io/"><i>decisact</i>.github.io</a></li>
+        </ol>
+      </section>
+    </section>
+  </section>
+</main>

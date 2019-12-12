@@ -1,0 +1,78 @@
+<script src="/index.js"></script>
+<main>
+  <section>
+    <h1>Git</h1>
+    <section>
+      <h2>Getting Started</h2>
+      <section>
+        <h3>First-Time Git Setup</h3>
+        <p>Git comes with a tool called <code><a>git config</a></code> that lets you get and set configuration variables that control all aspects of how Git looks and operates.</p>
+        <section>
+          <h4>Config Location</h4>
+          <p>Configuration variables can be stored in three different places:</p>
+          <dl>
+            <dt>System</dt>
+            <dd><code>/etc/gitconfig</code> file: Contains values applied to every user on the system and all their repositories. If you pass the option <code>--system</code> to <code><a>git config</a></code>, it reads and writes from this file specifically. (Because this is a system configuration file, you would need administrative or superuser privilege to make changes to it.)</dd>
+            <dt>User</dt>
+            <dd><code>~/.gitconfig</code> or <code>~/.config/git/config</code> file: Values specific personally to you, the user. You can make Git read and write to this file specifically by passing the <code>--global</code> option, and this affects all of the repositories you work with on your system.</dd>
+            <dt>Repository:</dt>
+            <dd><code>config</code> file in the Git directory <code>.git/config</code> of whatever repository you're currently using: Specific to that single repository. You can force Git to read from and write to this file with the <code>--local</code> option</dd>
+          </dl>
+        </section>
+        <section>
+          <h4>Your Identity</h4>
+          <p>This is important because every Git commit uses this information. Again, you need to do this only once if you pass the <code>--global</code> option, because then Git will always use that information for anything you do on that system. If you want to override this with a different name or email address for specific projects, you can run the command without the <code>--global</code> option when you're in that project.</p>
+          <pre><code>
+            $ git config --global user.name "decisact"
+            $ git config --global user.email decisact@example.com
+          </code></pre>
+        </section>
+        <section>
+          <h4>Your Editor</h4>
+          <pre><code>
+            $ git config --global core.editor emacs
+          </code></pre>
+        </section>
+        <section>
+          <h4>Checking Your Settings</h4>
+          <pre><code>
+            $ git config --list
+          </code></pre>
+        </section>
+      </section>
+    </section>
+    <section>
+      <h2>Git Basics</h2>
+      <section>
+        <h3>Getting a Git Repository</h3>
+        <section>
+          <h4>Initializing a Repository in an Existing Directory</h4>
+          <p><a>git init</a></p>
+          <pre><code>
+            $ git init
+          </code></pre>
+        </section>
+        <section>
+          <h4>Cloning an Existing Repository</h4>
+          <p><a>git clone</a></p>
+          <pre><code>
+            $ git clone
+          </code></pre>
+        </section>
+      </section>
+      <section>
+        <h3>Recording Changes to the Repository</h3>
+        <section>
+          <h4>Checking the Status of Your Files</h4>
+          <p><a>git status</a></p>
+          <pre><code>
+            $ git status
+            On branch master
+            Your branch is up-to-date with 'origin/master'.
+            nothing to commit, working directory clean
+          </code></pre>
+        </section>
+      </section>
+    </section>
+  </section>
+</main>

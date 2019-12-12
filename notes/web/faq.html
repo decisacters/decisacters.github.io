@@ -1,0 +1,124 @@
+<script src="/index.js"></script>
+<main>
+  <section>
+    <h1><a class="mdn-link" href="Learn/Common_questions">FAQ</a></h1>
+    <section>
+      <h2><a class="mdn-link">How does the Internet work?</a></h2>
+      <section>
+        <h3>A simple network</h3>
+        <p>Each computer on a network is connected to a special tiny computer called a <b><i>router</i></b>. It makes sure that a message sent from a given computer arrives at the right destination computer.</p>
+        <p><img class="mdn-img" src="8445/internet-schema-3.png"></p>
+      </section>
+      <section>
+        <h3>A network of networks</h3>
+        <p>By connecting computers to routers, then routers to routers, we are able to scale infinitely. To set cables up between your computer and the rest of the world. We use the telephone infrastructure whiche already connects your computer with anyone in the world so it is the perfect wire we need. To connect our network to the telephone infrastructure, we need a special piece of equipment called a <b><i>modem</i></b>. This modem turns the information from our network into information manageable by the telephone infrastructure and vice versa.</p>
+        <p><img class="mdn-img" src="8449/internet-schema-5.png"></p>
+        <p>To send the messages from our network to the network we want to reach, we will connect our network to an <b><i>Internet Service Provider</i></b> (ISP). An ISP is a company that manages some special routers that are all linked together and can also access other ISPs' routers. So the message from our network is carried through the network of ISP networks to the destination network. The Internet consists of this whole infrastructure of networks</p>
+        <p><img class="mdn-img" src="8453/internet-schema-7.png"></p>
+      </section>
+      <section>
+        <h3>Finding computers</h3>
+        <p>If you want to send a message to a computer, you have to specify which one. Thus any computer linked to a network has a unique address that identifies it, called an "IP address" (where IP stands for <b><i>Internet Protocol</i></b>). It's an address made of a series of four numbers separated by dots, for example: 192.168.2.10. To make things easier, we can alias an IP address with a human readable name called a <b><i>domain name</i></b>. For example, google.com is the domain name used on top of the IP address 173.194.121.32.</p>
+      </section>
+      <section>
+        <h3>Internet and the web</h3>
+        <p>The <b><i>Internet</i></b> is an infrastructure, whereas the <b><i>Web</i></b> is a service built on top of the infrastructure. It is worth noting there are several other services built on top of the Internet, such as email and IRC.</p>
+      </section>
+    </section>
+    <section>
+      <h2><a class="mdn-link">Pages sites servers and search engines</a></h2>
+      <section>
+        <h3>Web Page</h3>
+        <p>A <b>web page</b> is a simple document displayable by a <a class="mdn-glossary">browser</a>. Such documents are written in the <a class="mdn-glossary">HTML</a> language. A web page can embed a variety of different types of resources such as:</p>
+        <dl>
+          <dt><i>style information</i></dt>
+          <dd>controlling a page's look-and-feel</dd>
+          <dt><i>scripts</i></dt>
+          <dd>which add interactivity to the page</dd>
+          <dt><i>media</i></dt>
+          <dd>images, sounds, and videos.</dd>
+        </dl>
+        <p><b>Note: </b> Browsers can also display other documents such as <a class="mdn-glossary">PDF</a> files or images, but the term <b>web page</b> specifically refers to HTML documents. Otherwise, we only use the term <b>document</b>.</p>
+      </section>
+      <section>
+        <h3>Web site</h3>
+        <p>A <b><i>website</i></b> is a collection of linked web pages (plus their associated resources) that share a unique domain name. Each web page of a given website provides explicit links-most of the time in the form of clickable portion of text-that allow the user to move from one page of the website to another.</p>
+      </section>
+      <section>
+        <h3>Web server</h3>
+        <p>A <b><i>web server</i></b> is a computer hosting one or more <b><i>websites</i></b>. "Hosting" means that all the <b><i>web pages</i></b> and their supporting files are available on that computer. The <b><i>web server</i></b> will send any <b><i>web page</i></b> from the <b><i>website</i></b> it is hosting to any user's browser, per user request.</p>
+      </section>
+    </section>
+    <section>
+      <h2><a class="mdn-link">What are hyperlinks?</a></h2>
+      <section>
+        <h3>Types of links</h3>
+        <p><b>Internal link</b>: A link between two webpages, where both webpages belong to the same website, is called an internal link. Without internal links, there's no such thing as a website. When you're building a website, focus on internal links, since those make your site usable.</p>
+        <p><b>Incoming links</b>: A link from your webpage to someone else's webpage. Without external links, there is no Web, since the Web is a network of webpages. Use external links to provide information besides the content available through your webpage.</p>
+        <p><b>External link</b>: A link from someone else's webpage to your site. It's the opposite of an external link. Note that you don't have to link back when someone links to your site.</p>
+        <p><b>Anchors</b> tie two sections of one document together. When you follow a link pointing to an anchor, your browser jumps to another part of the current document instead of loading a new document. However, you make and use anchors the same way as other links.</p>
+      </section>
+    </section>
+    <section>
+      <h2><a class="mdn-link">What is a URL?</a></h2>
+      <section>
+        <h3>Basics: anatomy of a URL</h3>
+        <pre><code><span class="my-tooltip">
+          http:<span class="my-tooltip-text">protocol</span></span>//<span class="my-tooltip">www.example.com<span class="my-tooltip-text">domain name</span></span><span class="my-tooltip">:80<span class="my-tooltip-text">port</span></span><span class="my-tooltip">/path/to/myfile.html<span class="my-tooltip-text">path</span></span><span class="my-tooltip">?key1=value1&key2=value2<span class="my-tooltip-text">parameters</span></span><span class="my-tooltip">#SomewhereInTheDocument<span class="my-tooltip-text">anchor</span></span>
+        </code></pre>
+        <ul>
+          <li><code>http</code> is the protocol. The first part of the URL indicates which protocol the browser must use. A <b>protocol</b> is a set method for exchanging or transferring data around a computer network. Usually for websites it is the HTTP protocol or its secured version, HTTPS. The Web requires one of these two, but browsers also know how to hanul>e other protocols such as <code>mailto:</code> (to open a mail client) or <code>ftp:</code> to hanul>e file transfer, so don't be surprised if you see such protocols.</li>
+          <li><code>www.example.com</code> is the <b>domain name</b>. It indicates which Web server is being requested. Alternatively, it is possible to directly use an <a class="mdn-glossary">IP address</a>, but because it is less convenient, it is not often used on the Web.</li>
+          <li><code>:80</code> is the <b>port</b>. It indicates the technical "gate" used to access the resources on the web server. It is usually omitted if the web server uses the standard ports of the HTTP protocol (80 for HTTP and 443 for HTTPS) to grant access to its resources. Otherwise it is mandatory.</li>
+          <li><code>?key1=value1&amp;key2=value2</code> are extra <b>parameters</b> provided to the Web server. Those parameters are a list of key/value pairs separated with the <code>&amp;</code> symbol. The Web server can use those parameters to do extra stuff before returning the resource.</li>
+          <li><code>#SomewhereInTheDocument</code> is an <b>anchor</b> to another part of the resource itself. An anchor represents a sort of "bookmark" inside the resource, giving the browser the directions to show the content located at that "bookmarked" spot. On an HTML document, for example, the browser will scroll to the point where the anchor is defined; on a video or audio document, the browser will try to go to the time the anchor represents.</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Absolute URLs vs relative URLs</h3>
+        <p>In your browser's address bar, a URL doesn't have any context, so you must provide a full (or <b><i>absolute</i></b>) URL, like the ones we saw above. You don't need to include the protocol (the browser uses HTTP by default) or the port (which is only required when the targeted Web server is using some unusual port), but all the other parts of the URL are necessary.</p>
+        <p>When a URL is used within a document, such as in an HTML page, things are a bit different. Because the browser already has the document's own URL, it can use this information to fill in the missing parts of any URL available inside that document. We can differentiate between an <b><i>absolute URL</i></b> and a <b><i>relative URL</i></b> by looking only at the <b><i>path</i></b> part of the URL. If the path part of the URL starts with the <b>"<code>/</code>"</b> character, the browser will fetch that resource from the top root of the server, without reference to the context given by the current document.</p>
+        <p>The most common use case for an <b>absolute URL</b> within an HTML document is that the URL starts with the path part. The browser will use the same protocol and the same domain name as the one used to load the document hosting that URL.</p>
+        <p><b>Relative URL</b> does not start with <b>"<code>/</code>"</b> like <code>path/to/the/file</code>, the browser will attempt to find the document (<code>https://domain/path</code>) in a sub-directory of the one containing the current resource like <code>https://domain/path/path/to/the/file</code>.</p>
+        <p>We use the <b>"<code>../</code>"</b> writing convention to tell the browser we want to go up from one directory. Here we want to reach this URL: <code>https://developer.mozilla.org/en-US/docs/Learn/../CSS/display</code>, which can be simplified to: <code>https://developer.mozilla.org/en-US/docs/CSS/display</code>. multiple <code>../</code> means go up from multiple directory: <code>https://developer.mozilla.org/en-US/docs/Learn/../../Web</code>, which can be simplified to: <code>https://developer.mozilla.org/en-US/web</code></p>
+      </section>
+    </section>
+    <section>
+      <h2><a class="mdn-link">What is a domain name?</a></h2>
+      <section>
+        <h3>Structure of domain names</h3>
+        <p>A domain name has a simple structure made of several parts (it might be one part only, two, three...), separated by dots and <b>read from right to left</b>:</p>
+        <pre><code>
+          <span class="my-tooltip">developer<span class="my-tooltip-text">label 2</span></span>.<span class="my-tooltip">mozilla<span class="my-tooltip-text">SLD</span></span>.<span class="my-tooltip">org<span class="my-tooltip-text">TLD</span></span>
+        </code></pre>
+        <dl>
+          <dt><a class="mdn-glossary">TLD</a> (<a href="https://en.wikipedia.org/wiki/Top-level_domain">Top-Level Domain</a>)</dt>
+          <dd>TLDs tell users the general purpose of the service behind the domain name. The most generic TLDs (<code>.com</code> (commercial), <code>.org</code> (organization), <code>.net</code> (network)) don't require web services to meet any particular criteria, but some TLDs enforce stricter policies so it is clearer what their purpose is. For example:
+            <ul>
+              <li>Local TLDs such as <code>.us</code>, <code>.fr</code>, or <code>.se</code> can require the service to be provided in a given language or hosted in a certain country - they are supposed to indicate a resource in a particular language or country.</li>
+              <li>TLDs containing <code>.gov</code> are only allowed to be used by government departments.</li>
+              <li>TLDs like <code>.edu</code> and <code>.ac.uk</code> are only supposed to be used educational/academic institutions.</li>
+            </ul>
+            TLDs can contain special as well as latin characters, and their maximum length is 63 characters, although most are around 2-3.</dd>
+          <dt>Label</dt>
+          <dd>The labels are what follow the TLD. A label can be anything, from one letter to a full sentence. The label located right before the TLD can also be referred as a <b><i>Secondary Level Domain</i></b> (SLD). A domain name can have many labels (or components), it is not mandatory nor necessary to have 3 labels to form a domain name. For any domain name you might have control over (e.g. <code>mozilla.org</code>), you can create "subdomains" with different content located at each, for example <code>developer.mozilla.org</code> or <code>https://iot.mozilla.org/</code>.</dd>
+        </dl>
+      </section>
+      <section>
+        <h3>How does a DNS request work?</h3>
+        <p>DNS databases are stored on every DNS server worldwide, and all these servers refer to a few special servers called "authoritative name servers" or "top-level DNS servers." - these are like the boss servers that manage the system.</p>
+        <p>Whenever your registrar creates or updates any information for a given domain, the information must be refreshed in every DNS database. Each DNS server that knows about a given domain stores the information for some time before it is automatically invalidated and then refreshed (the DNS server queries an authoritative server and fetches the updated information from it). Thus, it takes some time for DNS servers that know about this domain name to get the up-to-date information.</p>
+        <ol>
+          <li>Type <code>mozilla.org</code> in your browser's location bar.</li>
+          <li>Your browser asks your computer if it already recognizes the IP address identified by this domain name (using a local DNS cache). If it does, the name is translated to the IP address and the browser negotiates contents with the web server. End of story.</li>
+          <li>If your computer does not know which IP is behind the <code>mozilla.org</code> name, it goes on to ask a DNS server, whose job is precisely to tell your computer which IP address matches each registered domain name.</li>
+          <li>Now that the computer knows the requested IP address, your browser can negotiate contents with the web server.</li>
+        </ol>
+        <p><img class="mdn-img" src="8961/2014-10-dns-request2.png"></p>
+      </section>
+    </section>
+    <section>
+      <h2><a class="mdn-link">What is a web server?</a></h2>
+    </section>
+  </section>
+</main>

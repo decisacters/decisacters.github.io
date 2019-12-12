@@ -1,0 +1,172 @@
+<script src="/index.js"></script>
+<main>
+  <section id="vsc">
+    <h1>VSCode</h1>
+    <section>
+      <h2>Setup</h2>
+      <section>
+        <h3>Windows</h3>
+        <section>
+          <h4>Installation</h4>
+          <p>See my note <a>windows</a></p>
+        </section>
+        <section>
+          <h4>User versus system setup</h4>
+          <p>VS Code provides both Windows user and system level setups. Installing the <b>user setup</b> does not require <b>Administrator</b> privileges as the location will be under your user <b>Local AppData</b> (LOCALAPPDATA) folder.</p>
+          <p>The <b>system setup</b> requires elevation to Administrator privileges and will place the installation under <b>Program Files</b>.</p>
+        </section>
+      </section>
+      <section>
+        <h3>Network</h3>
+      </section>
+    </section>
+    <section>
+      <h2>Get&thinsp;Started</h2>
+      <section>
+        <h3>Tips-and-Tricks</h3>
+        <section>
+          <h4>Basics</h4>
+          <section>
+            <h5>Command Palette <code>Ctrl+Shift+P</code></h5>
+            <p><img class='vsc-img' src="OpenCommandPalatte.gif"></p>
+          </section>
+          <section>
+            <h5>Quick Open <code>Ctrl+P</code></h5>
+            <p>Type <code>?</code> to view help suggestions. You can open multiple files from <b>Quick Open</b> by pressing the Right arrow key. This will open the currently selected file in the background and you can continue selecting files from <b>Quick Open</b>.</p>
+            <p><img class='vsc-img' src="QuickOpen.gif"></p>
+          </section>
+        </section>
+        <section>
+          <h4>Status Bar</h4>
+          <section>
+            <h5>Error and Warnings <code>Ctrl+Shift+M</code></h5>
+            <p>Quickly jump to errors and warnings in the project. Cycle through errors with <code>F8</code> or <code>Shift+F8</code>. You can filter problems either by type ('errors', 'warnings') or text matching.</p>
+            <p><img class="vsc-img" src="Errors_Warnings.gif"></p>
+          </section>
+        </section>
+        <section>
+          <h4>Change your theme</h4>
+          <section>
+            <h5>Keyboard Shortcut: <code>Ctrl+K Ctrl+T</code></h5>
+            <p><img class='vsc-img' src="OpenCommandPalatte.gif"></p>
+          </section>
+          <section>
+            <h5>Customize your keyboard shortcuts</h5>
+            <p>Keyboard Shortcut: <code>Ctrl+K Ctrl+S</code></p>
+            <p><img src="keyboard-shortcuts.png"></p>
+          </section>
+        </section>
+      </section>
+      <section>
+        <h3>User&thinsp;Interface</h3>
+        <section>
+          <h4>Basic Layout</h4>
+          <div id="editor"></div>
+          <dl>
+            <dt>Editors</dt>
+            <dd>The main area to edit your files. You can open as many editors as you like side by side vertically and horizontally.</dd>
+            <dt>Side Bar</dt>
+            <dd>Contains different views like the Explorer to assist you while working on your project.</dd>
+            <dt>Status Bar</dt>
+            <dd>Information about the opened project and the files you edit.</dd>
+            <dt>Activity Bar</dt>
+            <dd>Located on the far left-hand side, this lets you switch between views and gives you additional context-specific indicators, like the number of outgoing changes when Git is enabled.</dd>
+            <dt>Panels</dt>
+            <dd>You can display different panels below the editor region for output or debug information, errors and warnings, or an integrated terminal. Panel can also be moved to the right for more vertical space.</dd>
+          </dl>
+        </section>
+        <section>
+          <h4>Side by side editing</h4>
+          <ul>
+            <li><code>Ctrl+\</code> to split the active editor into two.</li>
+            <li>Use <b>Open to the Side</b> from the Explorer context menu (<code>Ctrl+Enter</code>) on a file.</li>
+            <li><code>Ctrl+Enter</code> in the <b>Quick Open</b> (<code>Ctrl+P</code>) file list.</li>
+          </ul>
+          <p>Whenever you open another file, the editor that is active will display the content of that file. When you have more than one editor open you can switch between them quickly by holding the <code>Ctrl</code> key and pressing <code>1</code>, <code>2</code>, or <code>3</code>.</p>
+        </section>
+      </section>
+      <section>
+        <h3>Key&thinsp;Bindings</h3>
+        <section>
+          <h4>Keyboard Shortcuts editor <code>Ctrl+K Ctrl+S</code></h4>
+          <p>Visual Studio Code provides a rich and easy keyboard shortcuts editing experience using <b>Keyboard Shortcuts</b> editor. It lists all available commands with and without keybindings and you can easily change / remove / reset their keybindings using the available actions. It also has a search box on the top that helps you in finding commands or keybindings.</p>
+        </section>
+        <section>
+          <h4>Viewing modified keybindings</h4>
+          <p>You can view any user modified keyboard shortcuts in VS Code in the <b>Keyboard Shortcuts</b> by typing <code>@source:user</code> in search to filter to the <b>Keyboard Shortcuts</b> editor (<b>Source</b> is 'User'). You can also use <code>@source:default</code> to get default keyboard shortcuts</p>
+        </section>
+        <section>
+          <h4>Advanced customization</h4>
+          <p>All keyboard shortcuts in VS Code can be customized via the <code>keybindings.json</code> file. You can open the <code>keybindings.json</code> file from the Command Palette with the <b>Preferences: Open Keyboard Shortcuts (JSON)</b> command.</p>
+          <section>
+            <h5>Keyboard rules</h5>
+            <pre><code class="my-json">
+              {
+                "key": "enter",
+                "command": "type",
+                "args": { "text": "Hello World" },
+                "when": "editorTextFocus"
+              }
+            </code></pre>
+            <p>Each rule consists of:</p>
+            <ul>
+              <li>a <code>key</code> that describes the pressed keys.</li>
+              <li>a <code>command</code> containing the identifier of the command to execute.</li>
+              <li>an <b>optional</b> <code>args</code> containing a object with key/values pairs that will pass to the command as parameters.</li>
+              <li>an <b>optional</b> <code>when</code> clause containing a boolean expression that will be evaluated depending on the current <b>context</b>.</li>
+            </ul>
+            <p>Chords (two separate keypress actions) are described by separating the two keypresses with a space. For example, <code>Ctrl+K Ctrl+S</code>.</p>
+            <p>When a key is pressed:</p>
+            <ul>
+              <li>the rules are evaluated from <b>bottom</b> to <b>top</b>.</li>
+              <li>the first rule that matches, both the <code>key</code> and in terms of <code>when</code>, is accepted.</li>
+              <li>no more rules are processed.</li>
+              <li>if a rule is found and has a <code>command</code> set, the <code>command</code> is executed.</li>
+            </ul>
+            <p>The additional <code>keybindings.json</code> rules are appended at runtime to the bottom of the default rules, thus allowing them to overwrite the default rules. The <code>keybindings.json</code> file is watched by VS Code so editing it while VS Code is running will update the rules at runtime.</p>
+          </section>
+          <section>
+            <h5>Accepted keys</h5>
+            <p>The <code>key</code> is made up of modifiers and the key itself. <b>Modifiers</b>: <code>Ctrl+</code>, <code>Shift+</code>, <code>Alt+</code>, (<code>Win+</code>|<code>Cmd+</code>|<code>Met+</code>)</p>
+            <p>The following <b>keys</b> are accepted:</p>
+            <ul>
+              <li><code>f1-f19</code>, <code>a-z</code>, <code>0-9</code></li>
+              <li><code>`</code>, <code>-</code>, <code>=</code>, <code>[</code>, <code>]</code>, <code>\</code>, <code>;</code>, <code>'</code>, <code>,</code>, <code>.</code>, <code>/</code></li>
+              <li><code>left</code>, <code>up</code>, <code>right</code>, <code>down</code>, <code>pageup</code>, <code>pagedown</code>, <code>end</code>, <code>home</code></li>
+              <li><code>tab</code>, <code>enter</code>, <code>escape</code>, <code>space</code>, <code>backspace</code>, <code>delete</code></li>
+              <li><code>pausebreak</code>, <code>capslock</code>, <code>insert</code></li>
+              <li><code>numpad0-numpad9</code>, <code>numpad_multiply</code>, <code>numpad_add</code>, <code>numpad_separator</code></li>
+              <li><code>numpad_subtract</code>, <code>numpad_decimal</code>, <code>numpad_divide</code></li>
+            </ul>
+          </section>
+          <section>
+            <h5>Default Keyboard Shortcuts</h5>
+            <div id="keys"></div>
+          </section>
+        </section>
+      </section>
+    </section>
+    <section>
+      <h2>Editor</h2>
+      <section>
+        <h3>User&thinsp;Defined&thinsp;Snippets</h3>
+        <p>Code snippets are templates that make it easier to enter repeating code patterns, such as loops or conditional-statements.</p>
+        <p>In Visual Studio Code, snippets appear in IntelliSense (<span>Ctrl+Space</span>) mixed with other suggestions, as well as in a dedicated snippet picker (<b>Insert Snippet</b> in the Command Palette). There is also support for tab-completion: Enable it with <code>"editor.tabCompletion": "on"</code>, type a <i>snippet prefix</i>, and press <span>Tab</span> to insert a snippet.</p>
+        <section>
+          <h4>Create your own snippets</h4>
+        </section>
+      </section>
+    </section>
+  </section>
+</main>
+<script>
+  waitFunc(['jquery', 'color'], () => {
+    literals.keys[$('h1').text().toLowerCase()].forEach((table) => {
+      const section = $('<section>', {
+        html: `<h6>${table.name}</h6>`,
+      }).appendTo($('#keys').parent());
+      toTable(table.keys, section).addClass('my-sheet');
+    });
+    $('#keys').remove();
+  })
+</script>

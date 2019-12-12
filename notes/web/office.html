@@ -1,0 +1,30 @@
+<script src="/index.js"></script>
+<main>
+  <section>
+    <h1><a href="https://www.office.com">Office</a></h1>
+    <section>
+      <h2><a href="https://docs.microsoft.com/en-us/office/dev/add-ins/">Office Add-ins</a></h2>
+      <section>
+        <h3><a href="https://www.microsoft.com/en-us/garage/profiles/script-lab/">Script Lab</a></h3>
+        <section>
+          <h4>Setup</h4>
+          <ul>
+            <li>Install through <a href="https://aka.ms/getscriptlab">Office Store</a> in Office Online (Word, Excel, Presentation)</li>
+            <li>Click <b>Code Button</b> in Script Lab Tab</li>
+            <li>In <b>Task Panel</b>, click <b>Float Window Button</b> at top right corner</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Edit</h4>
+          <ul>
+            <li>Remove all code in <b>HTML, CSS and libraries</b> and left only <code>@types/office-js</code> in libraries</li>
+            <li>Keep only the <code>App.run()</code> function</li>
+            <li>Use <b>async function</b> for <code>App.run()</code> <b>callback</b> <code>App.run(async (context)=>{})</code> and <b>await</b> <code>context.sync()</code> function in <code>App.run()</code></li>
+            <li>Share it as New secret <a href="https://gist.github.com/decisacters">gist</a></li>
+            <li>Apply VSCode editor feature (<b>Replace, Format</b>...) to Script Lab editor</li>
+          </ul>
+        </section>
+      </section>
+    </section>
+  </section>
+</main>

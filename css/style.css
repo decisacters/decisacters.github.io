@@ -1,0 +1,276 @@
+/* hide scroll bar */
+.my-scrollbar ::-webkit-scrollbar {
+  width: 0;
+}
+
+/* todo simplified */
+/* #region custom widget */
+
+.my-label,
+.my-label input:checked~.my-checkbox:after,
+.my-label input:checked~.my-radio:after {
+  display: block
+}
+
+.my-label {
+  position: relative;
+  padding-left: 2em;
+  margin: 1em 0;
+  cursor: pointer
+}
+
+.my-label input {
+  position: absolute;
+  opacity: 0;
+}
+
+.my-checkbox,
+.my-radio {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  background-color: lightgray
+}
+
+.my-radio {
+  border-radius: 50%
+}
+
+.my-label:hover input~.my-checkbox,
+.my-label:hover input~.my-radio {
+  background-color: darkgray
+}
+
+.my-checkbox:after,
+.my-radio:after {
+  content: "";
+  position: absolute;
+  display: none
+}
+
+.my-checkbox:after {
+  left: 8px;
+  top: 3px;
+  width: 7px;
+  height: 14px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg)
+}
+
+.my-radio:after {
+  top: 7px;
+  left: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white
+}
+
+/* #region slider */
+
+.my-slider {
+  -webkit-appearance: none;
+  height: 20px;
+  background: lightgray;
+  outline: 0;
+  opacity: 1;
+  -webkit-transition: .2s;
+  transition: opacity .2s
+}
+
+.my-slider::-moz-range-thumb,
+.my-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  cursor: pointer
+}
+
+/* #endregion slider */
+
+/* #endregion custom widget */
+
+/* #region box model */
+
+/* #region margion */
+.my-margin-small {
+  margin: 4px
+}
+
+.my-margin {
+  margin: 8px
+}
+
+.my-section {
+  margin-top: 8px;
+  margin-bottom: 8px
+}
+
+/* #endregion margin */
+
+/* #region border */
+
+.my-round-left {
+  border-radius: 4px 0 0 4px;
+}
+
+.my-round-right {
+  border-radius: 0 4px 4px 0;
+}
+
+.my-round-top {
+  border-radius: 4px 4px 0 0;
+}
+
+.my-round {
+  border-radius: 4px 4px 4px 4px;
+}
+
+/* #endregion border */
+
+/* #region padding */
+
+.my-padding {
+  padding: 8px 16px
+}
+
+.my-padding-left {
+  padding-left: 4px !important
+}
+
+/* #endregion padding */
+
+/* #endregion box model */
+
+/* #region layout */
+
+.my-container {
+  display: block;
+  text-align: center;
+}
+
+/* #region flex */
+
+.my-flex-container {
+  display: flex;
+  justify-content: center;
+}
+
+.my-flex-container>aside {
+  flex: 1;
+}
+
+.my-flex-container>section {
+  flex: 4;
+}
+
+/* #endregion flex */
+
+/* #region grid */
+
+.my-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: minmax(100px, auto);
+}
+
+/* #endregion grid */
+
+/* #endregion layout */
+
+.my-bar {
+  display: inline-block;
+  overflow: auto !important;
+  white-space: nowrap !important
+}
+
+.my-bar-item {
+  float: none;
+  display: inline-block;
+}
+
+.my-card {
+  box-shadow: 0 0 16px 4px rgb(0, 0, 0, 0.2)
+}
+
+.my-click {
+  cursor: pointer
+}
+
+.my-sticky {
+  position: sticky;
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  top: 0
+}
+
+.my-link:link,
+.my-link:visited {
+  text-decoration: none;
+}
+
+.my-link:active,
+.my-link:hover {
+  text-decoration: underline;
+}
+
+/* todo check if still useful*/
+.my-tag-mobile {
+  cursor: pointer;
+  margin: 4px !important;
+  padding: 4px 8px !important
+}
+
+/* #region mobile */
+@media (max-width:420px) {
+
+  .my-padding {
+    padding: 4px 8px;
+  }
+
+  .my-tag-mobile {
+    cursor: pointer;
+    margin: 4px !important;
+    padding: 4px 8px !important
+  }
+
+  .my-page {
+    padding: 5px !important
+  }
+}
+
+/* #endregion mobile */
+
+textarea {
+  resize: none;
+}
+
+ol {
+  padding: 1em;
+}
+
+ul {
+  padding: .1em;
+}
+
+ul li {
+  padding-left: 1em;
+  background-position: 0 .5em;
+  background-size: .5em .5em;
+  background-repeat: no-repeat;
+}
+
+dd {
+  margin-left: 1em;
+}
+
+a:hover {
+  position: relative;
+}

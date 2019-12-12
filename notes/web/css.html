@@ -1,0 +1,1888 @@
+<script src="/index.js"></script>
+<main>
+  <section>
+    <h1>CSS</h1>
+    <section>
+      <h2>My CSS</h2>
+    </section>
+    <section id="mdn">
+      <h2>Learn to style HTML using <a class="mdn-link" href="Learn">CSS</a></h2>
+      <section>
+        <h3>First steps</h3>
+        <section>
+          <h4>What is CSS?</h4>
+          <section>
+            <h5>What is CSS for?</h5>
+            <p>As we have mentioned before, <a class="mdn-glossary">CSS</a></b> (Cascading Style Sheets) is a language for specifying how <b>documents</b> are <b>presented</b> to users - how they are styled, laid out, etc.</p>
+            <ul>
+              <li>A <b>document</b> is usually a text file structured using a markup language - <a class="mdn-glossary">HTML</a> is the most common markup language, but you may also come across other markup languages such as <a class="mdn-glossary">SVG</a> or <a class="mdn-glossary">XML</a>.</li>
+              <li><b>Presenting</b> a document to a user means converting it into a form usable by your audience. <a class="mdn-glossary">Browsers</a> are designed to present documents visually, for example, on a computer screen, projector or printer.</li>
+            </ul>
+          </section>
+          <section>
+            <h5>CSS syntax</h5>
+            <p>CSS is a rule-based language - you define rules specifying groups of styles that should be applied to particular elements or groups of elements on your web page. For example "I want the main heading on my page to be shown as large red text." The following code shows a very simple CSS rule that would achieve the styling described above:</p>
+            <pre><code class="my-css">
+                h1 {
+                  color: red;
+                  font-size: 5em;
+                }
+              </code></pre>
+            <p>The rule opens with a <a class="mdn-glossary">selector</a> . This <i>selects</i> the HTML element that we are going to style. In this case we are styling level one headings (<a class="mdn-element"><code>&lt;h1&gt;</code></a>).</p>
+            <p>We then have a set of curly braces <code>{ }</code>. Inside those will be one or more <b>declarations</b>, which take the form of <b>property</b> and <b>value</b> pairs. Each pair specifies a property of the element(s) we are selecting, then a value that we'd like to give the property.</p>
+            <p>Before the colon, we have the property, and after the colon, the value. CSS <a class="mdn-glossary" href="property/CSS">properties</a> have different allowable values, depending on which property is being specified.</p>
+          </section>
+        </section>
+        <section>
+          <h4>Getting started</h4>
+        </section>
+        <section>
+          <h4>How CSS is structured</h4>
+          <section>
+            <h5>Applying CSS to your HTML</h5>
+            <section>
+              <h6>External stylesheet</h6>
+              <p>Linking an external stylesheet to our page is the most common and useful method of attaching CSS to a document as you can link the CSS to multiple pages, allowing you to style them all with the same stylesheet. In most cases, the different pages of a site will all look pretty much the same, therefore you can use the same set of rules for the basic look and feel.</p>
+              <p>An external stylesheet is when you have your CSS written in a separate file with a <code>.css</code> extension, and you reference it from an HTML <code>&lt;link&gt;</code> element:</p>
+              <pre><code class="my-html">
+                  &lt;!DOCTYPE html&gt;
+                  &lt;html&gt;
+                    &lt;head&gt;
+                      ...
+                      &lt;link href="styles.css"&gt;
+                      ...
+                    &lt;/head&gt;
+                    &lt;body&gt;
+                      &lt;h1&gt;Hello World!&lt;/h1&gt;
+                      &lt;p&gt;This is my first CSS example&lt;/p&gt;
+                    &lt;/body&gt;
+                  &lt;/html&gt;
+                </code></pre>
+            </section>
+            <section>
+              <h6>Internal stylesheet</h6>
+              <p>An internal stylesheet is where you don't have an external CSS file, but instead place your CSS inside a <a class="mdn-element"><code>&lt;style&gt;</code></a> element contained inside the HTML <a class="mdn-element"><code>&lt;head&gt;</code></a>.</p>
+              <pre><code class="my-html">
+                  &lt;!DOCTYPE html&gt;
+                  &lt;html&gt;
+                    &lt;head&gt;
+                      &lt;meta charset="utf-8"&gt;
+                      &lt;title&gt;My CSS experiment&lt;/title&gt;
+                      &lt;style&gt;
+                      <code class="my-css">
+                        h1 {
+                          color: blue;
+                          background-color: yellow;
+                          border: 1px solid black;
+                        }
+                        p {
+                          color: red;
+                        }
+                      </code>
+                      &lt;/style&gt;
+                    &lt;/head&gt;
+                    &lt;body&gt;
+                      &lt;h1&gt;Hello World!&lt;/h1&gt;
+                      &lt;p&gt;This is my first CSS example&lt;/p&gt;
+                    &lt;/body&gt;
+                  &lt;/html&gt;
+                </code></pre>
+              <p>This can be useful in some circumstances (maybe you're working with a content management system where you can't modify the CSS files directly), but it isn't quite as efficient as external stylesheets - in a website, the CSS would need to be repeated across every page, and updated in multiple places if changes were required.</p>
+            </section>
+            <section>
+              <h6>Inline Style</h6>
+              <p>Inline styles are CSS declarations that affect one element only, contained within a <code>style</code> attribute:</p>
+              <pre><code class="my-html">
+                  &lt;!DOCTYPE html&gt;
+                  &lt;html&gt;
+                    &lt;head&gt;
+                      &lt;meta charset="utf-8"&gt;
+                      &lt;title&gt;My CSS experiment&lt;/title&gt;
+                    &lt;/head&gt;
+                    &lt;body&gt;
+                      &lt;h1 style="<code class="my-css">color: blue;background-color: yellow;border: 1px solid black;</code>"&gt;Hello World!&lt;/h1&gt;
+                      &lt;p style="<code class="my-css">color: red;</code>"&gt;This is my first CSS example&lt;/p&gt;
+                    &lt;/body&gt;
+                  &lt;/html&gt;
+                </code></pre>
+            </section>
+          </section>
+        </section>
+        <section>
+          <h4>How CSS works</h4>
+          <section>
+            <h5>How does CSS actually work?</h5>
+            <p>When a browser displays a document, it must combine the document's content with its style information. It processes the document in a number of stages, which we've listed below. Bear in mind that this is a very simplified version of what happens when a browser loads a webpage, and that different browsers will handle the process in different ways. But this is roughly what happens.</p>
+            <ol>
+              <li>The browser loads the HTML (e.g. receives it from the network).</li>
+              <li>It converts the <a class="mdn-glossary">HTML</a> into a <a class="mdn-glossary">DOM</a> (<i>Document Object Model</i>). The DOM represents the document in the computer's memory. The DOM is explained in a bit more detail in the next section.</li>
+              <li>The browser then fetches most of the resources that are linked to by the HTML document, such as embedded images and videos ... and linked CSS! JavaScript is handled a bit later on in the process, and we won't talk about it here to keep things simpler.</li>
+              <li>The browser parses the fetched CSS, and sorts the different rules by their selector types into different "buckets", e.g. element, class, ID, and so on. Based on the selectors it finds, it works out which rules should be applied to which nodes in the DOM, and attaches style to them as required (this intermediate step is called a render tree).</li>
+              <li>The render tree is laid out in the structure it should appear in after the rules have been applied to it. The visual display of the page is shown on the screen (this stage is called painting).</li>
+            </ol>
+            <p><img class="mdn-img" src="11781/rendering.svg"></p>
+          </section>
+          <section>
+            <h5>A real DOM representation</h5>
+            <p>Take the following HTML code:</p>
+            <pre><code class="my-html">
+                &lt;p&gt;
+                Let's use:
+                  &lt;span&gt;Cascading&lt;/span&gt;
+                  &lt;span&gt;Style&lt;/span&gt;
+                  &lt;span&gt;Sheets&lt;/span&gt;
+                &lt;/p&gt;
+              </code></pre>
+            <p>In the DOM, the node corresponding to our <code>&lt;p&gt;</code> element is a parent. Its children are a text node and the three nodes corresponding to our <code>&lt;span&gt;</code> elements. The <code>SPAN</code> nodes are also parents, with text nodes as their children:</p>
+            <pre><code>
+                P
+                &#9500;&#9472; "Let's use:"
+                &#9500;&#9472; SPAN
+                |  &#9492;&#9472; "Cascading"
+                &#9500;&#9472; SPAN
+                |  &#9492;&#9472; "Style"
+                &#9492;&#9472; SPAN
+                &#9492;&#9472; "Sheets"
+              </code></pre>
+          </section>
+        </section>
+      </section>
+      <section>
+        <h3>Building Blocks</h3>
+        <section>
+          <h4>Cascade and inheritance</h4>
+          <dl>
+            <dt>Cascade</dt>
+            <dd>Stylesheets <b>cascade</b> - at a very simple level this means that the order of CSS rules matter; when two rules apply that have equal specificity the one that comes last in the CSS is the one that will be used.</dd>
+            <dt>Specificity</dt>
+            <dd>Specificity is how the browser decides which rule applies if multiple rules have different selectors, but could still apply to the same element. It is basically a measure of how specific a selector's selection will be.</dd>
+            <dt>Inheritance</dt>
+            <dd>Inheritance also needs to be understood in this context - some CSS property values set on parent elements are inherited by their child elements, and some aren't.</dd>
+          </dl>
+          <section>
+            <h5>Understanding inheritance</h5>
+            <section>
+              <h6>Controlling inheritance</h6>
+              <dl>
+                <dt><a class="mdn-css"><code>inherit</code></a></dt>
+                <dd>Sets the property value applied to a selected element to be the same as that of its parent element. Effectively, this "turns on inheritance".</dd>
+                <dt><a class="mdn-css"><code>initial</code></a></dt>
+                <dd>Sets the property value applied to a selected element to be the same as the value set for that element in the browser's default style sheet. If no value is set by the browser's default style sheet and the property is naturally inherited, then the property value is set to <code>inherit</code> instead.</dd>
+                <dt><a class="mdn-css"><code>unset</code></a></dt>
+                <dd>Resets the property to its natural value, which means that if the property is naturally inherited it acts like <code>inherit</code>, otherwise it acts like <code>initial</code>.</dd>
+              </dl>
+            </section>
+          </section>
+          <section>
+            <h5>Understanding the cascade</h5>
+            <dl>
+              <dt>Source order</dt>
+              <dd>We have already seen how source order matters to the cascade. If you have more than one rule, which has exactly the same weight, then the one that comes last in the CSS will win. You can think of this as rules which are nearer the element itself overwriting early ones until the last one wins and gets to style the element.</dd>
+              <dt>Specificity</dt>
+              <dd>
+                <p>The amount of specificity a selector has is measured using four different values (or components), which can be thought of as thousands, hundreds, tens and ones - four single digits in four columns:</p>
+                <ol>
+                  <li><b>Thousands</b>: Score one in this column if the declaration is inside a <code><a class="mdn-link" href="Web/HTML/Global_attributes#attr-style">style</a></code> attribute, aka inline styles. Such declarations don't have selectors, so their specificity is always simply 1000.</li>
+                  <li><b>Hundreds</b>: Score one in this column for each ID selector contained inside the overall selector.</li>
+                  <li><b>Tens</b>: Score one in this column for each class selector, attribute selector, or pseudo-class contained inside the overall selector.</li>
+                  <li><b>Ones</b>: Score one in this column for each element selector or pseudo-element contained inside the overall selector.</li>
+                  <li><b>Zeros</b>: The universal selector (<code>*</code>), combinators (<code>+</code>, <code>&gt;</code>, <code>~</code>, ' '), and negation pseudo-class (<code>:not</code>) have no effect on specificity.</li>
+                </ol>
+                <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">Selector</th>
+                      <th scope="col">Thousands</th>
+                      <th scope="col">Hundreds</th>
+                      <th scope="col">Tens</th>
+                      <th scope="col">Ones</th>
+                      <th scope="col">Total specificity</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>h1</code></td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>0001</td>
+                    </tr>
+                    <tr>
+                      <td><code>h1 + p::first-letter</code></td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>3</td>
+                      <td>0003</td>
+                    </tr>
+                    <tr>
+                      <td><code>li &gt; a[href*="en-US"] &gt; .inline-warning</code></td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>2</td>
+                      <td>2</td>
+                      <td>0022</td>
+                    </tr>
+                    <tr>
+                      <td><code>#identifier</code></td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0100</td>
+                    </tr>
+                    <tr>
+                      <td>No selector, with a rule inside an element's <code><a class="mdn-link" href="Web/HTML/Global_attributes#attr-style">style</a></code> attribute</td>
+                      <td>1</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>1000</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </dd>
+              <dt>!important</dt>
+              <dd>
+                <p>There is a special piece of CSS that you can use to overrule all of the above calculations, however you should be very careful with using it - <code>!important</code>. This is used to make a particular property and value the most specific thing, thus overriding the normal rules of the cascade.</p>
+                <p>The only way to override this <code>!important</code> declaration would be to include another <code>!important</code> declaration on a declaration with the <i>same specificity</i> later in the source order, or one with a higher specificity.</p>
+                <p>It is useful to know that <code>!important</code> exists so that you know what it is when you come across it in other people's code. <b>However, we strongly recommend that you never use it unless you absolutely have to.</b> <code>!important</code> changes the way the cascade normally works, so it can make debugging CSS problems really hard to work out, especially in a large stylesheet.</p>
+              </dd>
+            </dl>
+          </section>
+        </section>
+        <section>
+          <h4>Selectors</h4>
+          <p>You have met selectors already. A CSS selector is the first part of a CSS Rule. It is a pattern of elements and other terms that tell the browser which HTML elements should be selected to have the CSS property values inside the rule applied to them. The element or elements which are selected by the selector are referred to as the <i>subject of the selector</i>. If you have more than one thing which uses the same CSS then the individual selectors can be combined into a <i>selector list</i> so that the rule is applied to all of the individual selectors.</p>
+          <section>
+            <h5>Type class and ID selectors</h5>
+            <dl>
+              <dt>Type selectors</dt>
+              <dd>
+                <p>A <b>type selector</b> is sometimes referred to as a <i>tag name selector</i> or <i>element selector</i>, because it selects an HTML tag/element in your document. In the below example we have used span, em and strong selectors.</p>
+                <pre><code class="my-css">
+                    span {
+                      background-color: yellow;
+                    }
+                  </code></pre>
+              </dd>
+              <dt>The universal selector</dt>
+              <dd>
+                <p>The universal selector is indicated by an asterisk (<code>*</code>) and selects everything in the document (or inside the parent element if it is being chained together with another element and a descendant combinator, for example).</p>
+                <pre><code class="my-css">
+                    article *:first-child {
+                      background-color: yellow;
+                    }
+                  </code></pre>
+              </dd>
+              <dt>Class selectors</dt>
+              <dd>
+                <p>The class selector starts with a full stop (<code>.</code>) character and will select everything in the document with that class applied to it. You can apply multiple classes to an element and target them individually, or only select the element when all of the classes in the selector are present. This can be helpful when building up components that can be combined in different ways on your site.</p>
+                <pre><code class="my-css">
+                    .notebox.warning {
+                      background-color: yellow;
+                    }
+                  </code></pre>
+              </dd>
+              <dt>ID Selectors</dt>
+              <dd>
+                <p>An ID selector begins with a <code>#</code> rather than a full stop character, but is basically used in the same way as a class selector. An ID however can be used only once per document. It can select an element that has the <code>id</code> set on it, and you can precede the ID with a type selector to only target the element if both the element and ID match.</p>
+                <pre><code class="my-css">
+                    #one {
+                      background-color: yellow;
+                    }
+                  </code></pre>
+              </dd>
+            </dl>
+          </section>
+          <section>
+            <h5>Attribute selectors</h5>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Selector</th>
+                  <th scope="col">Example</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>[<i>attr</i>]</code></td>
+                  <td><code class="my-css">a[title] {}</code></td>
+                  <td>Matches elements with an attribute name of <i>attr</i> - the value in square brackets.</td>
+                </tr>
+                <tr>
+                  <td><code>[<i>attr</i>=<i>value</i>]</code></td>
+                  <td><code class="my-css">a[href="https://example.com"] {}</code></td>
+                  <td>Matches elements with an attribute name of <i>attr</i> whose value is exactly <i>value</i> - the string inside the quotes.</td>
+                </tr>
+                <tr>
+                  <td><code>[<i>attr</i>~=<i>value</i>]</code></td>
+                  <td><code class="my-css">p[class~="special"] {}</code></td>
+                  <td>Matches elements with an attribute name of <i>attr</i> whose value is exactly <i>value</i>, or elements with a <code>class</code> attribute containing one or more class names, at least one of which matches <i>value</i>.</td>
+                </tr>
+                <tr>
+                  <td><code>[<i>attr</i>|=<i>value</i>]</code></td>
+                  <td><code class="my-css">div[lang|="zh"] {}</code></td>
+                  <td>Matches elements with an attribute name of <i>attr</i> whose value can be exactly <i>value</i> or can begin with <i>value</i> immediately followed by a hyphen.</td>
+                </tr>
+                <tr>
+                  <td><code>[<i>attr</i>^=<i>value</i>]</code></td>
+                  <td><code class="my-css">li[class^="box-"] {}</code></td>
+                  <td>Matches elements with an attribute name of <i>attr</i> whose value has the substring <i>value</i> at the start of it.</td>
+                </tr>
+                <tr>
+                  <td><code>[<i>attr</i>$=<i>value</i>]</code></td>
+                  <td><code class="my-css">li[class$="-box"] {}</code></td>
+                  <td>Matches elements with an attribute name of <i>attr</i> whose value has the substring <i>value</i> at the end of it.</td>
+                </tr>
+                <tr>
+                  <td><code>[<i>attr</i>*=<i> </i>]</code></td>
+                  <td><code class="my-css">li[class*="box"] {}</code></td>
+                  <td>Matches elements with an attribute name of <i>attr</i> whose value contains at least one occurrence of the substring <i>value</i> anywhere within the string.</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h5>Pseudo-classes and pseudo-elements</h5>
+            <dl>
+              <dt>Pseudo-class</dt>
+              <dd>
+                <p>A pseudo-class is a selector that selects elements that are in a specific state. They tend to act as if you had applied a class to some part of your document. Pseudo-classes are keywords that start with a colon <code>:</code>. Some pseudo-classes only apply when the user interacts with the document in some way. These <b>user-action</b> pseudo-classes, sometimes referred to as <b>dynamic pseudo-classes</b>, act as if a class had been added to the element when the user interacts with it.</p>
+                <pre><code class="my-css">
+                    article p:first-child {
+                      font-size: 120%;
+                      font-weight: bold;
+                    }
+                  </code></pre>
+              </dd>
+              <dt>pseudo-elements</dt>
+              <dd>
+                <p>Pseudo-elements act as if you had added a whole new HTML element into the markup, rather than applying a class to existing elements. Pseudo-elements start with a double colon <code>::</code>.</p>
+                <pre><code class="my-css">
+                    article p::first-line {
+                      font-size: 120%;
+                      font-weight: bold;
+                    }
+                  </code></pre>
+              </dd>
+            </dl>
+          </section>
+          <section>
+            <h5>Combinators</h5>
+            <dl>
+              <dt>Descendant selector</dt>
+              <dd>
+                <p>These selectors (with spaces in between them) select elements that are descendants of others selector. They do not need to be direct children to match.</p>
+                <pre><code class="my-css">
+                    body article p {
+                      color: red;
+                    }
+                  </code></pre>
+              </dd>
+              <dt>Child combinator</dt>
+              <dd>
+                <p>The child combinator is a greater-than symbol (<code>&gt;</code>), which matches only when the selectors select elements that are direct children. Descendants further down the hierarchy don't match.</p>
+                <pre><code class="my-css">
+                    ul &gt; li {
+                      border-top: 5px solid red;
+                    }
+                  </code></pre>
+              </dd>
+              <dt>Adjacent sibling</dt>
+              <dd>
+                <p>The adjacent sibling selector (<code>+</code>) is used to select something if it is right next to another element at the same level of the hierarchy. A common use case is to do something with a <b>paragraph</b> that follows a <b>heading</b>,</p>
+                <pre><code class="my-css">
+                    h1 + p {
+                      font-weight: bold;
+                      background-color: #333;
+                      color: #fff;
+                      padding: .5em;
+                    }
+                  </code></pre>
+              </dd>
+              <dt>General sibling</dt>
+              <dd>
+                <p>If you want to select siblings of an element even if they are not directly adjacent, then you can use the general sibling combinator (<code>~</code>). To select all <code>&lt;p&gt;</code> elements that come <i>anywhere</i> after <code>&lt;h1&gt;</code> elements, we'd do this:</p>
+                <pre><code class="my-css">
+                    h1 ~ p {
+                      font-weight: bold;
+                      background-color: #333;
+                      color: #fff;
+                      padding: .5em;
+                    }
+                  </code></pre>
+              </dd>
+            </dl>
+          </section>
+        </section>
+        <section>
+          <h4>The box model</h4>
+          <section>
+            <h5>Block and inline boxes</h5>
+            <p>In CSS we broadly have two types of box - <b>block boxes</b> and <b>inline boxes</b>. The type of box applied to an element is defined by <a class="mdn-css"><code>display</code></a> property values such as <code>block</code> and <code>inline</code>, and relates to the <b>outer</b> value of <code>display</code>.</p>
+            <table>
+              <thead>
+                <tr>
+                  <th>block boxes</th>
+                  <th>inline boxes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>The box will <b>break</b> onto a new line.</td>
+                  <td>The box will <b>not break</b> onto a new line.</td>
+                </tr>
+                <tr>
+                  <td>The <a class="mdn-css"><code>width</code></a> and <a class="mdn-css"><code>height</code></a> properties <b>are respected</b>.</td>
+                  <td>The <a class="mdn-css"><code>width</code></a> and <a class="mdn-css"><code>height</code></a> properties <b>will not apply</b>.</td>
+                </tr>
+                <tr>
+                  <td>Padding, margin and border will cause other elements to be <b>pushed away</b> from the box</td>
+                  <td>Padding, margin and borders will apply but <b>will not</b> cause other inline boxes to move away from the box.</td>
+                </tr>
+                <tr>
+                  <td>The box will extend in the inline direction to fill the space available in its container.</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+            <section>
+              <h6><i>outer</i> display type</h6>
+              <p>As mentioned above, boxes in CSS have an <i>outer</i> display type, which details whether the box is block or inline. This apply to the relationship with its <b>siblings and parent</b>.</p>
+              <p>The type of box applied to an element is defined by <a class="mdn-css"><code>display</code></a> property values such as <code>block</code> and <code>inline</code>, and relates to the <b>outer</b> value of <code>display</code>.</p>
+              <p>An element with <code>display: inline-block</code> does a subset of the block things we already know about:</p>
+              <ul>
+                <li>The <code>width</code> and <code>height</code> properties are respected.</li>
+                <li><code>padding</code>, <code>margin</code>, and <code>border</code> will cause other elements to be pushed away from the box.</li>
+              </ul>
+              <p>Where this can be useful is when you want to give a element a larger click area by adding <code>padding</code>. You can use <code>display: inline-block</code> to allow padding to be set on it, making it easier for a user to click. You see this fairly frequently in navigation bars.</p>
+            </section>
+            <section>
+              <h6><i>inner</i> display type</h6>
+              <p>Boxes also have an <i>inner</i> display type, however, which dictates how elements inside that box are laid out. This apply to the relationship with its <b>descendant</b>.</p>
+              <p>A list laid out using <code>display: flex</code>, a inner display type, establishes flex layout for the items inside the container which makes them in a inline box, however the list itself is a block box and expands to the full container width and breaks onto a new line.</p>
+              <ul style="display:flex">
+                <li>item 1</li>
+                <li>item 2</li>
+              </ul>
+              <pre><code class="my-css">
+                    ul {
+                      display: flex;
+                    }
+                  </code></pre>
+            </section>
+          </section>
+          <section>
+            <h5>What is the CSS box model?</h5>
+            <p>The CSS box model defines how the different parts of a box - margin, border, padding, and content - work together to create a box that you can see on the page.</p>
+            <p><img class="mdn-img" src="16558/box-model.png"></p>
+            <dl>
+              <dt>Content box</dt>
+              <dd>The area where your content is displayed, which can be sized using properties like <a class="mdn-css"><code>width</code></a> and <a class="mdn-css"><code>height</code></a>.</dd>
+              <dt>Padding box</dt>
+              <dd>The padding sits around the content as white space; its size can be controlled using <a class="mdn-css"><code>padding</code></a> and related properties.</dd>
+              <dt>Border box</dt>
+              <dd>The border box wraps the content and any padding. Its size and style can be controlled using <a class="mdn-css"><code>border</code></a> and related properties.</dd>
+              <dt>Margin box</dt>
+              <dd>The margin is the outermost layer, wrapping the content, padding and border as whitespace between this box and other elements. Its size can be controlled using <a class="mdn-css"><code>margin</code></a> and related properties.</dd>
+            </dl>
+            <dl>
+              <dt>The standard CSS box model</dt>
+              <dd>In the standard box model, if you give a box a <code>width</code> and a <code>height</code>, this defines the width and height of the <i>content box</i>. Any padding and border is then added to that width and height to get the total size taken up by the box. Since the margin is not counted towards the actual size of the box. The space taken up by our box using the standard box model will actually be <code>(width|height) + padding * 2 + border * 2</code>.</dd>
+              <dt>The alternative CSS box model</dt>
+              <dd>
+                <p>Using this model, any width is the width of the visible box on the page, therefore the content area width is that width minus the width for the padding and border. By default, browsers use the standard box model. If you want to turn on the alternative model for an element you do so by setting <code>box-sizing: border-box</code> on it. By doing this you are telling the browser to take the border box as the area defined by any size you set.</p>
+                <pre><code class="my-css">
+                    html {
+                      box-sizing: border-box;
+                    }
+                    *, *::before, *::after {
+                      box-sizing: inherit;
+                    }
+                  </code></pre>
+              </dd>
+            </dl>
+          </section>
+          <section>
+            <h5>Margins, padding, and borders</h5>
+            <section>
+              <h6>Margin</h6>
+              <p>The margin is an invisible space around your box. It pushes other elements away from the box. Margins can have positive or negative values. Setting a negative margin on one side of your box can cause it to overlap other things on the page. Whether you are using the standard or alternative box model, the margin is always added on after the size of the visible box has been calculated.</p>
+              <p>A key thing to understand about margins is the concept of <b>margin collapsing</b>. If you have two elements whose margins touch, those margins will combine to become one margin, which is the <b>size of the largest</b> individual margin.</p>
+              <p>We can control all margins of an element at once using the <a class="mdn-css"><code>margin</code></a> property, or each side individually using the equivalent longhand properties: <a class="mdn-css"><code>margin-top</code></a>, <a class="mdn-css"><code>margin-right</code></a>, <a class="mdn-css"><code>margin-bottom</code></a>, <a class="mdn-css"><code>margin-left</code></a>.</p>
+            </section>
+            <section>
+              <h6>Border</h6>
+              <p>The border is drawn between the margin and the padding of a box. If you are using the standard box model, the size of the border is added to the <code>width</code> and <code>height</code> of the box. If you are using the alternative box model then the size of the border makes the content box smaller as it takes up some of that available <code>width</code> and <code>height</code>.</p>
+              <p>For styling borders, there are a large number of properties - there are four borders, and each border has a style, width and color that we might want to manipulate.</p>
+              <p>You can set the width, color, and style of all four borders at once using the <a class="mdn-css"><code>border</code></a> property.</p>
+              <p>To set the width, color, and style of each side individually, you can use: <a class="mdn-css"><code>border-top</code></a>, <a class="mdn-css"><code>border-right</code></a>, <a class="mdn-css"><code>border-bottom</code></a>, <a class="mdn-css"><code>border-left</code></a></p>
+              <p>To set the color, style, or width of all sides, use the following: <a class="mdn-css"><code>border-width</code></a>, <a class="mdn-css"><code>border-style</code></a>, <a class="mdn-css"><code>border-color</code></a></p>
+              <p>To set the color, style, or width of a single side, you can use one of the most granular longhand properties: <a class="mdn-css"><code>border-top-width</code></a>, <a class="mdn-css"><code>border-top-style</code></a>, <a class="mdn-css"><code>border-top-color</code></a>, <a class="mdn-css"><code>border-right-width</code></a>, <a class="mdn-css"><code>border-right-style</code></a>, <a class="mdn-css"><code>border-right-color</code></a>, <a class="mdn-css"><code>border-bottom-width</code></a>, <a class="mdn-css"><code>border-bottom-style</code></a>, <a class="mdn-css"><code>border-bottom-color</code></a>, <a class="mdn-css"><code>border-left-width</code></a>, <a class="mdn-css"><code>border-left-style</code></a>, <a class="mdn-css"><code>border-left-color</code></a></p>
+            </section>
+            <section>
+              <h6>Padding</h6>
+              <p>The padding sits between the border and the content area. Unlike margins you cannot have negative amounts of padding, so the value must be 0 or a positive value. Any background applied to your element will display behind the padding, and it is typically used to push the content away from the border.</p>
+              <p>We can control the padding on each side of an element individually using the <a class="mdn-css"><code>padding</code></a> property, or each side individually using the equivalent longhand properties: <a class="mdn-css"><code>padding-top</code></a>, <a class="mdn-css"><code>padding-right</code></a>, <a class="mdn-css"><code>padding-bottom</code></a>, <a class="mdn-css"><code>padding-left</code></a></p>
+            </section>
+          </section>
+        </section>
+        <section>
+          <h4>CSS values and units</h4>
+          <section>
+            <h5>Numbers, lengths, and percentages</h5>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Data type</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code><a class="mdn-css">&lt;integer&gt;</a></code></td>
+                  <td>An <code>&lt;integer&gt;</code> is a whole number such as <code>1024</code> or <code>-55</code>.</td>
+                </tr>
+                <tr>
+                  <td><code><a class="mdn-css">&lt;number&gt;</a></code></td>
+                  <td>A <code>&lt;number&gt;</code> represents a decimal number - it may or may not have a decimal point with a fractional component, for example <code>0.255</code>, <code>128</code>, or <code>-1.2</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>&lt;dimension&gt;</code></td>
+                  <td>A <code>&lt;dimension&gt;</code> is a <code>&lt;number&gt;</code> with a unit attached to it, for example <code>45deg</code>, <code>5s</code>, or <code>10px</code>. <code>&lt;dimension&gt;</code> is an umbrella category that includes the <code><a class="mdn-css">&lt;length&gt;</a></code>, <code><a class="mdn-css">&lt;angle&gt;</a></code>, <code><a class="mdn-css">&lt;time&gt;</a></code>, and <code><a class="mdn-css">&lt;resolution&gt;</a></code> types.</td>
+                </tr>
+                <tr>
+                  <td><code><a class="mdn-css">&lt;percentage&gt;</a></code></td>
+                  <td>A <code>&lt;percentage&gt;</code> represents a fraction of some other value, for example <code>50%</code>. Percentage values are always relative to another quantity, for example an element's length is relative to its parent element's length.</td>
+                </tr>
+              </tbody>
+            </table>
+            <section>
+              <h6>Absolute length units</h6>
+              <p>The following are all <b>absolute</b> length units - they are not relative to anything else and are generally considered to always be the same size.</p>
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Unit</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Equivalent to</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>cm</code></td>
+                    <td>Centimeters</td>
+                    <td>1cm = 96px/2.54</td>
+                  </tr>
+                  <tr>
+                    <td><code>mm</code></td>
+                    <td>Millimeters</td>
+                    <td>1mm = 1/10th of 1cm</td>
+                  </tr>
+                  <tr>
+                    <td><code>Q</code></td>
+                    <td>Quarter-millimeters</td>
+                    <td>1Q = 1/40th of 1cm</td>
+                  </tr>
+                  <tr>
+                    <td><code>in</code></td>
+                    <td>Inches</td>
+                    <td>1in = 2.54cm = 96px</td>
+                  </tr>
+                  <tr>
+                    <td><code>pc</code></td>
+                    <td>Picas</td>
+                    <td>1pc = 1/16th of 1in</td>
+                  </tr>
+                  <tr>
+                    <td><code>pt</code></td>
+                    <td>Points</td>
+                    <td>1pt = 1/72th of 1in</td>
+                  </tr>
+                  <tr>
+                    <td><code>px</code></td>
+                    <td>Pixels</td>
+                    <td>1px = 1/96th of 1in</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <section>
+              <h6>Relative length units</h4>
+                <p>Relative length units are <b>relative</b> to something else, perhaps the size of the parent element's font, or the size of the viewport.</p>
+                <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">Unit</th>
+                      <th scope="col">Relative to</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>em</code></td>
+                      <td>Font size of the parent element.</td>
+                    </tr>
+                    <tr>
+                      <td><code>ex</code></td>
+                      <td>x-height of the element's font.</td>
+                    </tr>
+                    <tr>
+                      <td><code>ch</code></td>
+                      <td>The advance measure (width) of the glyph "0" of the element's font.</td>
+                    </tr>
+                    <tr>
+                      <td><code>rem</code></td>
+                      <td>Font size of the root element.</td>
+                    </tr>
+                    <tr>
+                      <td><code>lh</code></td>
+                      <td>Line height of the element.</td>
+                    </tr>
+                    <tr>
+                      <td><code>vw</code></td>
+                      <td>1% of the viewport's width.</td>
+                    </tr>
+                    <tr>
+                      <td><code>vh</code></td>
+                      <td>1% of the viewport's height.</td>
+                    </tr>
+                    <tr>
+                      <td><code>vmin</code></td>
+                      <td>1% of the viewport's smaller dimension.</td>
+                    </tr>
+                    <tr>
+                      <td><code>vmax</code></td>
+                      <td>1% of the viewport's larger dimension.</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </section>
+            <section>
+              <h6>Percentages</h6>
+              <p>The thing with percentages is that they are always set relative to some other value of other element. For example, if you set an element's <code>font-size</code> as a percentage it will be a percentage of the <code>font-size</code> of the element's parent. If you use a percentage for a <code>width</code> value, it will be a percentage of the <code>width</code> of the parent.</p>
+            </section>
+            <section>
+              <h6>Number</h6>
+              <p>Some values accept numbers, without any unit added to them. An example of a property which accepts a unitless number is the <code>opacity</code> property, which controls the opacity of an element (how transparent it is). This property accepts a number between <code>0</code> (fully transparent) and <code>1</code> (fully opaque).</p>
+            </section>
+          </section>
+          <section>
+            <h5>Strings and identifiers</h5>
+            <p>Throughout the examples above, we've seen places where keywords are used as a value (for example <code>&lt;color&gt;</code> keywords like <code>red</code>, <code>black</code>). These keywords are more accurately described as <i>identifiers</i>, a special value that CSS understands. As such they are not quoted - they are not treated as strings.</p>
+            <p>There are places where you use strings in CSS, for example in pesudo-element <code>::before</code>, <code>::after</code>, we use string as value of property <code>content</code> In this case the value is quoted to demonstrate that it is a <b>string</b>.</p>
+          </section>
+          <section>
+            <h5>Function</h5>
+            <p>A function is a reusable section of code that can be run multiple times to complete a repetitive task with minimum effort on the part of both the developer and the computer. We've already seen functions in action in the Colors section - <code>rgb()</code>, <code>hsl()</code>, etc. The value used to return an image from a file - <code>url()</code> - is also a function.</p>
+            <p>The <code>calc()</code> function gives you the ability to do simple calculations inside your CSS. It's particularly useful if you want to work out values that you can't define when writing the CSS for your project, and need the browser to work out for you at runtime.</p>
+            <p>For example, below we are using <code>calc()</code> to make the box <code>20% + 100px</code> wide. The 20% is calculated from the width of the parent container <code>.wrapper</code> and so will change if that width changes. </p>
+          </section>
+          <section>
+            <h5>Images</h5>
+            <p>The <code><a class="mdn-css">&lt;image&gt;</a></code> data type is used wherever an image is a valid value. This can be an actual image file pointed to via a <code>url()</code> function, or a gradient <code>linear-gradient()</code>.</p>
+            <pre><code class="my-css">
+                .image {
+                  background-image: url(star.png);
+                }
+                .gradient {
+                  background-image: linear-gradient(90deg, rgba(119,0,255,1) 39%, rgba(0,212,255,1) 100%);
+                }
+              </code></pre>
+          </section>
+          <section>
+            <h5>Position</h5>
+            <p>The <code><a class="mdn-css">&lt;position&gt; value</a></code> data type represents a set of 2D coordinates, used to position an item such as a background image (via <code><a class="mdn-css">background-position</a></code>). It can take keywords such as <code>top</code>, <code>left</code>, <code>bottom</code>, <code>right</code>, and <code>center</code> to align items with specific bounds of a 2D box, along with lengths, which represent offsets from the top and left-hand edges of the box.</p>
+            <p>A typical position value consists of two values - the first sets the position horizontally, the second vertically. If you only specify values for one axis the other will default to <code>center</code>.</p>
+            <pre><code class="my-css">
+                .box {
+                  height: 300px;
+                  width: 400px;
+                  background-image: url(star.png);
+                  background-repeat: no-repeat;
+                  background-position: right 40px;
+                }
+              </code></pre>
+          </section>
+          <section>
+            <h5>Color</h5>
+            <p>The standard color system available in modern computers is 24 bit, which allows the display of millions of distinct colors via a combination of different red, green and blue channels with 256 different values per channel (256 x 256 x 256 = 16,777,216.).</p>
+            <p>The color keywords are a simple and understandable way of specifying color. You can see a full list on the page for the <code><a class="mdn-css">&lt;color&gt; value</a></code>.</p>
+            <section>
+              <h6>Hexadecimal RGB values</h6>
+              <p>The next type of color value you are likely to encounter is hexadecimal codes. Each hex value consists of a hash/pound symbol (#) followed by six hexadecimal numbers, each of which can take one of 16 values between 0 and f (which represents 15) - so <code>0123456789abcdef</code>. Each pair of values represents one of the channels - red, green and blue - and allows us to specify any of the 256 available values for each (16 x 16 = 256.)</p>
+              <pre><code class="my-css">
+                  .hex {
+                    background-color: #02798b;
+                  }
+                </code></pre>
+            </section>
+            <section>
+              <h6>RGB and RGBA values</h6>
+              <p>An RGB value is a function - <code>rgb()</code> - which is given three parameters that represent the red, green, and blue channel values of the colors, in much the same way as hex values. The difference with RGB is that each channel is represented not by two hex digits, but by a decimal number between 0 and 255.</p>
+              <p>You can also use RGBA colors - these work in exactly the same way as RGB colors, and so you can use any RGB values, however there is a fourth value that represents the alpha channel of the color, which controls opacity. If you set this value to <code>0</code> it will make the color fully transparent, whereas <code>1</code> will make it fully opaque. Values in between give you different levels of transparency.</p>
+              <pre><code class="my-css">
+                  .rgb {
+                    background-color: rgba(29, 111, 213);
+                  }
+                  .rgba {
+                    background-color: rgba(2, 121, 139, .3);
+                  }
+                </code></pre>
+            </section>
+            <section>
+              <h6>HSL and HSLA values</h6>
+              <p>Slightly less well-supported than RGB is the HSL color model (not supported on old versions of IE), which was implemented after much interest from designers. Instead of red, green, and blue values, the <code>hsl()</code> function accepts hue, saturation, and lightness values, which are used to distinguish between the 16.7 million colors, but in a different way:</p>
+              <ul>
+                <li><b>Hue</b>: The base shade of the color. This takes a value between 0 and 360, representing the angles round a color wheel.</li>
+                <li><b>Saturation</b>: How saturated is the color? This takes a value from 0-100%, where 0 is no color (it will appear as a shade of grey), and 100% is full color saturation</li>
+                <li><b>Lightness</b>: How light or bright is the color? This takes a value from 0-100%, where 0 is no light (it will appear completely black) and 100% is full light (it will appear completely white)</li>
+              </ul>
+              <pre><code class="my-css">
+                  .hsl {
+                    background-color: hsl(321, 47%, 57%);
+                  }
+                  .hsla {
+                    background-color: hsl(321, 47%, 57%, .1);
+                  }
+                </code></pre>
+            </section>
+          </section>
+        </section>
+        <section>
+          <h4>Backgrounds and borders</h4>
+          <p>The CSS <a class="mdn-css"><code>background</code></a> property is a shorthand for a number of background longhand properties. If you discover a complex background property in a stylesheet, it might seem a little hard to understand as so many values can be passed in at once.</p>
+          <section>
+            <h5>Styling backgrounds in CSS</h5>
+            <section>
+              <h6>Background colors</h6>
+              <p>The <a class="mdn-css"><code>background-color</code></a> property defines the background color on any element in CSS. The property accepts any valid <code><a class="mdn-css">&lt;color&gt; value</a></code>. A <code>background-color</code> extends underneath the content and padding box of the element.</p>
+            </section>
+            <section>
+              <h6>Background images</h6>
+              <p>The <a class="mdn-css"><code>background-image</code></a> property enables the display of an image in the background of an element.</p>
+            </section>
+            <section>
+              <h6>Controlling background-repeat</h6>
+              <p>The <a class="mdn-css"><code>background-repeat</code></a> property is used to control the tiling behavior of images. The available values are:</p>
+              <ul>
+                <li><code>no-repeat</code> - stop the background from repeating altogether.</li>
+                <li><code>repeat-x</code> - repeat horizontally.</li>
+                <li><code>repeat-y</code> - repeat vertrically.</li>
+                <li><code>repeat</code> - the default; repeat in both directions.</li>
+              </ul>
+            </section>
+            <section>
+              <h6>Sizing the background image</h6>
+              <p>If we have a large image that has ended up being cropped as it is larger than the element it is a background of, Then we could use the <a class="mdn-css"><code>background-size</code></a> property, which can take <a class="mdn-css">length</a> or <a class="mdn-css">percentage</a> values, to size the image to fit inside the background.</p>
+              <p>You can also use keywords:</p>
+              <ul>
+                <li><code>cover</code> - the browser will make the image just large enough so that it completely covers the box area while still retaining its aspect ratio. In this case some of the image is likely to end up outside the box.</li>
+                <li><code>contain</code> - the browser will make the image the right size to fit inside the box. In this case you may end up with gaps on either side or on the top and bottom of the image, if the aspect ratio of the image is different to that of the box.</li>
+              </ul>
+              <div class="my-playground">
+                <pre><code class="my-html">
+                  &lt;div class="box my-border my-margin"&gt;&lt;/div&gt;
+                  &lt;div class="box cover my-border my-margin"&gt;&lt;/div&gt;
+                  &lt;div class="box contain my-border my-margin"&gt;&lt;/div&gt;
+                </code></pre>
+                <pre><code class="my-css">
+                  .box {
+                    height: 300px;
+                    background-image: url("https://mdn.github.io/css-examples/learn/backgrounds-borders/balloons.jpg");
+                    background-repeat: no-repeat;
+                  }
+                  .contain {
+                    background-size: contain;
+                  }
+                  .cover {
+                    background-size: cover;
+                  }
+                </code></pre>
+              </div>
+            </section>
+            <section>
+              <h6>Positioning the background image</h6>
+              <p>The <a class="mdn-css"><code>background-position</code></a> property allows you to choose the position in which the background image appears on the box it is applied to. This uses a coordinate system in which the top-left-hand corner of the box is <code>(0,0)</code>, and the box is positioned along the horizontal (<code>x</code>) and vertical (<code>y</code>) axes.</p>
+              <p>The most common <code>background-position</code> values take two individual values - a horizontal value followed by a vertical value. You can use keywords such as <code>top</code> and <code>right</code> and <a class="mdn-css">Lengths</a> or <a class="mdn-css">percentages</a> or mix keyword values with lengths or percentages</p>
+              <p>Finally, you can also use a 4-value syntax in order to indicate a distance from certain edges of the box - the length unit in this case is an offset from the value that preceeds it. So in the CSS below we are positioning the background 20px from the top and 10px from the right:</p>
+              <pre><code class="my-css">
+                .box {
+                  background-image: url(star.png);
+                  background-repeat: no-repeat;
+                  background-position: top 20px;
+                  background-position: top 20px right 10px;
+                }
+              </code></pre>
+            </section>
+            <section>
+              <h6>Multiple background images</h6>
+              <p>It is also possible to have multiple background images - you specify multiple <code>background-image</code> values in a single property value, separating each one with a comma.</p>
+              <p>When you do this you may end up with background images overlapping each other. The backgrounds will layer with the last listed background image at the bottom of the stack, and each previous image stacking on top of the one that follows it in the code.</p>
+              <p>The other <code>background-*</code> properties can also have values comma-separated in the same way as <code>background-image</code>. Each value of the different properties will match up to the values in the same position in the other properties:</p>
+              <pre><code class="my-css">
+                .box {
+                  background-image: url(image1.png), url(image2.png), url(image3.png), url(image1.png);
+                  background-repeat: no-repeat, repeat-x, repeat;
+                  background-position: 10px 20px,  top right;
+                }
+              </code></pre>
+            </section>
+            <section>
+              <h6>Background attachment</h6>
+              <p>Another option we have available for backgrounds is specifying how they scroll when the content scrolls. This is controlled using the <a class="mdn-css"><code>background-attachment</code></a> property, which can take the following values:</p>
+              <ul>
+                <li><code>scroll</code>: Causes the element's background to scroll when the page is scrolled. If the element content is scrolled, the background does not move. In effect, the background is fixed to the same position on the page, so it scrolls as the page scrolls.</li>
+                <li><code>fixed</code>: Causes an element's background to be fixed to the viewport, so that it doesn't scroll when the page or element content is scrolled. It will always remain in the same position on the screen.</li>
+                <li><code>local</code>: This value was added later on (it is only supported in Internet Explorer 9+, whereas the others are supported in IE4+) because the <code>scroll</code> value is rather confusing and doesn't really do what you want in many cases. The <code>local</code> value fixes the background to the element it is set on, so when you scroll the element, the background scrolls with it.</li>
+              </ul>
+            </section>
+            <section>
+              <h6>Using the background shorthand property</h6>
+              <p>You will often see backgrounds specified using the <a class="mdn-css"><code>background</code></a> property. This shorthand lets you set all of the different properties at once.</p>
+              <p>If using multiple backgrounds, you need to specify all of the properties for the first background, then add your next background after a comma. In the example below we have a gradient with a size and position, then an image background with <code>no-repeat</code> and a position, then a color.</p>
+              <p>There are a few rules that need to be followed when writing background image shorthand values, for example:</p>
+              <ul>
+                <li>A <code>background-color</code> may only be specified after the final comma.</li>
+                <li>The value for <code>background-size</code> may only be included immediately after <code>background-position</code>, separated with the '/' character, like this: <code>center/80%</code>.</li>
+              </ul>
+            </section>
+          </section>
+          <section>
+            <h5>Borders</h5>
+            <p>Typically when we add borders to an element with CSS we use a shorthand property that sets the color, width, and style of the border in one line of CSS. We can set a border for all four sides of a box with <a class="mdn-css"><code>border</code></a>.</p>
+            <pre><code class="my-css">
+              .box {
+                border: 1px solid black;
+              }
+            </code></pre>
+            <section>
+              <h6>Rounded corners</h6>
+              <p>Rounding corners on a box is achived by using the <a class="mdn-css"><code>border-radius</code></a> property and associated longhands which relate to each corner of the box. Two lengths or percentages may be used as a value, the first value defining the horizontal radius, and the second the vertical radius. In a lot of cases you will only pass in one value, which will be used for both.</p>
+              <pre><code class="my-css">
+                .box {
+                  border-radius: 10px;
+                }
+              </code></pre>
+            </section>
+          </section>
+        </section>
+        <section>
+          <h4>Overflowing content</h4>
+          <section>
+            <h5>What is overflow ?</h5>
+            <p>We already know that everything in CSS is a box, and that we can constrain the size of these boxes by giving them values of <a class="mdn-css"><code>width</code></a> and <a class="mdn-css"><code>height</code></a> (or <a class="mdn-css"><code>inline-size</code></a> and <a class="mdn-css"><code>block-size</code></a>). Overflow is what happens when you have too much content in a box, so it won't fit inside it comfortably. CSS gives you various tools to manage this overflow, and it is also a useful concept to understand at this early stage.</p>
+          </section>
+          <section>
+            <h5>The overflow property</h5>
+            <p>The <a class="mdn-css"><code>overflow</code></a> property is how you take control of an element's overflow and tell the browser how you want it to behave. The default value of overflow is <code>visible</code>, which is why by default we can see our content when it overflows.</p>
+            <p>If you want to crop the content when it overflows you can set <code>overflow: hidden</code> on your box. This will do exactly what it says - hide the overflow.</p>
+            <p>Perhaps you would instead like to add scrollbars when content overflows? If you use <code>overflow: scroll</code> then your browser will always display scrollbars - even if there is not enough content to overflow.</p>
+            <p>If you only want scrollbars to appear if there is more content than can fit in the box, then use <code>overflow: auto</code>. In this case it is left up to the browser to decide whether to display scrollbars. Desktop browsers will typically only do so once there is enough content to cause overflow.</p>
+            <pre><code class="my-css">
+              .box {
+                border: 1px solid #333333;
+                width: 200px;
+                height: 100px;
+                overflow: auto;
+              }
+            </code></pre>
+          </section>
+        </section>
+        <section>
+          <h4>Sizing items in CSS</h4>
+          <section>
+            <h5>The natural or intrinsic size of things</h5>
+            <p>HTML Elements have a natural size, set before they are affected by any CSS. A straightforward example is an image. An image has a width and a height defined in the image file it is embedding into the page. This size is described as the <b>intrinsic size</b> - which comes from the image itself.</p>
+            <p>If you place an image on a page and do not change its height and width, either using attributes on the <code>&lt;img&gt;</code> tag or CSS, it will be displayed using that intrinsic size.</p>
+            <p>An empty <a class="mdn-element"><code>&lt;div&gt;</code></a> however, has no size of its own. If you add a <a class="mdn-element"><code>&lt;div&gt;</code></a> to your HTML with no content, then give it a border as we did with the image, you will see a line on the page. This is the collapsed border on the element - there is no content to hold it open. That border stretches to the width of the container, because it is a block level element, a behavior that should be starting to become familiar to you. It has no height (or size in the block dimension) because there is no content.</p>
+          </section>
+          <section>
+            <h5>Setting a specific or extrinsic size</h5>
+            <p>We can of course give elements in our design a specific size. When a size is given to an element (and the content of which then needs to fit into that size) we refer to it as an <b>extrinsic size</b>. Take our <code>&lt;div&gt;</code> from the example above - we can give it specific <a class="mdn-css"><code>width</code></a> and <a class="mdn-css"><code>height</code></a> values, and it will now have that size no matter what content is placed into it. But a set height can cause content to overflow if there is more content than the element has space to fit inside it.</p>
+          </section>
+          <section>
+            <h5>min- and max- sizes</h5>
+            <p>In addition to giving things a fixed size, we can ask CSS to give an element a minimum or a maximum size. A common use of <a class="mdn-css"><code>max-width</code></a> is to cause images to scale down if there is not enough space to display them at their intrinsic width, while making sure they don't become larger than that width.</p>
+            <p>If you instead use <code>max-width: 100%</code>, the image is able to become smaller than its intrinsic size, but will stop at 100% of its size.</p>
+            <p>This technique is used to make images <i>responsive</i>, so that when viewed on a smaller device they scale down appropriately. You should however not use this technique to load in really large images and then scale them down in the browser. Images should be appropriately sized to be no larger than they need to be for the largest size they are displayed in the design. Downloading overly large images will cause your site to become slow, and it can cost users more money if they are on a metered connection.</p>
+          </section>
+          <section>
+            <h5>Viewport units</h5>
+            <p>The viewport - which is the visible area of your page in the browser you are using to view a site - also has a size. In CSS we have units which relate to the size of the viewport - the <code>vw</code> unit for viewport width, and <code>vh</code> for viewport height. Using these units you can size something relative to the viewport of the user.</p>
+            <p><code>1vh</code> is equal to 1% of the viewport height, and <code>1vw</code> is equal to 1% of the viewport width.</p>
+            <p>If you change the <code>vh</code> and <code>vw</code> values this will change the size of the box or font; changing the viewport size will also change their sizes because they are sized relative to the viewport.</p>
+            <p>Sizing things according to the viewport can be useful in your designs. For example, if you want a full page hero section to show before the rest of your content, making that part of your page 100vh high will push the rest of the content below the viewport, meaning that it will only appear once the document is scrolled.</p>
+          </section>
+        </section>
+        <section>
+          <h4>Images media form elements</h4>
+          <section>
+            <h5>Replaced elements</h5>
+            <p>Images and video are described as <b><a class="mdn-css">replaced elements</a></b>. This means that CSS cannot affect the internal layout of these elements - only their position on the page amongst other elements. As we will see however, there are various things that CSS can do with an image.</p>
+            <p>Certain replaced elements, such as images and video, are also described as having an <b> aspect ratio</b>. This means that it has a size in both the horizontal (x) and vertical (y) dimensions, and will be displayed using the intrinsic dimensions of the file by default.</p>
+          </section>
+          <section>
+            <h5>Sizing images</h5>
+            <p>As you already know from following these lessons, everything in CSS generates a box. If you place an image inside a box that is smaller or larger than the intrinsic dimensions of the image file in either direction, it will either appear smaller than the box, or overflow the box. You need to make a decision about what happens with the overflow.</p>
+            <p>A common technique is to make the <a class="mdn-css"><code>max-width</code></a> of an image 100%. This will enable the image to become smaller in size than the box but not larger. This technique will work with other replaced elements such as <code><a class="mdn-element">&lt;video&gt;</a></code>s, or <code><a class="mdn-element">&lt;iframe&gt;</a></code>s.</p>
+            <p>The <a class="mdn-css"><code>object-fit</code></a> property can help you here. When using <code>object-fit</code> the replaced element can be sized to fit a box in a variety of ways.</p>
+            <p>Below we have used the value <code>cover</code>, which sizes the image down, maintaining the aspect ratio so that it neatly fills the box. As the aspect ratio is maintained some parts of the image will be cropped by the box.</p>
+            <div class="my-playground">
+              <pre><code class="my-html">
+                &lt;div class="box my-border my-margin"&gt;
+                  &lt;img class="cover" src="https://mdn.github.io/css-examples/learn/images/balloons.jpg"&gt;
+                &lt;/div&gt;
+                &lt;div class="box my-border my-margin"&gt;
+                  &lt;img class="contain" src="https://mdn.github.io/css-examples/learn/images/balloons.jpg"&gt;
+                &lt;/div&gt;
+                &lt;div class="box my-border my-margin"&gt;
+                  &lt;img class="fill" src="https://mdn.github.io/css-examples/learn/images/balloons.jpg"&gt;
+                &lt;/div&gt;
+              </code></pre>
+              <pre><code class="my-css">
+                .box {
+                  width: 200px;
+                  height: 200px;
+                }
+                img {
+                  height: 100%;
+                  width: 100%;
+                }
+                .cover {
+                  object-fit: cover;
+                }
+                .contain {
+                  object-fit: contain;
+                }
+                .fill {
+                  object-fit: fill;
+                }
+              </code></pre>
+            </div>
+            <p>If we use <code>contain</code> as a value the image will be scaled down until it is small enough to fit inside the box. This will result in "letterboxing" if it is not the same aspect ratio as the box.</p>
+            <p>You could also try the value of <code>fill</code>, which will fill the box but not maintain the aspect ratio.</p>
+          </section>
+        </section>
+        <section>
+          <h4>Advanced styling effects</h4>
+          <section>
+            <h5>Box shadows</h5>
+            <p><a class="mdn-css"><code>box-shadow</code></a> allows you to apply one or more drop shadows to an element's box. Like text shadows, box shadows are supported pretty well across browsers, including IE9+ and Edge. You can also specify multiple box shadows in a single <code>box-shadow</code> declaration, by separating them with commas. The <a class="mdn-css"><code>box-shadow</code></a> has an <code>inset</code> keyword available - putting this at the start of a shadow declaration causes it to become an inner shadow, rather than an outer shadow.</p>
+          </section>
+          <section>
+            <h5>Filters</h5>
+            <p>While you can't change the composure of an image using CSS, there are some creative things you can do. One very nice property, which can help you bring interest to your designs, is the <a class="mdn-css"><code>filter</code></a> property. This property enables Photoshop-like filters right from CSS.</p>
+            <p>The <code>first</code> is <code>blur()</code> - this function can be passed a value to indicate how much the image should be blurred.</p>
+            <p>The second is <code>grayscale()</code>; by using a percentage we are setting how much color we want to be removed.</p>
+            <p>You can apply filters to any element and not just images. Some of the filter options available do very similar things to other CSS features, for example <code>drop-shadow()</code> works in a very similar way and gives a similar effect to <a class="mdn-css"><code>box-shadow</code></a> or <a class="mdn-css"><code>text-shadow</code></a>. The really nice thing about filters however, is that they work on the exact shapes of the content inside the box, not just the box itself as one big chunk, so it is worth knowing the difference.</p>
+          </section>
+          <section>
+            <h5>Blend modes</h5>
+            <p>CSS blend modes allow us to add blend modes to elements that specify a blending effect when two elements overlap - the final color shown for each pixel will be the result of a combination of the original pixel color, and that of the pixel in the layer underneath it. Blend modes are again very familiar to users of graphics applications like Photoshop. There are two properties that use blend modes in CSS:</p>
+            <ul>
+              <li><a class="mdn-css"><code>background-blend-mode</code></a>, which blends together multiple background images and colors set on a single element.</li>
+              <li><a class="mdn-css"><code>mix-blend-mode</code></a>, which blends together the element it is set on with elements it is overlapping - both background and content, while the background itself doesn't blend.</li>
+            </ul>
+          </section>
+          <section>
+            <h5>CSS shapes</h5>
+            <p>While it is true that everything in CSS is a rectangular box, and images are a physical rectangular box, we can make it look as if our content flows around non-rectangular things by using <b>CSS Shapes</b>.</p>
+            <p>The CSS Shapes specification enables the wrapping of text around a non-rectangular shape. It's especially useful when working with an image which has some white-space you might want to float text around.</p>
+            <p>In the image below we have a pleasingly round balloon. The actual file is rectangular, but by floating the image (shapes only apply to floated elements) and using the <a class="mdn-css"><code>shape-outside</code></a> property with a value of <code>circle(50%)</code>, we can give the effect of the text following the line of the balloon.</p>
+          </section>
+          <section>
+            <h5>-webkit-background-clip: text</h5>
+            <p>Another feature we thought we'd mention briefly is the <code>text</code> value for <a class="mdn-css"><code>background-clip</code></a>. When used along with the proprietary <code>-webkit-text-fill-color: transparent;</code> feature, this allows you to clip background images to the shape of the element's text, making for some nice effects. This is not an official standard, but has been implemented across multiple browsers, as it is popular, and used fairly widely by developers. When used in this context, both of the properties would require a <code>-webkit-</code> vendor prefix, even for Non-Webkit/Chrome-based browsers:</p>
+            <pre><code class="my-css">
+              .text-clip {
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+            </code></pre>
+            <p>So why have other browsers implemented a <code>-webkit-</code> prefix? Mainly for browser compatibility - so many web developers have started implementing websites with <code>-webkit-</code> prefixes that it started to look like the other browsers were broken, whereas in actual fact they were following the standards. So they were forced to implement a few such features. This highlights the danger of using non-standard and/or prefixed CSS features in your work - not only do they cause browser compatibility issues, but they are also subject to change, so your code could break at any time. It is much better to stick to the standards.</p>
+          </section>
+        </section>
+      </section>
+      <section>
+        <h3>Styling text</h3>
+        <section>
+          <h4>Fundamentals</h4>
+          <section>
+            <h5>What is involved in styling text in CSS?</h5>
+            <p>Text inside an element is laid out inside the element's content box. It starts at the top left of the content area (or the top right, in the case of RTL language content), and flows towards the end of the line. Once it reaches the end, it goes down to the next line and continues, then the next line, until all the content has been placed in the box. Text content effectively behaves like a series of inline elements, being laid out on lines adjacent to one another, and not creating line breaks until the end of the line is reached, or unless you force a line break manually using the <a class="mdn-element"><code>&lt;br&gt;</code></a> element.</p>
+            <p>The CSS properties used to style text generally fall into two categories, which we'll look at separately in this article:</p>
+            <ul>
+              <li><b>Font styles</b>: Properties that affect the font that is applied to the text, affecting what font is applied, how big it is, whether it is bold, italic, etc.</li>
+              <li><b>Text layout styles</b>: Properties that affect the spacing and other layout features of the text, allowing manipulation of, for example, the space between lines and letters, and how the text is aligned within the content box.</li>
+            </ul>
+            <p><b>Note</b>: Bear in mind that the text inside an element is all affected as one single entity. You can't select and style subsections of text unless you wrap them in an appropriate element (such as a <a class="mdn-element"><code>&lt;span&gt;</code></a> or <a class="mdn-element"><code>&lt;strong&gt;</code></a>), or use a text-specific pseudo-element like <a class="mdn-css">::first-letter</a> (selects the first letter of an element's text), <a class="mdn-css">::first-line</a> (selects the first line of an element's text), or <a class="mdn-css">::selection</a> (selects the text currently highlighted by the cursor.)</p>
+          </section>
+          <section>
+            <h5>Fonts</h5>
+            <section>
+              <h6>Color</h6>
+              <p>The <a class="mdn-css"><code>color</code></a> property sets the color of the foreground content of the selected elements (which is usually the text, but can also include a couple of other things, such as an underline or overline placed on text using the <a class="mdn-css"><code>text-decoration</code></a> property). <code>color</code> can accept any <b>CSS color unit</b>, for example:</p>
+              <pre><code class="my-css">
+                p {
+                  color: red;
+                }
+              </code></pre>
+            </section>
+            <section>
+              <h6>Font families</h6>
+              <p>To set a different font on your text, you use the <a class="mdn-css"><code>font-family</code></a> property - this allows you to specify a font (or list of fonts) for the browser to apply to the selected elements. The browser will only apply a font if it is available on the machine the website is being accessed on; if not, it will just use a browser default font.</p>
+            </section>
+            <section>
+              <h6>Web safe fonts</h6>
+              <p>Speaking of font availability, there are only a certain number of fonts that are generally available across all systems and can therefore be used without much worry. These are the so-called <b>web safe fonts</b>.</p>
+              <p>Most of the time, as web developers we want to have more specific control over the fonts used to display our text content. The problem is to find a way to know which font is available on the computer used to see our web pages. There is no way to know this in every case, but the web safe fonts are known to be available on nearly all instances of the most used operating systems (Windows, Mac, the most common Linux distributions, Android, and iOS.)</p>
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Generic type</th>
+                    <th scope="col">Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Arial</td>
+                    <td>sans-serif</td>
+                    <td>It's often considered best practice to also add <i>Helvetica</i> as a preferred alternative to <i>Arial</i> as, although their font faces are almost identical, <i>Helvetica</i> is considered to have a nicer shape, even if <i>Arial</i> is more broadly available.</td>
+                  </tr>
+                  <tr>
+                    <td>Courier New</td>
+                    <td>monospace</td>
+                    <td>Some OSes have an alternative (possibly older) version of the <i>Courier New</i> font called <i>Courier</i>. It's considered best practice to use both with <i>Courier New</i> as the preferred alternative.</td>
+                  </tr>
+                  <tr>
+                    <td>Georgia</td>
+                    <td>serif</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Times New Roman</td>
+                    <td>serif</td>
+                    <td>Some OSes have an alternative (possibly older) version of the <i>Times New Roman</i> font called <i>Times</i>. It's considered best practice to use both with <i>Times New Roman</i> as the preferred alternative.</td>
+                  </tr>
+                  <tr>
+                    <td>Trebuchet MS</td>
+                    <td>sans-serif</td>
+                    <td>You should be careful with using this font - it isn't widely available on mobile OSes.</td>
+                  </tr>
+                  <tr>
+                    <td>Verdana</td>
+                    <td>sans-serif</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <section>
+              <h6>Default fonts</h6>
+              <p>CSS defines five generic names for fonts: <code>serif</code>, <code>sans-serif</code>, <code>monospace</code>, <code>cursive</code> and <code>fantasy</code>. Those are very generic and the exact font face used when using those generic names is up to each browser and can vary for each operating system they are running on. It represents a <i>worst case scenario</i> where the browser will try to do its best to provide at least a font that looks appropriate. <code>serif</code>, <code>sans-serif</code> and <code>monospace</code> are quite predictable and should provide something reasonable. On the other hand, <code>cursive</code> and <code>fantasy</code> are less predictable and we recommend using them very carefully, testing as you go. The five names are defined as follows:</p>
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Term</th>
+                    <th scope="col">Definition</th>
+                    <th scope="col">Example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>serif</code></td>
+                    <td>Fonts that have serifs (the flourishes and other small details you see at the ends of the strokes in some typefaces)</td>
+                    <td><span style="font-family: serif;">My big red elephant</span></td>
+                  </tr>
+                  <tr>
+                    <td><code>sans-serif</code></td>
+                    <td>Fonts that don't have serifs.</td>
+                    <td><span style="font-family: sans-serif;">My big red elephant</span></td>
+                  </tr>
+                  <tr>
+                    <td><code>monospace</code></td>
+                    <td>Fonts where every character has the same width, typically used in code listings.</td>
+                    <td><span style="font-family: monospace;">My big red elephant</span></td>
+                  </tr>
+                  <tr>
+                    <td><code>cursive</code></td>
+                    <td>Fonts that are intended to emulate handwriting, with flowing, connected strokes.</td>
+                    <td><span style="font-family: cursive;">My big red elephant</span></td>
+                  </tr>
+                  <tr>
+                    <td><code>fantasy</code></td>
+                    <td>Fonts that are intended to be decorative.</td>
+                    <td><span style="font-family: fantasy;">My big red elephant</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <section>
+              <h6>Font stacks</h6>
+              <p>Since you can't guarantee the availability of the fonts you want to use on your webpages (even a web font <i>could</i> fail for some reason), you can supply a <b>font stack</b> so that the browser has multiple fonts it can choose from. This simply involves a <code>font-family</code> value consisting of multiple font names separated by commas, e.g.</p>
+              <pre><code class="my-css">
+                p {
+                  font-family: "Trebuchet MS", Verdana, sans-serif;
+                }
+              </code></pre>
+              <p>In such a case, the browser starts at the beginning of the list and looks to see if that font is available on the machine. If it is, it applies that font to the selected elements. If not, it moves on to the next font, and so on. Fonts names that have more than one word - like <code>Trebuchet MS</code> - need to be surrounded by quotes, for example <code>"Trebuchet MS"</code>.</p>
+            </section>
+            <section>
+              <h6>Font size</h6>
+              <p>Font size (set with the <a class="mdn-css"><code>font-size</code></a> property) can take values measured in most of these units, however the most common units you'll use to size text are:</p>
+              <ul>
+                <li><code>px</code> (pixels): The number of pixels high you want the text to be. This is an absolute unit - it results in the same final computed value for the font on the page in pretty much any situation.</li>
+                <li><code>em</code>s: 1em is equal to the font size set on the parent element of the current element we are styling (more specifically, the width of a capital letter M contained inside the parent element.) This can become tricky to work out if you have a lot of nested elements with different font sizes set, but it is doable, as you'll see below. Why bother? It is quite natural once you get used to it, and you can use <code>em</code>s to size everything, not just text. You can have an entire website sized using ems, which makes maintenance easy.</li>
+                <li><code>rem</code>s: These work just like <code>em</code>s, except that 1<code>rem</code> is equal to the font size set on the root element of the document (i.e. <a class="mdn-element"><code>&lt;html&gt;</code></a>), not the parent element. This makes doing the maths to work out your font sizes much easier, but unfortunately <code>rem</code>s are not supported in Internet Explorer 8 and below.</li>
+              </ul>
+              <p>The <code>font-size</code> of an element is inherited from that element's parent element. This all starts with the root element of the entire document - <a class="mdn-element"><code>&lt;html&gt;</code></a> - the <code>font-size</code> of which is set to 16px as standard across browsers. Any paragraph (or other element that doesn't have a different size set by the browser) inside the root element will have a final size of 16px. Other elements may have different default sizes, for example an <a class="mdn-element"><code>&lt;h1&gt;</code></a> element has a size of 2ems set by default, so will have a final size of 32px.</p>
+              <p>When sizing your text, it is usually a good idea to set the base <code>font-size</code> of the document to 10px, so that then the maths is a lot easier to work out - required (r)em values are then the pixel font size divided by 10, not 16. After doing that, you can easily size the different types of text in your document to what you want. It is a good idea to list all your <code>font-size</code> rulesets in a designated area in your stylesheet, so they are easy to find.</p>
+            </section>
+            <section>
+              <h6>Font style, font weight, text transform, and text decoration</h6>
+              <p>CSS provides four common properties to alter the visual weight/emphasis of text:</p>
+              <ul>
+                <li><a class="mdn-css"><code>font-style</code></a>: Used to turn italic text on and off. Possible values are as follows (you'll rarely use this, unless you want to turn some italic styling off for some reason):
+                  <ul>
+                    <li><code>normal</code>: Sets the text to the normal font (turns existing italics off.)</li>
+                    <li><code>italic</code>: Sets the text to use the <i>italic version of the font</i> if available; if not available, it will simulate italics with oblique instead.</li>
+                    <li><code>oblique</code>: Sets the text to use a simulated version of an italic font, created by <span style="font-style: oblique;">slanting the normal version</span>.</li>
+                  </ul>
+                </li>
+                <li><a class="mdn-css"><code>font-weight</code></a>: Sets how bold the text is. This has many values available in case you have many font variants available (such as <i>-light</i>, <i>-normal</i>, <i>-bold</i>, <i>-extrabold</i>, <i>-black</i>, etc.), but realistically you'll rarely use any of them except for <code>normal</code> and <code>bold</code>:
+                  <ul>
+                    <li><code>normal</code>, <code>bold</code>: Normal and <b style="font-weight: bold;">bold</b> font weight</li>
+                    <li><code>lighter</code>, <code>bolder</code>: Sets the current element's boldness to be one step lighter or heavier than its parent element's boldness.</li>
+                    <li><code>100</code>-<code>900</code>: Numeric boldness values that provide finer grained control than the above keywords, if needed. </li>
+                  </ul>
+                </li>
+                <li><a class="mdn-css"><code>text-transform</code></a>: Allows you to set your font to be transformed. Values include:
+                  <ul>
+                    <li><code>none</code>: Prevents any transformation.</li>
+                    <li><code>uppercase</code>: Transforms <span style="text-transform: uppercase;">all text to capitals</span>.</li>
+                    <li><code>lowercase</code>: Transforms all text to lower case.</li>
+                    <li><code>capitalize</code>: Transforms all words to <span style="text-transform: capitalize;">have the first letter capitalized</span>.</li>
+                    <li><code>full-width</code>: Transforms all glyphs to be <span style="text-transform: full-width;">written inside a fixed-width square</span>, similar to a monospace font, allowing aligning of e.g. latin characters along with asian language glyphs (like Chinese, Japanese, Korean.)</li>
+                  </ul>
+                </li>
+                <li><a class="mdn-css"><code>text-decoration</code></a>: Sets/unsets text decorations on fonts (you'll mainly use this to unset the default underline on links when styling them.) Available values are:
+                  <ul>
+                    <li><code>none</code>: Unsets any text decorations already present.</li>
+                    <li><code>underline</code>: <u>Underlines the text</u>.</li>
+                    <li><code>overline</code>: <span style="text-decoration: overline;">Gives the text an overline</span>.</li>
+                    <li><code>line-through</code>: Puts a <s style="text-decoration: line-through;">strikethrough over the text</s>.</li>
+                  </ul>
+                  You should note that <a class="mdn-css"><code>text-decoration</code></a> can accept multiple values at once, if you want to add multiple decorations simultaneously, for example <span style="text-decoration: underline overline;"><code>text-decoration: underline overline</code></span>. Also note that <a class="mdn-css"><code>text-decoration</code></a> is a shorthand property for <a class="mdn-css"><code>text-decoration-line</code></a>, <a class="mdn-css"><code>text-decoration-style</code></a>, and <a class="mdn-css"><code>text-decoration-color</code></a>. You can use combinations of these property values to create interesting effects, for example <span style="text-decoration: line-through red wavy;"><code>text-decoration: line-through red wavy</code>.</span></li>
+              </ul>
+            </section>
+            <section>
+              <h6>Text drop shadows</h6>
+              <p>You can apply drop shadows to your text using the <a class="mdn-css"><code>text-shadow</code></a> property. This takes up to four values, as shown in the example below:</p>
+              <pre><code class="my-css">
+                text-shadow: 4px 4px 5px red;
+              </code></pre>
+              <ol>
+                <li>The horizontal offset of the shadow from the original text - this can take most available CSS <b>length and size units</b>, but you'll most commonly use px. This value has to be included.</li>
+                <li>The vertical offset of the shadow from the original text; behaves basically just like the horizontal offset, except that it moves the shadow up/down, not left/right. This value has to be included.</li>
+                <li>The blur radius - a higher value means the shadow is dispersed more widely. If this value is not included, it defaults to 0, which means no blur. This can take most available CSS <b>length and size units</b>.</li>
+                <li>The base color of the shadow, which can take any <b>CSS color unit</b>. If not included, it defaults to <code>black</code>.</li>
+              </ol>
+              <p><b>Note</b>: Positive offset values move the shadow right and down, but you can also use negative offset values to move the shadow left and up, for example <code>-1px -1px</code>. You can apply multiple shadows to the same text by including multiple shadow values separated by commas</p>
+            </section>
+          </section>
+          <section>
+            <h5>Text layout</h5>
+            <section>
+              <h6>Text alignment</h6>
+              <p>The <a class="mdn-css"><code>text-align</code></a> property is used to control how text is aligned within its containing content box. The available values are as follows, and work in pretty much the same way as they do in a regular word processor application:</p>
+              <ul>
+                <li><code>left</code>: Left justifies the text.</li>
+                <li><code>right</code>: Right justifies the text.</li>
+                <li><code>center</code>: Centers the text.</li>
+                <li><code>justify</code>: Makes the text spread out, varying the gaps in between the words so that all lines of text are the same width. You need to use this carefully - it can look terrible, especially when applied to a paragraph with lots of long words in it. If you are going to use this, you should also think about using something else along with it, such as <a class="mdn-css"><code>hyphens</code></a>, to break some of the longer words across lines.</li>
+              </ul>
+            </section>
+            <section>
+              <h6>Line height</h6>
+              <p>The <a class="mdn-css"><code>line-height</code></a> property sets the height of each line of text - this can take most <b>length and size units</b>, but can also take a unitless value, which acts as a multiplier and is generally considered the best option - the <a class="mdn-css"><code>font-size</code></a> is multiplied to get the <code>line-height</code>. Body text generally looks nicer and is easier to read when the lines are spaced apart; the recommended line height is around 1.5-2 (double spaced.) So to set our lines of text to 1.5 times the height of the font, you'd use this:</p>
+              <pre><code class="my-css">
+                line-height: 1.5;
+              </code></pre>
+            </section>
+            <section>
+              <h6>Letter and word spacing</h6>
+              <p>The <a class="mdn-css"><code>letter-spacing</code></a> and <a class="mdn-css"><code>word-spacing</code></a> properties allow you to set the spacing between letters and words in your text. You won't use these very often, but might find a use for them to get a certain look, or to improve the legibility of a particularly dense font. They can take most <b>length and size units</b>. So as an example, if we applied the following to the first line of the <a class="mdn-element"><code>&lt;p&gt;</code></a> elements in our example:</p>
+              <pre><code class="my-css">
+                p::first-line {
+                  letter-spacing: 2px;
+                  word-spacing: 4px;
+                }
+              </code></pre>
+            </section>
+          </section>
+        </section>
+        <section>
+          <h4>Styling lists</h4>
+          <section>
+            <h5>A simple list example</h5>
+            <p>If you investigate the list elements using <b>browser developer tools</b>, you'll notice a couple of styling defaults:</p>
+            <ul>
+              <li>The <a class="mdn-element"><code>&lt;ul&gt;</code></a> and <a class="mdn-element"><code>&lt;ol&gt;</code></a> elements have a top and bottom <a class="mdn-css"><code>margin</code></a> of <code>16px</code> (<code>1em</code>) and a <a class="mdn-css"><code>padding-left</code></a> of <code>40px</code> (<code>2.5em</code>.)</li>
+              <li>The list items (<a class="mdn-element"><code>&lt;li&gt;</code></a> elements) have no set defaults for spacing.</li>
+              <li>The <a class="mdn-element"><code>&lt;dl&gt;</code></a> element has a top and bottom <a class="mdn-css"><code>margin</code></a> of <code>16px</code> (<code>1em</code>), but no padding set.</li>
+              <li>The <a class="mdn-element"><code>&lt;dd&gt;</code></a> elements have <a class="mdn-css"><code>margin-left</code></a> of <code>40px</code> (<code>2.5em</code>.)</li>
+              <li>The <a class="mdn-element"><code>&lt;p&gt;</code></a> elements we've included for reference have a top and bottom <a class="mdn-css"><code>margin</code></a> of <code>16px</code> (<code>1em</code>), the same as the different list types.</li>
+            </ul>
+          </section>
+          <section>
+            <h5>List-specific styles</h5>
+            <p>Now we've looked at general spacing techniques for lists, let's explore some list-specific properties. There are three properties you should know about to start with, which can be set on <a class="mdn-element"><code>&lt;ul&gt;</code></a> or <a class="mdn-element"><code>&lt;ol&gt;</code></a> elements:</p>
+            <ul>
+              <li><a class="mdn-css"><code>list-style-type</code></a>: Sets the type of bullets to use for the list, for example, square or circle bullets for an unordered list, or numbers, letters or roman numerals for an ordered list.</li>
+              <li><a class="mdn-css"><code>list-style-position</code></a>: Sets whether the bullets appear inside the list items, or outside them before the start of each item.</li>
+              <li><a class="mdn-css"><code>list-style-image</code></a>: Allows you to use a custom image for the bullet, rather than a simple square or circle.</li>
+            </ul>
+            <section>
+              <h6>Bullet styles</h6>
+              <p>As mentioned above, the <a class="mdn-css"><code>list-style-type</code></a> property allows you to set what type of bullet to use for the bullet points. In our example, we've set the ordered list to use uppercase roman numerals, with:</p>
+              <pre><code class="my-css">
+                ol {
+                  list-style-type: upper-roman;
+                }
+              </code></pre>
+            </section>
+            <section>
+              <h6>Bullet position</h6>
+              <p>The <a class="mdn-css"><code>list-style-position</code></a> property sets whether the bullets appear inside the list items, or outside them before the start of each item. The default value is <code>outside</code>, which causes the bullets to sit outside the list items, as seen above. If you set the value to <code>inside</code>, the bullets will sit inside the lines:</p>
+              <pre><code class="my-css">
+                  ol {
+                  list-style-type: upper-roman;
+                  list-style-position: inside;
+                }
+              </code></pre>
+            </section>
+            <section>
+              <h6>Using a custom bullet image</h6>
+              <p>The <a class="mdn-css"><code>list-style-image</code></a> property allows you to use a custom image for your bullet. The syntax is pretty simple:</p>
+              <pre><code class="my-css">
+                ul {
+                  list-style-image: url(star.svg);
+                }
+              </code></pre>
+              <p>However, this property is a bit limited in terms of controlling the position, size, etc. of the bullets. You are better off using the <a class="mdn-css"><code>background</code></a> family of properties.</p>
+              <pre><code class="my-css">
+                ul {
+                  padding-left: 2rem;
+                  list-style-type: none;
+                }
+                ul li {
+                  padding-left: 2rem;
+                  background-image: url(star.svg);
+                  background-position: 0 0;
+                  background-size: 1.6rem 1.6rem;
+                  background-repeat: no-repeat;
+                }
+              </code></pre>
+              <p>Here we've done the following:</p>
+              <ul>
+                <li>Set the <a class="mdn-css"><code>padding-left</code></a> of the <a class="mdn-element"><code>&lt;ul&gt;</code></a> down from the default <code>40px</code> to <code>20px</code>, then set the same amount on the list items. This is so that overall the list items are still lined up with the order list items and the description list descriptions, but the list items have some padding for the background images to sit inside. If we didn't do this, the background images would overlap with the list item text, which would look messy.</li>
+                <li>Set the <a class="mdn-css"><code>list-style-type</code></a> to <code>none</code>, so that no bullet appears by default. We're going to use <a class="mdn-css"><code>background</code></a> properties to handle the bullets instead.</li>
+                <li>Inserted a bullet onto each unordered list item. The relevant properties are as follows:
+                  <ul>
+                    <li><a class="mdn-css"><code>background-image</code></a>: This references the path to the image file you want to use as the bullet.</li>
+                    <li><a class="mdn-css"><code>background-position</code></a>: This defines where in the background of the selected element the image will appear - in this case we are saying <code>0 0</code>, which means the bullet will appear in the very top left of each list item.</li>
+                    <li><a class="mdn-css"><code>background-size</code></a>: This sets the size of the background image. We ideally want the bullets to be the same size as the list items (or very slightly smaller or larger). We are using a size of <code>1.6rem</code> (<code>16px</code>), which fits very nicely with the <code>20px</code> padding we've allowed for the bullet to sit inside - 16px plus 4px of space between the bullet and the list item text works well.</li>
+                    <li><a class="mdn-css"><code>background-repeat</code></a>: By default, background images repeat until they fill up the available background space. We only want one copy of the image inserted in each case, so we set this to a value of <code>no-repeat</code>.</li>
+                  </ul>
+                </li>
+              </ul>
+            </section>
+            <section>
+              <h6>list-style shorthand</h6>
+              <p>The three properties mentioned above can all be set using a single shorthand property, <a class="mdn-css"><code>list-style</code></a>. For example, the following CSS:</p>
+              <pre><code class="my-css">
+                ul {
+                  list-style-type: square;
+                  list-style-image: url(example.png);
+                  list-style-position: inside;
+                }
+              </code></pre>
+              <p>Could be replaced by this:</p>
+              <pre><code class="my-css">
+                ul {
+                  list-style: square url(example.png) inside;
+                }
+              </code></pre>
+              <p>The values can be listed in any order, and you can use one, two or all three (the default values used for the properties that are not included are <code>disc</code>, <code>none</code>, and <code>outside</code>). If both a <code>type</code> and an <code>image</code> are specified, the type is used as a fallback if the image can't be loaded for some reason.</p>
+            </section>
+          </section>
+        </section>
+        <section>
+          <h4>Styling Links</h4>
+          <section>
+            <h5>Let's look at some links</h5>
+            <section>
+              <h6>Link states</h6>
+              <p>The first thing to understand is the concept of link states - different states that links can exist in, which can be styled using different <b>pseudo-classes</b>:</p>
+              <ul>
+                <li><b>Link (unvisited)</b>: The default state that a link resides in, when it isn't in any other state. This can be specifically styled using the <a class="mdn-css"><code>:link</code></a> pseudo class.</li>
+                <li><b>Visited</b>: A link when it has already been visited (exists in the browser's history), styled using the <a class="mdn-css"><code>:visited</code></a> pseudo class.</li>
+                <li><b>Hover</b>: A link when it is being hovered over by a user's mouse pointer, styled using the <a class="mdn-css"><code>:hover</code></a> pseudo class.</li>
+                <li><b>Focus</b>: A link when it has been focused (for example moved to by a keyboard user using the <kbd>Tab</kbd> key or similar, or programmatically focused using <a class="mdn-api" href="HTMLElement/focus"><code>HTMLElement.focus()</code></a>) - this is styled using the <a class="mdn-css"><code>:focus</code></a> pseudo class.</li>
+                <li><b>Active</b>: A link when it is being activated (e.g. clicked on), styled using the <a class="mdn-css"><code>:active</code></a> pseudo class.</li>
+              </ul>
+            </section>
+            <section>
+              <h6>Default styles</h6>
+              <p>You'll notice a few things as you explore the default styles:</p>
+              <ul>
+                <li>Links are underlined.</li>
+                <li>Unvisited links are blue.</li>
+                <li>Visited links are purple.</li>
+                <li>Hovering a link makes the mouse pointer change to a little hand icon.</li>
+                <li>Focused links have an outline around them - you should be able to focus on the links on this page with the keyboard by pressing the tab key.</li>
+                <li>Active links are red (Try holding down the mouse button on the link as you click it.)</li>
+              </ul>
+            </section>
+          </section>
+        </section>
+        <section>
+          <h4>Web fonts</h4>
+          <section>
+            <h5>Web fonts</h5>
+            <p>Web fonts are a CSS feature that allows you to specify font files to be downloaded along with your website as it is accessed, meaning that any browser that supports web fonts can have exactly the fonts you specify available to it.</p>
+            <p>First of all, you have a <a class="mdn-css"><code>@font-face</code></a> block at the start of the CSS, which specifies the font file(s) to download:</p>
+            <pre><code class="my-css">
+              @font-face {
+                font-family: "myFont";
+                src: url("myFont.woff");
+              }
+            </code></pre>
+            <p>Below this you can then use the font family name specified inside @font-face to apply your custom font to anything you like, as normal:</p>
+            <pre><code class="my-css">
+              html {
+                font-family: "myFont", "Bitstream Vera Serif", serif;
+              }
+            </code></pre>
+            <p>Browsers support different font formats, so you'll need multiple font formats for decent cross-browser support. For example, most modern browsers support WOFF/WOFF2 (Web Open Font Format versions 1 and 2), the most efficient format around, but older versions of IE only support EOT (Embedded Open Type) fonts, and you might need to include an SVG version of the font to support older versions of iPhone and Android browsers.</p>
+          </section>
+          <section>
+            <h5>Active learning: A web font example</h5>
+            <section>
+              <h6>Finding fonts</h6>
+              <p>To start with, we need to find the font files that contain the fonts. Fonts are created by font foundries and are stored in different file formats. There are generally three types of sites where you can obtain fonts:</p>
+              <ul>
+                <li>A free font distributor: This is a site that makes free fonts available for download (there may still be some license conditions, such as crediting the font creator). Examples include <a href="https://www.fontsquirrel.com/">Font Squirrel</a>.</li>
+                <li>A paid font distributor: This is a site that makes fonts available for a charge, such as <a href="http://www.fonts.com/">fonts.com</a> or <a href="http://www.myfonts.com/">myfonts.com</a>. You can also buy fonts directly from font foundries, for example <a href="https://www.linotype.com/">Linotype</a>, <a href="http://www.monotype.com">Monotype</a>.</li>
+                <li>An online font service: This is a site that stores and serves the fonts for you, making the whole process easier.</li>
+              </ul>
+              <p>Go to <a href="https://www.fontsquirrel.com/">Font Squirrel</a> and choose two fonts - a nice interesting font for the headings (maybe a nice display or slab serif font), and slightly less flashy and more readable font for the paragraphs. When you find each font, press on the download button, and save the file inside the same directory as the HTML and CSS files you saved earlier. It doesn't matter whether they are TTF (True Type Fonts) or OTF (Open Type Fonts).</p>
+              <p>In each case, unzip the font package (Web fonts are usually distributed in ZIP files containing the font file(s) and licensing information). You may find multiple font files in the package - some fonts are distributed as a family with different variants available, for example thin, medium, bold, italic, thin italic, etc. For this example, we just want you to concern yourself with a single font file for each choice.</p>
+              <p>Then go to the Fontsquirrel <a href="https://www.fontsquirrel.com/tools/webfont-generator">Webfont Generator</a> and upload your font files. After the generator has finished processing, you should get a ZIP file to download - save it in the same directory as your HTML and CSS.</p>
+            </section>
+            <section>
+              <h6>Implementing the code in your demo</h6>
+              <p>At this point, unzip the webfont kit you just generated. Inside the unzipped directory you'll see three useful items:</p>
+              <ul>
+                <li>Multiple versions of each font: (for example <code>.ttf</code>, <code>.woff</code>, <code>.woff2</code>, etc.; the exact fonts provided will be updated over time as browser support requirements change). As mentioned above, multiple fonts are needed for cross browser support - this is Fontsquirrel's way of making sure you've got everything you need.</li>
+                <li>A demo HTML file for each font - load these in your browser to see what the font will look like in different usage contexts.</li>
+                <li>A <code>stylesheet.css</code> file, which contains the generated @font-face code you'll need.</li>
+              </ul>
+              <p>To implement these fonts in your demo, follow these steps:</p>
+              <ol>
+                <li>Rename the unzipped directory to something easy and simple, like <code>fonts</code>.</li>
+                <li>Open up the <code>stylesheet.css</code> file and copy both the <code>@font-face</code> blocks contained inside into your file - you need to put them at the very top, before any of your CSS, as the fonts need to be imported before you can use them on your site.</li>
+                <li>Each of the <code>url()</code> functions points to a font file that we want to import into our CSS - we need to make sure the paths to the files are correct, so add <code>fonts/</code> to the start of each path (adjust as necessary).</li>
+                <li>Now you can use these fonts in your font stacks, just like any web safe or default system font. For example:
+                  <pre><code class="my-css">
+                  font-family: 'zantrokeregular', serif;
+                </code></pre>
+                </li>
+              </ol>
+            </section>
+          </section>
+          <section>
+            <h5>@font-face in more detail</h5>
+            <p>Let's explore that <code>@font-face</code> syntax generated for you by fontsquirrel. This is what one of the blocks looks like:</p>
+            <pre><code class="my-css">
+              @font-face {
+                font-family: 'ciclefina';
+                src: url('fonts/cicle_fina-webfont.eot');
+                src: url('fonts/cicle_fina-webfont.eot?#iefix') format('embedded-opentype'),
+                      url('fonts/cicle_fina-webfont.woff2') format('woff2'),
+                      url('fonts/cicle_fina-webfont.woff') format('woff'),
+                      url('fonts/cicle_fina-webfont.ttf') format('truetype'),
+                      url('fonts/cicle_fina-webfont.svg#ciclefina') format('svg');
+                font-weight: normal;
+                font-style: normal;
+              }
+            </code></pre>
+            <p>This is referred to as "bulletproof @font-face syntax", after a post by Paul Irish from early on when <code>@font-face</code> started to get popular (<a href="http://www.paulirish.com/2009/bulletproof-font-face-implementation-syntax/">Bulletproof @font-face Syntax</a>). Let's go through it to see what it does:</p>
+            <ul>
+              <li><code>font-family</code>: This line specifies the name you want to refer to the font as. You can put this as anything you like, as long as you use it consistently throughout your CSS.</li>
+              <li><code>src</code>: These lines specify the paths to the font files to be imported into your CSS (the <code>url</code> part), and the format of each font file (the <code>format</code> part). The latter part in each case is optional, but it is useful to declare it because it allows browsers to find a font they can use faster. Multiple declarations can be listed, separated by commas - the browser will search through them and use the first one it can find that it understands - it is therefore best to put newer, better formats like WOFF2 earlier on, and older, not so good formats like TTF later on. The one exception to this is the EOT fonts - they are placed first to fix a couple of bugs in older versions of IE whereby it will try to use the first thing it finds, even if it can't actually use the font.</li>
+              <li><a class="mdn-css"><code>font-weight</code></a>/<a class="mdn-css"><code>font-style</code></a>: These lines specify what weight the font has, and whether it is italic or not. If you are importing multiple weights of the same font, you can specify what their weight/style is and then use different values of <a class="mdn-css"><code>font-weight</code></a>/<a class="mdn-css"><code>font-style</code></a> to choose between them, rather than having to call all the different members of the font family different names. <a href="http://www.456bereastreet.com/archive/201012/font-face_tip_define_font-weight_and_font-style_to_keep_your_css_simple/">@font-face tip: define font-weight and font-style to keep your CSS simple</a> by Roger Johansson shows what to do in more detail.</li>
+            </ul>
+            <p>You can also specify particular <a class="mdn-css"><code>font-variant</code></a> and <a class="mdn-css"><code>font-stretch</code></a> values for your web fonts. In newer browsers, you can also specify a <a class="mdn-css"><code>unicode-range</code></a> value, which is a specific range of characters you want to use out of the web font - in supporting browsers, only the specified characters will be downloaded, saving unnecessary downloading. <a href="https://24ways.org/2011/creating-custom-font-stacks-with-unicode-range/">Creating Custom Font Stacks with Unicode-Range</a> by Drew McLellan provides some useful ideas on how to make use of this.</p>
+          </section>
+          <section>
+            <h5>Using an online font service</h5>
+            <p>Online font services generally store and serve fonts for you, so you don't have to worry about writing the <code>@font-face</code> code, and generally just need to insert a simple line or two of code into your site to make everything work. Examples include <a href="https://fonts.adobe.com/">Adobe Fonts</a> and <a href="http://www.typography.com/cloud/welcome/">Cloud.typography</a>. Most of these services are subscription-based, with the notable exception of <a href="https://www.google.com/fonts">Google Fonts</a>, a useful free service, especially for rapid testing work and writing demos.</p>
+          </section>
+        </section>
+      </section>
+      <section>
+        <h3>CSS layout</h3>
+        <section>
+          <h4>Flexbox</h4>
+          <p><a class="mdn-css">Flexbox</a> is a one-dimensional layout method for laying out items in rows or columns. Items flex to fill additional space and shrink to fit into smaller spaces.</p>
+          <section>
+            <h5>Specifying what elements to lay out as flexible boxes</h5>
+            <p>To start with, we need to select which elements are to be laid out as flexible boxes. To do this, we set a special value of <a class="mdn-css"><code>display</code></a> on the parent element of the elements you want to affect.</p>
+            <pre><code class="my-css">
+              section {
+                display: flex;
+              }
+            </code></pre>
+            <p>So, this single declaration gives us everything we need - incredible, right? We have our multiple column layout with equal sized columns, and the columns are all the same height. This is because the default values given to flex items (the children of the flex container) are set up to solve common problems such as this. More on those later. You can also set a <a class="mdn-css"><code>display</code></a> value of <code>inline-flex</code> if you wish to lay out element as inline boxes and flexible boxes.</p>
+          </section>
+          <section>
+            <h5>An aside on the flex model</h5>
+            <p>When elements are laid out as flexible boxes, they are laid out along two axes:</p>
+            <ul>
+              <li>The <b>main axis</b> is the axis running in the direction the flex items are being laid out in (e.g. as rows across the page, or columns down the page.) The start and end of this axis are called the <b>main start</b> and <b>main end</b>.</li>
+              <li>The <b>cross axis</b> is the axis running perpendicular to the direction the flex items are being laid out in. The start and end of this axis are called the <b>cross start</b> and <b>cross end</b>.</li>
+              <li>The parent element that has <code>display: flex</code> set on it is called the <b>flex container</b>.</li>
+              <li>The items being laid out as flexible boxes inside the flex container are called <b>flex items</b>.</li>
+            </ul>
+          </section>
+          <section>
+            <h5>Columns or rows?</h5>
+            <p>Flexbox provides a property called <a class="mdn-css"><code>flex-direction</code></a> that specifies what direction the main axis runs in (what direction the flexbox children are laid out in) - by default this is set to <code>row</code>, which causes them to be laid out in a row in the direction your browser's default language works in (left to right, in the case of an English browser).</p>
+            <pre><code class="my-css">
+              section {
+                flex-direction: column;
+              }
+            </code></pre>
+            <p>You'll see that this puts the items back in a column layout, much like they were before we added any CSS. Before you move on, delete this declaration from your example. You can also lay out flex items in a reverse direction using the <code>row-reverse</code> and <code>column-reverse</code> values.</p>
+          </section>
+          <section>
+            <h5>Wrapping</h5>
+            <p>One issue that arises when you have a fixed amount of width or height in your layout is that eventually your flexbox children will overflow their container, breaking the layout.</p>
+            <p>One way in which you can fix this is to add the following declaration to your parent:</p>
+            <pre><code class="my-css">
+              section {
+                flex-wrap: wrap;
+              }
+            </code></pre>
+            <p>Also, add the following declaration to your children:</p>
+            <pre><code class="my-css">
+              div {
+                flex: 200px;
+              }
+            </code></pre>
+            <p>We now have multiple rows - as many flexbox children are fitted onto each row as makes sense, and any overflow is moved down to the next line. The <code>flex: 200px</code> declaration set on the articles means that each will be at least 200px wide.</p>
+          </section>
+          <section>
+            <h5>Flexible sizing of flex items</h5>
+            <pre><code class="my-css">
+              article {
+                flex: 1;
+              }
+            </code></pre>
+            <p>This is a unitless <b>proportion</b> value that dictates how much of the available space along the main axis each flex item will take up.</p>
+            </code>
+            </pre>
+          </section>
+          <section>
+            <h5>Horizontal and vertical alignment</h5>
+            <p>You can also use flexbox features to align flex items along the main or cross axis. Add the following to the bottom of the example's CSS:</p>
+            <pre><code class="my-css">
+              div {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+              }
+            </code></pre>
+            <p><a class="mdn-css"><code>align-items</code></a> controls where the flex items sit on the cross axis.</p>
+            <ul>
+              <li>By default, the value is <code>stretch</code>, which stretches all flex items to fill the parent in the direction of the cross axis. If the parent hasn't got a fixed width in the cross axis direction, then all flex items will become as long as the longest flex items. This is how our first example got equal height columns by default.</li>
+              <li>The <code>center</code> value that we used in our above code causes the items to maintain their intrinsic dimensions, but be centered along the cross axis. This is why our current example's buttons are centered vertically.</li>
+              <li>You can also have values like <code>flex-start</code> and <code>flex-end</code>, which will align all items at the start and end of the cross axis respectively. See <a class="mdn-css"><code>align-items</code></a> for the full details.</li>
+            </ul>
+            <p>You can override the <a class="mdn-css"><code>align-items</code></a> behavior for individual flex items by applying the <a class="mdn-css"><code>align-self</code></a> property to them:</p>
+            <pre><code class="my-css">
+              button:first-child {
+                align-self: flex-end;
+              }
+            </code></pre>
+            <p><a class="mdn-css"><code>justify-content</code></a> controls where the flex items sit on the main axis.</p>
+            <ul>
+              <li>The default value is <code>flex-start</code>, which makes all the items sit at the start of the main axis.</li>
+              <li>You can use <code>flex-end</code> to make them sit at the end.</li>
+              <li><code>center</code> is also a value for <code>justify-content</code>, and will make the flex items sit in the center of the main axis.</li>
+              <li>The value we've used above, <code>space-around</code>, is useful - it distributes all the items evenly along the main axis, with a bit of space left at either end.</li>
+              <li>There is another value, <code>space-between</code>, which is very similar to <code>space-around</code> except that it doesn't leave any space at either end.</li>
+            </ul>
+          </section>
+          <section>
+            <h5>Ordering flex items</h5>
+            <p>Flexbox also has a feature for changing the layout order of flex items, without affecting the source order.</p>
+            <pre><code class="my-css">
+              button:first-child {
+                order: 1;
+              }
+            </code></pre>
+            <ul>
+              <li>By default, all flex items have an <a class="mdn-css"><code>order</code></a> value of 0.</li>
+              <li>Flex items with higher order values set on them will appear later in the display order than items with lower order values.</li>
+              <li>Flex items with the same order value will appear in their source order.</li>
+              <li>You can set negative order values to make items appear earlier than items with 0 set.</li>
+            </ul>
+            <pre><code class="my-css">
+              button:last-child {
+                order: -1;
+              }
+            </code></pre>
+          </section>
+        </section>
+        <section>
+          <h4>Grids</h4>
+          <section>
+            <h5>What is grid layout?</h5>
+            <p>A grid is a collection of horizontal and vertical lines creating a pattern against which we can line up our design elements. They help us to create designs where elements don't jump around or change width as we move from page to page, providing greater consistency on our websites. A grid will typically have <b>columns</b>, <b>rows</b>, and then gaps between each row and column - commonly referred to as <b>gutters</b>.</p>
+            <p><img class="mdn-img" src="13899/grid.png"></p>
+          </section>
+          <section>
+            <h5>Creating your grid in CSS</h5>
+            <p>Having decided on the grid that your design needs, you can use CSS Grid Layout to create that grid in CSS and place items onto it. We will look at the basic features of Grid Layout first and then explore how to create a simple grid system for your project.</p>
+            <section>
+              <h6>Defining a grid</h6>
+              <p>To define a grid we use the <code>grid</code> value of the <a class="mdn-css"><code>display</code></a> property. As with Flexbox, this switches on Grid Layout, and all of the direct children of the container become grid items. Add this to the CSS inside your file:</p>
+              <pre><code class="my-css">
+                .container {
+                  display: grid;
+                }
+              </code></pre>
+              <p>Unlike flexbox, the items will not immediately look any different. Declaring <code>display: grid</code> gives you a one column grid, so your items will continue to display one below the other as they do in normal flow.</p>
+              <p>To see something that looks more grid-like, we will need to add some columns to the grid. Let's add three 200-pixel columns here. You can use any length unit, or percentages to create these column tracks.</p>
+              <pre><code class="my-css">
+                .container {
+                  display: grid;
+                  grid-template-columns: 200px 200px 200px;
+                }
+              </code></pre>
+            </section>
+            <section>
+              <h6>Flexible grids with the fr unit</h6>
+              <p>In addition to creating grids using lengths and percentages, we can use the <code>fr</code><b> </b> unit to flexibly size grid rows and columns. This unit represents one fraction of the available space in the grid container.</p>
+              <p>The <code>fr</code> unit distributes space in proportion, therefore you can give different positive values to your tracks, for example if you change the definition like so:</p>
+              <pre><code class="my-css">
+                .container {
+                  display: grid;
+                  grid-template-columns: 2fr 1fr 1fr;
+                }
+              </code></pre>
+              <p>The first track now gets <code>2fr</code> of the available space and the other two tracks get <code>1fr</code>, making the first track larger. You can mix <code>fr</code> units and fixed length tracks - in such a case the space needed for the fixed tracks is taken away before the space is distributed to the other tracks.</p>
+            </section>
+            <section>
+              <h6>Gaps between tracks</h6>
+              <p>To create gaps between tracks we use the properties <a class="mdn-css"><code>grid-column-gap</code></a> for gaps between columns, <a class="mdn-css"><code>grid-row-gap</code></a> for gaps between rows, and <a class="mdn-css"><code>grid-gap</code></a> to set both at once.</p>
+              <pre><code class="my-css">
+                .container {
+                  display: grid;
+                  grid-template-columns: 2fr 1fr 1fr;
+                  grid-gap: 20px;
+                }
+              </code></pre>
+            </section>
+            <section>
+              <h6>Repeating track listings</h6>
+              <p>You can repeat all, or a section of, your track listing using repeat notation. Change your track listing to the following:</p>
+              <pre><code class="my-css">
+                .container {
+                  display: grid;
+                  grid-template-columns: repeat(3, 1fr);
+                  grid-gap: 20px;
+                }
+              </code></pre>
+              <p>You will now get 3 <code>1fr</code> tracks just as before. The first value passed to the repeat function is how many times you want the listing to repeat, while the second value is a track listing, which may be one or more tracks that you want to repeat.</p>
+            </section>
+            <section>
+              <h6>The implicit and explicit grid</h6>
+              <p>We have only specified column tracks so far, and yet rows are being created to hold our content. This is an example of the explicit versus the implicit grid. The explicit grid is the one that you create using <code>grid-template-columns</code> or <code>grid-template-rows</code>. The implicit grid is created when content is placed outside of that grid - such as into our rows. The explicit and implicit grids are analogous to the main and cross flexbox axes.</p>
+              <p>By default, tracks created in the implicit grid are <code>auto</code> sized, which in general means that they are large enough to fit their content. If you wish to give implicit grid tracks a size you can use the <a class="mdn-css"><code>grid-auto-rows</code></a> and <a class="mdn-css"><code>grid-auto-columns</code></a> properties. If you add <code>grid-auto-rows</code> with a value of <code>100px</code> to your CSS, you will see that those created rows are now 100 pixels tall.</p>
+              <pre><code class="my-css">
+                .container {
+                  display: grid;
+                  grid-template-columns: repeat(3, 1fr);
+                  grid-auto-rows: 100px;
+                  grid-gap: 20px;
+                }
+              </code></pre>
+            </section>
+            <section>
+              <h6>The minmax() function</h6>
+              <p>Our 100-pixel tall tracks won't be very useful if we add content into those tracks that is taller than 100 pixels, in which case it would cause an overflow. It might be better to have tracks that are <i>at least</i> 100 pixels tall and can still expand if more content gets into them. A fairly basic fact about the web is that you never really know how tall something is going to be; additional content or larger font sizes can cause problems with designs that attempt to be pixel perfect in every dimension.</p>
+              <p>The <code>minmax</code> function lets us set a minimum and maximum size for a track, for example <code>minmax(100px, auto)</code>. The minimum size is 100 pixels, but the maximum is <code>auto</code>, which will expand to fit the content. Try changing <code>grid-auto-rows</code> to use a minmax value:</p>
+              <pre><code class="my-css">
+                .container {
+                  display: grid;
+                  grid-template-columns: repeat(3, 1fr);
+                  grid-auto-rows: minmax(100px, auto);
+                  grid-gap: 20px;
+                }
+              </code></pre>
+            </section>
+            <section>
+              <h6>As many columns as will fit</h6>
+              <p>We can combine some of the things we have learned about track listing, repeat notation and <code>minmax()</code> to create a useful pattern. Sometimes it is helpful to be able to ask grid to create as many columns as will fit into the container. We do this by setting the value of <code>grid-template-columns</code> using <code>repeat()</code> notation, but instead of passing in a number, pass in the keyword <code>auto-fill</code>. For the second parameter of the function we use <code>minmax()</code>, with a minimum value equal to the minimum track size that we would like to have, and a maximum of <code>1fr</code>.</p>
+              <pre><code class="my-css">
+                .container {
+                  display: grid;
+                  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                  grid-auto-rows: minmax(100px, auto);
+                  grid-gap: 20px;
+                }
+              </code></pre>
+              <p>This works because grid is creating as many 200 pixel columns as will fit into the container, then sharing whatever space is leftover between all of the columns - the maximum is 1fr which, as we already know, distributes space evenly between tracks.</p>
+            </section>
+          </section>
+          <section>
+            <h5>Line-based placement</h5>
+            <p>We now move on from creating a grid, to placing things on the grid. Our grid always has lines, these lines start at 1 and relate to the Writing Mode of the document. Therefore in English, column line 1 is on the left hand side of the grid and row line 1 at the top. In Arabic column line 1 would be on the right hand side, as Arabic is written right to left.</p>
+            <p>We can place things according to these lines by specifying the start and end line. These let you specify the start and end lines at once, separated by a <code>/</code> - a forward slash character. We do this using the following properties:</p>
+            <ul>
+              <li><a class="mdn-css"><code>grid-column-start</code></a></li>
+              <li><a class="mdn-css"><code>grid-column-end</code></a></li>
+              <li><a class="mdn-css"><code>grid-row-start</code></a></li>
+              <li><a class="mdn-css"><code>grid-row-end</code></a></li>
+            </ul>
+            <p>These properties can all have a line number as the value. You can also use the shorthand properties:</p>
+            <ul>
+              <li><a class="mdn-css"><code>grid-column</code></a></li>
+              <li><a class="mdn-css"><code>grid-row</code></a></li>
+            </ul>
+            <pre><code class="my-css">
+              header {
+                grid-column: 1 / 3;
+                grid-row: 1;
+              }
+              article {
+                grid-column: 2;
+                grid-row: 2;
+              }
+              aside {
+                grid-column: 1;
+                grid-row: 2;
+              }
+              footer {
+                grid-column: 1 / 3;
+                grid-row: 3;
+              }
+            </code></pre>
+            <p>you can also use the value <code>-1</code> to target the end column or row line, and count inwards from the end using negative values. However this only works for the Explicit Grid. The value <code>-1</code> will not target the end line of the implicit grid.</p>
+          </section>
+          <section>
+            <h5>Positioning with grid-template-areas</h5>
+            <p>An alternative way to place items on your grid is to use the <a class="mdn-css"><code>grid-template-areas</code></a> property and giving the various elements of your design a name.</p>
+            <pre><code class="my-css">
+              .container {
+                display: grid;
+                grid-template-areas:
+                    "header header"
+                    "sidebar content"
+                    "footer footer";
+                grid-template-columns: 1fr 3fr;
+                grid-gap: 20px;
+              }
+              header {
+                grid-area: header;
+              }
+              article {
+                grid-area: content;
+              }
+              aside {
+                grid-area: sidebar;
+              }
+              footer {
+                grid-area: footer;
+              }
+            </code></pre>
+            <p>The rules for <code>grid-template-areas</code> are as follows:</p>
+            <ul>
+              <li>You need to have every cell of the grid filled.</li>
+              <li>To span across two cells, repeat the name.</li>
+              <li>To leave a cell empty, use a <code>.</code> (period).</li>
+              <li>Areas must be rectangular - you can't have an L-shaped area for example.</li>
+              <li>Areas can't be repeated in different locations.</li>
+            </ul>
+          </section>
+          <section>
+            <h5>A CSS Grid, grid framework</h5>
+            <p>Grid "frameworks" tend to be based around 12 or 16 column grids and with CSS Grid, you don't need any third party tool to give you such a framework - it's already there in the spec.</p>
+            <pre><code class="my-css">
+              header {
+                grid-column: 1 / 13;
+                grid-row: 1;
+              }
+              article {
+                grid-column: 4 / 13;
+                grid-row: 2;
+              }
+              aside {
+                grid-column: 1 / 4;
+                grid-row: 2;
+              }
+              footer {
+                grid-column: 1 / 13;
+                grid-row: 3;
+              }
+            </code></pre>
+            <p><img class="mdn-img" src="16045/learn-grids-inspector.png"></p>
+          </section>
+        </section>
+        <section>
+          <h4>Floats</h4>
+          <p>Floating an element changes the behavior of that element and the block level elements that follow it in normal flow. The element is moved to the left or right and removed from normal flow, and the surrounding content floats around the floated item.</p>
+          <p>The <a class="mdn-css"><code>float</code></a> property has four possible values:</p>
+          <ul>
+            <li><code>left</code>- Floats the element to the left.</li>
+            <li><code>right</code>- Floats the element to the right.</li>
+            <li><code>none</code>- Specifies no floating at all. This is the default value.</li>
+            <li><code>inherit</code> - Specifies that the value of the<code>float</code>property should be inherited from the element's parent element.</li>
+          </ul>
+          <section>
+            <h5>A simple example</h5>
+            <pre><code class="my-css">
+              .box {
+                float: left;
+              }
+            </code></pre>
+            <p>So let's think about how the float works - the element with the float left set on it is taken out of the normal layout flow of the document and stuck to the left hand side of its parent container. Any content that comes below the floated element in the normal layout flow will now wrap around it, filling up the space to the right-hand side of it as far up as the top of the floated element.</p>
+            <p>Floating the content to the right has exactly the same effect, but in reverse - the floated element will stick to the right, and the content will wrap around it to the left.</p>
+            <p>While we can add a margin to the float to push the text away, we can't add a margin to the text to move it away from the float. This is because a floated element is taken out of normal flow, and the boxes of following items actually run behind the float. You can demonstrate this by making some changes to your example.</p>
+          </section>
+          <section>
+            <h5>Clearing floats</h5>
+            <p>We have seen that the float is removed from normal flow and that other elements will display beside it, therefore if we want to force a following element to moved below (cleared) floating elements that precede it we need to clear it. This is achieved with the <a class="mdn-css"><code>clear</code></a> property. The <code>clear</code> property accepts the following values:</p>
+            <ul>
+              <li><code>left</code>: Clear items floated to the left.</li>
+              <li><code>right</code>: clear items floated to the right.</li>
+              <li><code>both</code>: clear any floated items, left or right.</li>
+            </ul>
+            <pre><code class="my-css">
+              .cleared {
+                clear: left;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h5>Clearing boxes wrapped around a float</h5>
+            <p>Clearing the following element doesn't help with this box clearing problem, where you want the bottom of the box to wrap the floated item and wrapping content even if the content is shorter.</p>
+            <section>
+              <h6>display: flow-root</h6>
+              <p>The modern way of solving this problem is to use the value <code>flow-root</code> of the <code>display</code> property. This exists only to create a BFC <b>block formatting context</b>. The BFC is like a mini layout inside your page, inside which everything is contained, therefore our floated element is contained inside the BFC and the background runs behind both items. without using hacks - there will be no unintended consequences when you use it. Remove <code>overflow: auto</code> from your <code>.wrapper</code> rule and add <code>display: flow-root</code>. Assuming you have a <a class="mdn-link" href="Web/CSS/display#Browser_compatibility">supporting browser</a>, the box will clear.</p>
+              <pre><code class="my-css">
+                .wrapper {
+                  display: flow-root;
+                }
+                .cleared {
+                  clear: left;
+                }
+              </code></pre>
+            </section>
+          </section>
+        </section>
+        <section>
+          <h4>Positioning</h4>
+          <section>
+            <h5>Relative positioning</h5>
+            <p>Relative positioning allows you to offset an item from the position in normal flow it would have by default. Go ahead and update the <code>position</code> declaration in your code:</p>
+            <pre><code class="my-css">
+                .positioned {
+                  position: relative;
+                  top: 30px;
+                  left: 30px;
+                }
+              </code></pre>
+            <p><a class="mdn-css"><code>top</code></a>, <a class="mdn-css"><code>bottom</code></a>, <a class="mdn-css"><code>left</code></a>, and <a class="mdn-css"><code>right</code></a> are used alongside <a class="mdn-css"><code>position</code></a> to specify exactly where to move the positioned element to.</p>
+          </section>
+          <section>
+            <h5>Absolute positioning</h5>
+            <p>An absolutely positioned element no longer exists in the normal document layout flow. Instead, it sits on its own layer separate from everything else. This is very useful: it means that we can create isolated UI features that don't interfere with the position of other elements on the page. For example, <b>popup information boxes and control menus</b>; <b>rollover panels</b>; <b>UI features that can be dragged and dropped anywhere on the page</b>; and so on...</p>
+            <p>If no ancestor elements have their position property explicitly defined, then by default all ancestor elements will have a static position. The result of this is, the absolutely positioned element will be contained in the <b>initial containing block</b>. The initial containing block has the dimensions of the viewport, and is also the block that contains the <a class="mdn-element"><code>&lt;html&gt;</code></a> element. Simply put, the absolutely positioned element will be contained outside of the <a class="mdn-element"><code>&lt;html&gt;</code></a> element, and be positioned relative to the <b>initial viewport</b>. We can change the <b>positioning context</b> - which element the absolutely positioned element is positioned relative to. This is done by setting positioning on one of the element's ancestors. The absolute positioning fixes an element in place relative to the initial viewport or its nearest positioned ancestor</p>
+            <p>"<a class="mdn-css"><code>z-index</code></a>" is a reference to the z-axis. Web pages use horizontal (x-axis) and vertical (y-axis) coordinates to work out positioning for things like background images and drop shadow offsets. (0,0) is at the top left of the page (or element), and the x- and y-axes run across to the right and down the page (for left to right languages, anyway.)</p>
+            <p>Web pages also have a z-axis: an imaginary line that runs from the surface of your screen, towards your face (or whatever else you like to have in front of the screen). <a class="mdn-css"><code>z-index</code></a> values affect where positioned elements sit on that axis; positive values move them higher up the stack, and negative values move them lower down the stack. By default, positioned elements all have a <code>z-index</code> of <code>auto</code>, which is effectively 0. Note that <code>z-index</code> only accepts unitless index values. Higher values will go above lower values, and it is up to you what values you use.</p>
+          </section>
+          <section>
+            <h5>Fixed positioning</h5>
+            <p>Fixed positioning works in exactly the same way as absolute positioning, with one key difference: whereas absolute positioning fixes an element in place relative to the <a class="mdn-element"><code>&lt;html&gt;</code></a> element or its nearest positioned ancestor, fixed positioning fixes an element in place relative to the browser viewport itself. This means that you can create useful UI items that are fixed in place, like <b>persisting navigation menus</b>.</p>
+          </section>
+          <section>
+            <h6>position: sticky</h6>
+            <p>There is another position value available called <code>position: sticky</code>, which is somewhat newer than the others. This is basically a hybrid between relative and fixed position, which allows a positioned element to act like it is relatively positioned until it is scrolled to a certain threshold point after which it becomes fixed. This can be used to for example cause a navigation bar to scroll with the page until a certain point, and then stick to the top of the page. An interesting and common use of <code>position: sticky</code> is to create a scrolling index page where different headings stick to the top of the page as they reach it.</p>
+          </section>
+        </section>
+        <section>
+          <h4>Multiple-column layout</h4>
+          <section>
+            <h5>A basic example</h5>
+            <p>We switch on multicol by using one of two properties <a class="mdn-css"><code>column-count</code></a> or <a class="mdn-css"><code>column-width</code></a>. The <code>column-count</code> property will create as many columns as the value you give it. The columns that you create have flexible widths - the browser works out how much space to assign each column.</p>
+            <pre><code class="my-css">
+              .container {
+                column-count: 3;
+              }
+            </code></pre>
+            <p>If you use <code>column-width</code>, the browser will now give you as many columns as it can of the size that you specify; any remaining space is then shared between the existing columns. This means that you will not get exactly the width that you specify, unless your container is exactly divisible by that width.</p>
+            <pre><code class="my-css">
+              .container {
+                column-width: 200px;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h5>Styling the columns</h5>
+            <p>The columns created by multicol cannot be styled individually. You have two opportunities to change the way that columns display:</p>
+            <ul>
+              <li>Changing the size of the gap between columns using the <a class="mdn-css"><code>column-gap</code></a>.</li>
+              <li>Adding a rule between columns with <a class="mdn-css"><code>column-rule</code></a>.</li>
+            </ul>
+            <p>Using your example above, change the size of the gap by adding a <code>column-gap</code> property:</p>
+            <pre><code class="my-css">
+              .container {
+                column-width: 200px;
+                column-gap: 20px;
+                column-rule: 4px dotted rgb(79, 185, 227);
+              }
+            </code></pre>
+            <p>Now add a rule between the columns, with <code>column-rule</code>. In a similar way to the <a class="mdn-css"><code>border</code></a> property that you encountered in previous lessons, <code>column-rule</code> is a shorthand for <a class="mdn-css"><code>column-rule-color</code></a>, <a class="mdn-css"><code>column-rule-style</code></a>, and <a class="mdn-css"><code>column-rule-width</code></a>, and accepts the same values as <code>border</code>. <code>column-rule</code> does not take up any width of its own. It lies across the gap you created with <code>column-gap</code>. To make more space either side of the rule you will need to increase the <code>column-gap</code> size.</p>
+          </section>
+          <section>
+            <h5>Columns and fragmentation</h5>
+            <p>The content of a multi-column layout is fragmented. It essentially behaves the same way as content behaves in paged media - such as when you print a webpage. When you turn your content into a multicol container it is fragmented into columns, and the content breaks to allow this to happen.</p>
+            <p>Sometimes, this breaking will happen in places that lead to a poor reading experience. To control this behavior we can add the property <a class="mdn-css"><code>break-inside</code></a> with a value of <code>avoid</code>.</p>
+            <pre><code class="my-css">
+              .container {
+                column-width: 200px;
+                column-gap: 20px;
+                column-rule: 4px dotted rgb(79, 185, 227);
+                break-inside: avoid;
+              }
+            </code></pre>
+          </section>
+        </section>
+      </section>
+    </section>
+    <section id="mdn">
+      <h2><a class="mdn-link" href="Web/CSS">CSS: Cascading Style Sheets</a></h2>
+      <section>
+        <h3>linear-gradient()</h3>
+      </section>
+    </section>
+  </section>
+</main>

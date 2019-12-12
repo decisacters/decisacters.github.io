@@ -1,0 +1,117 @@
+<script src="/index.js"></script>
+<main>
+  <section>
+    <h1><a href="https://eslint.org/docs">ESLint</a></h1>
+    <section>
+      <h2>User Guide</h2>
+      <section>
+        <h3>Getting Started</h3>
+        <p>ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs. In many ways, it is similar to JSLint and JSHint with a few exceptions:</p>
+        <ul>
+          <li>ESLint uses <a href="https://github.com/eslint/espree">Espree</a> for JavaScript parsing.</li>
+          <li>ESLint uses an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">Abstract syntax tree</a> to evaluate patterns in code.</li>
+          <li>ESLint is completely pluggable, every single rule is a plugin and you can add more at runtime.</li>
+        </ul>
+        <section>
+          <h4>Installation</h4>
+          <p>Prerequisites: <a href="https://nodejs.org/en/">Node.js</a> (&gt;=8.10), npm version 3+.</p>
+          <p>You can install ESLint using npm:</p>
+          <pre><code>
+            $ npm install eslint --save-dev
+          </code></pre>
+          <p>It is also possible to install ESLint globally rather than locally. However, this is not recommended, and any plugins or shareable configs that you use must be installed locally in either case.</p>
+          <p>However, I would not use the configs the recommandedway, so install it globally</p>
+          <pre><code>
+            $ npm i eslint -g
+          </code></pre>
+          <p>You should then set up a configuration file:</p>
+          <pre><code>
+            $ ./node_modules/.bin/eslint --init
+          </code></pre>
+          <p>After that, you can run ESLint on any file or directory like this:</p>
+          <pre><code>
+          $ ./node_modules/.bin/eslint yourfile.js
+          </code></pre>
+          <p>Use this way to identifying multiple files</p>
+        </section>
+        <section>
+          <h4>My Initilization</h4>
+          <p>First run <code>npm init</code> to create <code>package.json</code>. It will ask you some question which is not important for eslint, so just select them quickly. Then run <code>eslint --init</code>. Again, it will ask you some questions, more like to setup your configuration file. After that replace rulse by using the rules form <a href="https://raw.githubusercontent.com/google/eslint-config-google/master/index.js">eslint-config-google</a>
+            according to <a href="https://google.github.io/styleguide/jsguide.html">google style</a></p>
+          <p>Here are the questions and tips about how to choose them:</p>
+          <ul>
+            <li>
+              <p><b>How would you like to use ESLint?</b></p>
+              <ul>
+                <li><b>To check syntax only</b> =&gt; it helps you correct your syntax and make sure it conform to standard.</li>
+                <li><b>To check syntax and find problems</b> =&gt; to help you check for syntax correctness and also help to find any problems in your code base</li>
+                <li><b><i>To check syntax, find problems, and enforce code style</i></b> =&gt; to help you check for syntax, find problem and enforce style, enforcing style means to conforms to a particular coding standard such as Airbnb, Google and other Standard coding style. But I always go for the last option the one with syntax, find problems and enforce code style</li>
+              </ul>
+            </li>
+            <li>
+              <p><b>What type of modules does your project use?</b></p>
+              <ul>
+                <li><b><i>Javascript module (import/export)</i></b> =&gt; if your project has babel installed then you definitely need to choose this option. If you are working on a project such as React, Vue, Angular e.t.c they all use babel so you need choose this option.</li>
+                <li><b>CommonJS (require/exports)</b> =&gt; this option is meant for commonJS that has nothing to do with babel, maybe your nodejs project and any other javascript project</li>
+                <li><b>None of these</b> =&gt; if you are using neither Javascript module or CommonJS in your project choose this option</li>
+              </ul>
+            </li>
+            <li>
+              <p><b>Which framework does your project use?</b> (require npm install)</p>
+              <ul>
+                <li><b>React</b> =&gt; if you are using react in/for your project then this option is for you</li>
+                <li><b>Vue</b> =&gt; if you are using Vue in/for your project then this option is for you</li>
+                <li><b><i>None of these</i></b> =&gt; if you are using neither React or Vue in your project choose this option</li>
+              </ul>
+            </li>
+            <li>
+              <p><b>Does your porject use typescript? (y/n)</b> (require npm install)</p>
+              <ul>
+                <li><b>yes</b> =&gt; if your project use typescript then go for this option</li>
+                <li><b><i>no</i></b> =&gt; if your project do not use then gladly choose this option</li>
+              </ul>
+            </li>
+            <li>
+              <p><b>Where does your code run?</b> (choose both)</p>
+              <ul>
+                <li><b><i>Browser</i></b> =&gt; if your project runs on browser e.g React, Angular, Vue e.t.c then go for this option</li>
+                <li><b><i>Node</i></b> =&gt; if your project is a node based then gladly choose this option</li>
+              </ul>
+            </li>
+            <li>
+              <p><b>How would you like to define a style for your project?</b></p>
+              <ul>
+                <li><b>Use a popular style guide</b> =&gt; This allows you to choose from set of popular style such as Airbnb,Standard and Google style guide, it is advisable to choose this option in order for you to follow popular and most used style guide and i will be choosen this option in this post. (require npm install)</li>
+                <li><b><i>Answer questions about your style</i></b></b> =&gt; <i>This is for custom style guide</i>
+                </li>
+                <li><b>Inspect your JavaScript file(s).</b> =&gt; <i>specify the file you want to use eslint</i>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p><b>What format do you want your config file to be in?</b></p>
+              <ul>
+                <li><b><i>Javascript</i></b> =&gt; whether you want your eslint config file to be in <i>.js</i> file</li>
+                <li><b>YAML</b> =&gt; whether you want your eslint config file to be in <i>.yaml</i> file</li>
+                <li><b>JSON</b> =&gt; whether you want your eslint config file to be in <i>.json</i> file
+                  you can choose any option in this section</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Configuration</h4>
+        </section>
+      </section>
+    </section>
+  </section>
+</main>
+<script>
+  waitFunc(['jquery', 'color'], () => {
+    setStyle();
+    addLinks();
+    $('a').each(function () {
+      this.href = this.href.replace(/_/g, '-');
+    })
+  })
+</script>
